@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Custom Bulk/Quick Edit
- * Plugin URI: http://wordpress.org/extend/plugins/custom-bulk-quick-edit/
- * Description: Custom Bulk/Quick Edit plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
+ * Plugin Name: WordPress Starter
+ * Plugin URI: http://wordpress.org/extend/plugins/wordpress-starter-plugin/
+ * Description: WordPress Starter plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
  * Version: 0.0.1
  * Author: Michael Cannon
  * Author URI: http://aihr.us/about-aihrus/michael-cannon-resume/
@@ -23,12 +23,12 @@
  */
 
 
-require_once 'lib/class-custom-bulk-quick-edit-settings.php';
+require_once 'lib/class-wordpress-starter-plugin-settings.php';
 
 
-class Custom_Bulk_Quick_Edit {
-	const ID          = 'custom-bulk-quick-edit';
-	const PLUGIN_FILE = 'custom-bulk-quick-edit/custom-bulk-quick-edit.php';
+class WordPress_Starter {
+	const ID          = 'wordpress-starter-plugin';
+	const PLUGIN_FILE = 'wordpress-starter-plugin/wordpress-starter-plugin.php';
 	const VERSION     = '0.0.1';
 
 	private static $base = null;
@@ -47,15 +47,15 @@ class Custom_Bulk_Quick_Edit {
 	public function __construct() {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		add_action( 'init', array( &$this, 'init' ) );
-		load_plugin_textdomain( self::ID, false, 'custom-bulk-quick-edit/languages' );
+		load_plugin_textdomain( self::ID, false, 'wordpress-starter-plugin/languages' );
 		register_activation_hook( __FILE__, array( &$this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( &$this, 'deactivation' ) );
-		register_uninstall_hook( __FILE__, array( 'Custom_Bulk_Quick_Edit', 'uninstall' ) );
+		register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
 	}
 
 
 	public function admin_init() {
-		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . Custom_Bulk_Quick_Edit_Settings::ID . '">' . __( 'Settings', 'custom-bulk-quick-edit' ) . '</a>';
+		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . WordPress_Starter_Settings::ID . '">' . __( 'Settings', 'wordpress-starter-plugin' ) . '</a>';
 
 		$this->update();
 		add_action( 'manage_' . self::ID . '_posts_custom_column', array( &$this, 'manage_posts_custom_column' ), 10, 2 );
@@ -149,7 +149,7 @@ EOD;
 
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
-			delete_option( Custom_Bulk_Quick_Edit_Settings::ID );
+			delete_option( WordPress_Starter_Settings::ID );
 			$wpdb->query( 'OPTIMIZE TABLE `' . $wpdb->options . '`' );
 		}
 	}
@@ -161,7 +161,7 @@ EOD;
 
 		$links = array(
 			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
-			'<a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
+			'<a href="http://aihr.us/downloads/wordpress-starter-plugin-premium-wordpress-plugin/">Purchase WordPress Starter Premium</a>',
 		);
 
 		$input = array_merge( $input, $links );
@@ -172,7 +172,7 @@ EOD;
 
 	public function admin_notices_0_0_1() {
 		$content  = '<div class="updated"><p>';
-		$content .= sprintf( __( 'If your Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'custom-bulk-quick-edit' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
+		$content .= sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter-plugin' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 		$content .= '</p></div>';
 
 		echo $content;
@@ -181,7 +181,7 @@ EOD;
 
 	public function admin_notices_donate() {
 		$content  = '<div class="updated"><p>';
-		$content .= sprintf( __( 'Please donate $2 towards keeping Custom Bulk/Quick Edit plugin supported and maintained %s', 'custom-bulk-quick-edit' ), self::$donate_button );
+		$content .= sprintf( __( 'Please donate $2 towards keeping WordPress Starter plugin supported and maintained %s', 'wordpress-starter-plugin' ), self::$donate_button );
 		$content .= '</p></div>';
 
 		echo $content;
@@ -212,14 +212,14 @@ EOD;
 		$result = false;
 
 		switch ( $column ) {
-		case 'custom-bulk-quick-edit-company':
-		case 'custom-bulk-quick-edit-location':
-		case 'custom-bulk-quick-edit-title':
+		case 'wordpress-starter-plugin-company':
+		case 'wordpress-starter-plugin-location':
+		case 'wordpress-starter-plugin-title':
 			$result = get_post_meta( $post_id, $column, true );
 			break;
 
-		case 'custom-bulk-quick-edit-email':
-		case 'custom-bulk-quick-edit-url':
+		case 'wordpress-starter-plugin-email':
+		case 'wordpress-starter-plugin-url':
 			$url = get_post_meta( $post_id, $column, true );
 			if ( ! empty( $url ) && ! is_email( $url ) && 0 === preg_match( '#https?://#', $url ) )
 				$url = 'http://' . $url;
@@ -228,7 +228,7 @@ EOD;
 			break;
 
 		case 'thumbnail':
-			$email = get_post_meta( $post_id, 'custom-bulk-quick-edit-email', true );
+			$email = get_post_meta( $post_id, 'wordpress-starter-plugin-email', true );
 
 			if ( has_post_thumbnail( $post_id ) ) {
 				$result = get_the_post_thumbnail( $post_id, 'thumbnail' );
@@ -253,7 +253,7 @@ EOD;
 			break;
 		}
 
-		$result = apply_filters( 'custom_bulk_quick_edit_posts_custom_column', $result, $column, $post_id );
+		$result = apply_filters( 'wordpress_starter_plugin_posts_custom_column', $result, $column, $post_id );
 
 		if ( $result )
 			echo $result;
@@ -264,35 +264,35 @@ EOD;
 		// order of keys matches column ordering
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
-			'thumbnail' => __( 'Image', 'custom-bulk-quick-edit' ),
-			'title' => __( 'Source', 'custom-bulk-quick-edit' ),
-			'shortcode' => __( 'Shortcodes', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-title' => __( 'Title', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-location' => __( 'Location', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-email' => __( 'Email', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-company' => __( 'Company', 'custom-bulk-quick-edit' ),
-			'custom-bulk-quick-edit-url' => __( 'URL', 'custom-bulk-quick-edit' ),
-			'author' => __( 'Published by', 'custom-bulk-quick-edit' ),
-			'date' => __( 'Date', 'custom-bulk-quick-edit' ),
+			'thumbnail' => __( 'Image', 'wordpress-starter-plugin' ),
+			'title' => __( 'Source', 'wordpress-starter-plugin' ),
+			'shortcode' => __( 'Shortcodes', 'wordpress-starter-plugin' ),
+			'wordpress-starter-plugin-title' => __( 'Title', 'wordpress-starter-plugin' ),
+			'wordpress-starter-plugin-location' => __( 'Location', 'wordpress-starter-plugin' ),
+			'wordpress-starter-plugin-email' => __( 'Email', 'wordpress-starter-plugin' ),
+			'wordpress-starter-plugin-company' => __( 'Company', 'wordpress-starter-plugin' ),
+			'wordpress-starter-plugin-url' => __( 'URL', 'wordpress-starter-plugin' ),
+			'author' => __( 'Published by', 'wordpress-starter-plugin' ),
+			'date' => __( 'Date', 'wordpress-starter-plugin' ),
 		);
 
 		$use_cpt_taxonomy = cbqe_get_option( 'use_cpt_taxonomy', false );
 		if ( ! $use_cpt_taxonomy ) {
-			$columns[ 'categories' ] = __( 'Category', 'custom-bulk-quick-edit' );
-			$columns[ 'tags' ]       = __( 'Tags', 'custom-bulk-quick-edit' );
+			$columns[ 'categories' ] = __( 'Category', 'wordpress-starter-plugin' );
+			$columns[ 'tags' ]       = __( 'Tags', 'wordpress-starter-plugin' );
 		} else {
-			$columns[ self::$cpt_category ] = __( 'Category', 'custom-bulk-quick-edit' );
-			$columns[ self::$cpt_tags ]     = __( 'Tags', 'custom-bulk-quick-edit' );
+			$columns[ self::$cpt_category ] = __( 'Category', 'wordpress-starter-plugin' );
+			$columns[ self::$cpt_tags ]     = __( 'Tags', 'wordpress-starter-plugin' );
 		}
 
-		$columns = apply_filters( 'custom_bulk_quick_edit_columns', $columns );
+		$columns = apply_filters( 'wordpress_starter_plugin_columns', $columns );
 
 		return $columns;
 	}
 
 
 	public static function get_defaults() {
-		return apply_filters( 'custom_bulk_quick_edit_defaults', cbqe_get_options() );
+		return apply_filters( 'wordpress_starter_plugin_defaults', cbqe_get_options() );
 	}
 
 
@@ -302,8 +302,8 @@ EOD;
 
 
 	public static function styles() {
-		wp_register_style( 'custom-bulk-quick-edit', plugins_url( 'custom-bulk-quick-edit.css', __FILE__ ) );
-		wp_enqueue_style( 'custom-bulk-quick-edit' );
+		wp_register_style( 'wordpress-starter-plugin', plugins_url( 'wordpress-starter-plugin.css', __FILE__ ) );
+		wp_enqueue_style( 'wordpress-starter-plugin' );
 	}
 
 
@@ -341,7 +341,7 @@ EOF;
 EOF;
 		}
 
-		$css = apply_filters( 'custom_bulk_quick_edit_css', $css, $atts, $instance_number );
+		$css = apply_filters( 'wordpress_starter_plugin_css', $css, $atts, $instance_number );
 
 		return $css;
 	}
@@ -370,7 +370,7 @@ EOF;
 if ( {$enable_animation} ) {
 	var {$tw_wrapper} = jQuery('.{$id_base}');
 	// tw_padding is the difference in height to take into account all styling options
-	var {$tw_padding} = {$tw_wrapper}.height() - jQuery('.{$id_base} .custom-bulk-quick-edit').height();
+	var {$tw_padding} = {$tw_wrapper}.height() - jQuery('.{$id_base} .wordpress-starter-plugin').height();
 	// fixes first animation by defining height to adjust to
 	{$tw_wrapper}.height( {$tw_wrapper}.height() );
 }
@@ -378,7 +378,7 @@ if ( {$enable_animation} ) {
 function nextTestimonial{$instance_number}() {
 	if ( ! jQuery('.{$id_base}').first().hasClass('hovered') ) {
 		var active = jQuery('.{$id_base} .active');
-		var next   = (jQuery('.{$id_base} .active').next().length > 0) ? jQuery('.{$id_base} .active').next() : jQuery('.{$id_base} .custom-bulk-quick-edit:first-child');
+		var next   = (jQuery('.{$id_base} .active').next().length > 0) ? jQuery('.{$id_base} .active').next() : jQuery('.{$id_base} .wordpress-starter-plugin:first-child');
 
 		active.fadeOut(1250, function(){
 			active.removeClass('active');
@@ -408,7 +408,7 @@ EOF;
 			$scripts[ $id_base ] = $javascript;
 		}
 
-		$scripts = apply_filters( 'custom_bulk_quick_edit_js', $scripts, $items, $atts, $instance_number );
+		$scripts = apply_filters( 'wordpress_starter_plugin_js', $scripts, $items, $atts, $instance_number );
 
 		return $scripts;
 	}
@@ -438,9 +438,9 @@ EOF;
 
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
-if ( is_plugin_active( Custom_Bulk_Quick_Edit::PLUGIN_FILE ) ) {
-	$Custom_Bulk_Quick_Edit          = new Custom_Bulk_Quick_Edit();
-	$Custom_Bulk_Quick_Edit_Settings = new Custom_Bulk_Quick_Edit_Settings();
+if ( is_plugin_active( WordPress_Starter::PLUGIN_FILE ) ) {
+	$WordPress_Starter          = new WordPress_Starter();
+	$WordPress_Starter_Settings = new WordPress_Starter_Settings();
 }
 
 

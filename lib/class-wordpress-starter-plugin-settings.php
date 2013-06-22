@@ -17,12 +17,12 @@
  */
 
 /**
- * Custom Bulk/Quick Edit settings class
+ * WordPress Starter settings class
  *
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
-class Custom_Bulk_Quick_Edit_Settings {
-	const ID = 'custom-bulk-quick-edit-settings';
+class WordPress_Starter_Settings {
+	const ID = 'wordpress-starter-plugin-settings';
 
 	public static $default  = array(
 		'backwards' => array(
@@ -50,7 +50,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'init', array( &$this, 'init' ) );
-		load_plugin_textdomain( 'custom-bulk-quick-edit', false, '/custom-bulk-quick-edit/languages/' );
+		load_plugin_textdomain( 'wordpress-starter-plugin', false, '/wordpress-starter-plugin/languages/' );
 	}
 
 
@@ -61,12 +61,12 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public static function sections() {
-		self::$sections['general']   = esc_html__( 'General', 'custom-bulk-quick-edit' );
-		self::$sections['post_type'] = esc_html__( 'Post Type', 'custom-bulk-quick-edit' );
-		self::$sections['reset']     = esc_html__( 'Compatibility & Reset', 'custom-bulk-quick-edit' );
-		self::$sections['about']     = esc_html__( 'About Custom Bulk/Quick Edit', 'custom-bulk-quick-edit' );
+		self::$sections['general']   = esc_html__( 'General', 'wordpress-starter-plugin' );
+		self::$sections['post_type'] = esc_html__( 'Post Type', 'wordpress-starter-plugin' );
+		self::$sections['reset']     = esc_html__( 'Compatibility & Reset', 'wordpress-starter-plugin' );
+		self::$sections['about']     = esc_html__( 'About WordPress Starter', 'wordpress-starter-plugin' );
 
-		self::$sections = apply_filters( 'custom_bulk_quick_edit_sections', self::$sections );
+		self::$sections = apply_filters( 'wordpress_starter_plugin_sections', self::$sections );
 	}
 
 
@@ -78,38 +78,38 @@ class Custom_Bulk_Quick_Edit_Settings {
 	public static function settings() {
 		// General
 		self::$settings['disable_quotes'] = array(
-			'title' => esc_html__( 'Hide built-in quotes?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'Remove open and close quote span tags surrounding asdf content', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Hide built-in quotes?', 'wordpress-starter-plugin' ),
+			'desc' => esc_html__( 'Remove open and close quote span tags surrounding asdf content', 'wordpress-starter-plugin' ),
 			'type' => 'checkbox',
 		);
 
 		self::$settings['hide_not_found'] = array(
-			'title' => esc_html__( 'Hide "Testimonials Not Found"?', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Hide "Testimonials Not Found"?', 'wordpress-starter-plugin' ),
 			'type' => 'checkbox',
 		);
 
 		self::$settings['paging'] = array(
-			'title' => esc_html__( 'Enable Paging?', 'custom-bulk-quick-edit' ),
-			'desc' => esc_html__( 'For `[asdfswidget_list]`', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Enable Paging?', 'wordpress-starter-plugin' ),
+			'desc' => esc_html__( 'For `[asdfswidget_list]`', 'wordpress-starter-plugin' ),
 			'type' => 'select',
 			'choices' => array(
-				'' => esc_html__( 'Disable', 'custom-bulk-quick-edit' ),
-				1 => esc_html__( 'Enable', 'custom-bulk-quick-edit' ),
-				'before' => esc_html__( 'Before asdfs', 'custom-bulk-quick-edit' ),
-				'after' => esc_html__( 'After asdfs', 'custom-bulk-quick-edit' ),
+				'' => esc_html__( 'Disable', 'wordpress-starter-plugin' ),
+				1 => esc_html__( 'Enable', 'wordpress-starter-plugin' ),
+				'before' => esc_html__( 'Before asdfs', 'wordpress-starter-plugin' ),
+				'after' => esc_html__( 'After asdfs', 'wordpress-starter-plugin' ),
 			),
 			'std' => 1,
 			'widget' => 0,
 		);
 
 		// Post Type
-		$desc        = __( 'URL slug-name for <a href="%1s">asdfs archive</a> page.', 'custom-bulk-quick-edit' );
+		$desc        = __( 'URL slug-name for <a href="%1s">asdfs archive</a> page.', 'wordpress-starter-plugin' );
 		$has_archive = cbqe_get_option( 'has_archive', '' );
 		$site_url    = site_url( '/' . $has_archive );
 
 		self::$settings['has_archive'] = array(
 			'section' => 'post_type',
-			'title' => esc_html__( 'Archive Page URL', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Archive Page URL', 'wordpress-starter-plugin' ),
 			'desc' => sprintf( $desc, $site_url ),
 			'std' => 'asdfs-archive',
 			'validate' => 'sanitize_title',
@@ -119,9 +119,9 @@ class Custom_Bulk_Quick_Edit_Settings {
 		// Reset
 		self::$settings['use_cpt_taxonomy'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Don\'t Use Default Taxonomies?', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Don\'t Use Default Taxonomies?', 'wordpress-starter-plugin' ),
 			'type' => 'checkbox',
-			'desc' => esc_html__( 'If checked, use Custom Bulk/Quick Edit\'s own category and tag taxonomies instead', 'custom-bulk-quick-edit' ),
+			'desc' => esc_html__( 'If checked, use WordPress Starter\'s own category and tag taxonomies instead', 'wordpress-starter-plugin' ),
 			'widget' => 0,
 		);
 
@@ -132,9 +132,9 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 			self::$settings['export'] = array(
 				'section' => 'reset',
-				'title' => esc_html__( 'Export Settings', 'custom-bulk-quick-edit' ),
+				'title' => esc_html__( 'Export Settings', 'wordpress-starter-plugin' ),
 				'type' => 'readonly',
-				'desc' => esc_html__( 'These are your current settings in a serialized format. Copy the contents to make a backup of your settings.', 'custom-bulk-quick-edit' ),
+				'desc' => esc_html__( 'These are your current settings in a serialized format. Copy the contents to make a backup of your settings.', 'wordpress-starter-plugin' ),
 				'std' => $serialized_options,
 				'widget' => 0,
 			);
@@ -142,31 +142,31 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 		self::$settings['import'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Import Settings', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Import Settings', 'wordpress-starter-plugin' ),
 			'type' => 'textarea',
-			'desc' => esc_html__( 'Paste new serialized settings here to overwrite your current configuration.', 'custom-bulk-quick-edit' ),
+			'desc' => esc_html__( 'Paste new serialized settings here to overwrite your current configuration.', 'wordpress-starter-plugin' ),
 			'widget' => 0,
 		);
 
 		self::$settings['delete_data'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Remove Plugin Data on Deletion?', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Remove Plugin Data on Deletion?', 'wordpress-starter-plugin' ),
 			'type' => 'checkbox',
 			'class' => 'warning', // Custom class for CSS
-			'desc' => esc_html__( 'Delete all Custom Bulk/Quick Edit data and options from database on plugin deletion', 'custom-bulk-quick-edit' ),
+			'desc' => esc_html__( 'Delete all WordPress Starter data and options from database on plugin deletion', 'wordpress-starter-plugin' ),
 			'widget' => 0,
 		);
 
 		self::$settings['reset_defaults'] = array(
 			'section' => 'reset',
-			'title' => esc_html__( 'Reset to Defaults?', 'custom-bulk-quick-edit' ),
+			'title' => esc_html__( 'Reset to Defaults?', 'wordpress-starter-plugin' ),
 			'type' => 'checkbox',
 			'class' => 'warning', // Custom class for CSS
-			'desc' => esc_html__( 'Check this box to reset options to their defaults', 'custom-bulk-quick-edit' ),
+			'desc' => esc_html__( 'Check this box to reset options to their defaults', 'wordpress-starter-plugin' ),
 			'widget' => 0,
 		);
 
-		self::$settings = apply_filters( 'custom_bulk_quick_edit_settings', self::$settings );
+		self::$settings = apply_filters( 'wordpress_starter_plugin_settings', self::$settings );
 
 		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
@@ -212,8 +212,8 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 	public function admin_init() {
 		$version       = cbqe_get_option( 'version' );
-		self::$version = Custom_Bulk_Quick_Edit::VERSION;
-		self::$version = apply_filters( 'custom_bulk_quick_edit_version', self::$version );
+		self::$version = WordPress_Starter::VERSION;
+		self::$version = apply_filters( 'wordpress_starter_plugin_version', self::$version );
 
 		if ( $version != self::$version )
 			$this->initialize_settings();
@@ -223,7 +223,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 	public function admin_menu() {
-		$admin_page = add_options_page( esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ), esc_html__( 'Custom Bulk/Quick', 'custom-bulk-quick-edit' ), 'manage_options', self::ID, array( 'Custom_Bulk_Quick_Edit_Settings', 'display_page' ) );
+		$admin_page = add_options_page( esc_html__( 'WordPress Starter Settings', 'wordpress-starter-plugin' ), esc_html__( 'Custom Bulk/Quick', 'wordpress-starter-plugin' ), 'manage_options', self::ID, array( 'WordPress_Starter_Settings', 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
@@ -260,7 +260,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 	public static function display_page() {
 		echo '<div class="wrap">
 			<div class="icon32" id="icon-options-general"></div>
-			<h2>' . esc_html__( 'Custom Bulk/Quick Edit Settings', 'custom-bulk-quick-edit' ) . '</h2>';
+			<h2>' . esc_html__( 'WordPress Starter Settings', 'wordpress-starter-plugin' ) . '</h2>';
 
 		echo '<form action="options.php" method="post">';
 
@@ -277,16 +277,16 @@ class Custom_Bulk_Quick_Edit_Settings {
 		self::do_settings_sections( self::ID );
 
 		echo '
-			<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . esc_html__( 'Save Changes', 'custom-bulk-quick-edit' ) . '" /></p>
+			<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . esc_html__( 'Save Changes', 'wordpress-starter-plugin' ) . '" /></p>
 			</form>
 		</div>
 		';
 
 		echo '
-			<p>If you like this plugin, please <a href="http://aihr.us/about-aihrus/donate/" title="Donate for Good Karma"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="Donate for Good Karma" /></a> or <a href="http://aihr.us/downloads/custom-bulk-quick-edit-premium-wordpress-plugin/" title="purchase Custom Bulk/Quick Edit Premium">purchase Custom Bulk/Quick Edit Premium</a> to help fund further development and <a href="http://wordpress.org/support/plugin/custom-bulk-quick-edit" title="Support forums">support</a>.</p>
+			<p>If you like this plugin, please <a href="http://aihr.us/about-aihrus/donate/" title="Donate for Good Karma"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="Donate for Good Karma" /></a> or <a href="http://aihr.us/downloads/wordpress-starter-plugin-premium-wordpress-plugin/" title="purchase WordPress Starter Premium">purchase WordPress Starter Premium</a> to help fund further development and <a href="http://wordpress.org/support/plugin/wordpress-starter-plugin" title="Support forums">support</a>.</p>
 		';
 
-		$text = esc_html__( 'Copyright &copy;%1$s %2$s.', 'custom-bulk-quick-edit' );
+		$text = esc_html__( 'Copyright &copy;%1$s %2$s.', 'wordpress-starter-plugin' );
 		$link = '<a href="http://aihr.us">Aihrus</a>';
 		echo '<p class="copyright">' . sprintf( $text, date( 'Y' ), $link ) . '</p>';
 
@@ -340,7 +340,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 	public function display_about_section() {
 		echo '
 			<div id="about" style="width: 70%; min-height: 225px;">
-				<p><img class="alignright size-medium" title="Michael in Red Square, Moscow, Russia" src="/wp-content/plugins/custom-bulk-quick-edit/media/michael-cannon-red-square-300x2251.jpg" alt="Michael in Red Square, Moscow, Russia" width="300" height="225" /><a href="http://wordpress.org/extend/plugins/custom-bulk-quick-edit/">Custom Bulk/Quick Edit</a> is by <a href="http://aihr.us/about-aihrus/michael-cannon-resume/">Michael Cannon</a>. He\'s <a title="Lot\'s of stuff about Peichi Liu…" href="http://peimic.com/t/peichi-liu/">Peichi’s</a> smiling man, an adventurous <a title="Water rat" href="http://www.chinesehoroscope.org/chinese_zodiac/rat/" target="_blank">water-rat</a>, <a title="Axelerant – Open Source. Engineered." href="http://axelerant.com/who-we-are">chief people officer</a>, <a title="Aihrus – website support made easy since 1999" href="http://aihr.us/about-aihrus/">chief technology officer</a>, <a title="Road biker, cyclist, biking; whatever you call, I love to ride" href="http://peimic.com/c/biking/">cyclist</a>, <a title="Michael\'s poetic like literary ramblings" href="http://peimic.com/t/poetry/">poet</a>, <a title="World Wide Opportunities on Organic Farms" href="http://peimic.com/t/WWOOF/">WWOOF’er</a> and <a title="My traveled to country list, is more than my age." href="http://peimic.com/c/travel/">world traveler</a>.</p>
+				<p><img class="alignright size-medium" title="Michael in Red Square, Moscow, Russia" src="/wp-content/plugins/wordpress-starter-plugin/media/michael-cannon-red-square-300x2251.jpg" alt="Michael in Red Square, Moscow, Russia" width="300" height="225" /><a href="http://wordpress.org/extend/plugins/wordpress-starter-plugin/">WordPress Starter</a> is by <a href="http://aihr.us/about-aihrus/michael-cannon-resume/">Michael Cannon</a>. He\'s <a title="Lot\'s of stuff about Peichi Liu…" href="http://peimic.com/t/peichi-liu/">Peichi’s</a> smiling man, an adventurous <a title="Water rat" href="http://www.chinesehoroscope.org/chinese_zodiac/rat/" target="_blank">water-rat</a>, <a title="Axelerant – Open Source. Engineered." href="http://axelerant.com/who-we-are">chief people officer</a>, <a title="Aihrus – website support made easy since 1999" href="http://aihr.us/about-aihrus/">chief technology officer</a>, <a title="Road biker, cyclist, biking; whatever you call, I love to ride" href="http://peimic.com/c/biking/">cyclist</a>, <a title="Michael\'s poetic like literary ramblings" href="http://peimic.com/t/poetry/">poet</a>, <a title="World Wide Opportunities on Organic Farms" href="http://peimic.com/t/WWOOF/">WWOOF’er</a> and <a title="My traveled to country list, is more than my age." href="http://peimic.com/c/travel/">world traveler</a>.</p>
 			</div>
 		';
 	}
@@ -595,8 +595,8 @@ class Custom_Bulk_Quick_Edit_Settings {
 			flush_rewrite_rules();
 
 		$input['version']        = self::$version;
-		$input['donate_version'] = Custom_Bulk_Quick_Edit::VERSION;
-		$input                   = apply_filters( 'custom_bulk_quick_edit_validate_settings', $input, $errors );
+		$input['donate_version'] = WordPress_Starter::VERSION;
+		$input                   = apply_filters( 'wordpress_starter_plugin_validate_settings', $input, $errors );
 
 		unset( $input['export'] );
 		unset( $input['import'] );
@@ -646,7 +646,7 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 		case 'required':
 			if ( empty( $input[ $id ] ) )
-				$errors[ $id ] = esc_html__( 'Required', 'custom-bulk-quick-edit' );
+				$errors[ $id ] = esc_html__( 'Required', 'wordpress-starter-plugin' );
 			break;
 
 		case 'slug':
@@ -733,11 +733,11 @@ class Custom_Bulk_Quick_Edit_Settings {
 
 
 function cbqe_get_options() {
-	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID );
+	$options = get_option( WordPress_Starter_Settings::ID );
 
 	if ( false === $options ) {
-		$options = Custom_Bulk_Quick_Edit_Settings::get_defaults();
-		update_option( Custom_Bulk_Quick_Edit_Settings::ID, $options );
+		$options = WordPress_Starter_Settings::get_defaults();
+		update_option( WordPress_Starter_Settings::ID, $options );
 	}
 
 	return $options;
@@ -745,7 +745,7 @@ function cbqe_get_options() {
 
 
 function cbqe_get_option( $option, $default = null ) {
-	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID, null );
+	$options = get_option( WordPress_Starter_Settings::ID, null );
 
 	if ( isset( $options[$option] ) )
 		return $options[$option];
@@ -755,13 +755,13 @@ function cbqe_get_option( $option, $default = null ) {
 
 
 function cbqe_set_option( $option, $value = null ) {
-	$options = get_option( Custom_Bulk_Quick_Edit_Settings::ID );
+	$options = get_option( WordPress_Starter_Settings::ID );
 
 	if ( ! is_array( $options ) )
 		$options = array();
 
 	$options[$option] = $value;
-	update_option( Custom_Bulk_Quick_Edit_Settings::ID, $options );
+	update_option( WordPress_Starter_Settings::ID, $options );
 }
 
 

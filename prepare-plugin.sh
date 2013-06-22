@@ -1,16 +1,16 @@
 #!/bin/bash
 
-NEW_CLASS="WordPress_Starter"
-NEW_FILTER="wordpress_starter_plugin"
-NEW_KB_PATH="20102742-WordPress-Starter-Plugin"
-NEW_SLUG="wordpress-starter-plugin"
-NEW_TITLE="WordPress Starter"
+NEW_CLASS="Custom_Bulk_Quick_Edit"
+NEW_FILTER="custom_bulk_quick_edit"
+NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
+NEW_SLUG="custom-bulk-quick-edit"
+NEW_TITLE="Custom Bulk/Quick Edit"
 
-OLD_CLASS="Custom_Bulk_Quick_Edit"
-OLD_FILTER="custom_bulk_quick_edit"
-OLD_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
-OLD_SLUG="custom-bulk-quick-edit"
-OLD_TITLE="Custom Bulk/Quick Edit"
+OLD_CLASS="WordPress_Starter"
+OLD_FILTER="wordpress_starter_plugin"
+OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
+OLD_SLUG="wordpress-starter-plugin"
+OLD_TITLE="WordPress Starter"
 
 echo
 echo "Begin converting ${OLD_TITLE} to ${NEW_TITLE} plugin"

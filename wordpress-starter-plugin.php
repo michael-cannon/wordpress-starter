@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WordPress Starter
  * Plugin URI: http://wordpress.org/extend/plugins/wordpress-starter-plugin/
- * Description: WordPress Starter plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
+ * Description: TBD
  * Version: 0.0.1
  * Author: Michael Cannon
  * Author URI: http://aihr.us/about-aihrus/michael-cannon-resume/

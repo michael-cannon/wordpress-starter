@@ -9,12 +9,12 @@ Stable tag: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress Starter plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
+TBD
 
 
 == Description ==
 
-WordPress Starter plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
+TBD
 
 = Primary Features =
 

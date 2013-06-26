@@ -8,6 +8,8 @@
  * Author URI: http://aihr.us/about-aihrus/michael-cannon-resume/
  * License: GPLv2 or later
  */
+
+
 /**
  * Copyright 2013 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
@@ -21,11 +23,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
-
-require_once 'lib/class-wordpress-starter-plugin-settings.php';
-
-
 class WordPress_Starter {
 	const ID          = 'wordpress-starter-plugin';
 	const PLUGIN_FILE = 'wordpress-starter-plugin/wordpress-starter-plugin.php';
@@ -48,9 +45,6 @@ class WordPress_Starter {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		add_action( 'init', array( &$this, 'init' ) );
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter-plugin/languages' );
-		register_activation_hook( __FILE__, array( &$this, 'activation' ) );
-		register_deactivation_hook( __FILE__, array( &$this, 'deactivation' ) );
-		register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
 	}
 
 
@@ -100,37 +94,17 @@ EOD;
 	}
 
 
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
 	public function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : false;
-		if ( $plugin )
-			check_admin_referer( "activate-plugin_{$plugin}" );
-
-		self::init();
 
 		flush_rewrite_rules();
 	}
 
 
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
 	public function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : false;
-		if ( $plugin )
-			check_admin_referer( "deactivate-plugin_{$plugin}" );
 
 		flush_rewrite_rules();
 	}
@@ -140,13 +114,9 @@ EOD;
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
-		if ( __FILE__ != WP_UNINSTALL_PLUGIN )
-			return;
-
-		check_admin_referer( 'bulk-plugins' );
-
 		global $wpdb;
 
+		require_once 'lib/class-wordpress-starter-plugin-settings.php';
 		$delete_data = cbqe_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( WordPress_Starter_Settings::ID );
@@ -437,10 +407,28 @@ EOF;
 }
 
 
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
-if ( is_plugin_active( WordPress_Starter::PLUGIN_FILE ) ) {
-	$WordPress_Starter          = new WordPress_Starter();
-	$WordPress_Starter_Settings = new WordPress_Starter_Settings();
+register_activation_hook( __FILE__, array( 'WordPress_Starter', 'activation' ) );
+register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation' ) );
+register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
+
+
+add_action( 'plugins_loaded', 'wordpress_starter_plugin_init' );
+
+
+/**
+ *
+ *
+ * @SuppressWarnings(PHPMD.LongVariable)
+ * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+ */
+function wordpress_starter_plugin_init() {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	if ( is_plugin_active( WordPress_Starter::PLUGIN_FILE ) ) {
+		require_once 'lib/class-wordpress-starter-plugin-settings.php';
+
+		$WordPress_Starter          = new WordPress_Starter();
+		$WordPress_Starter_Settings = new WordPress_Starter_Settings();
+	}
 }
 
 

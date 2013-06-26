@@ -1,17 +1,14 @@
-WordPress Starter plugin for WordPress
-===========================================
+# WordPress Starter plugin for WordPress
 
 [![Build Status](https://travis-ci.org/michael-cannon/wordpress-starter-plugin.png?branch=master)](https://travis-ci.org/michael-cannon/wordpress-starter-plugin)
 
-Welcome to the WordPress Starter Github repository
--------------------------------------------------------
+## Welcome to the WordPress Starter Github repository
 
 WordPress Starter plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
 
 While the documentation for the [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter-plugin/) can be found at WordPress.org Plugin Directory, here you can browse the source of the project, find and discuss open issues and, even [contribute yourself](https://github.com/michael-cannon/wordpress-starter-plugin/blob/master/CONTRIBUTING.md).
 
-Installation
-------------
+## Installation
 
 Here's a [guide on how to install WordPress Starter in your WordPress site](http://wordpress.org/plugins/wordpress-starter-plugin/installation/). If you want to run the Git version though, you have two options:
 
@@ -20,18 +17,15 @@ Here's a [guide on how to install WordPress Starter in your WordPress site](http
 
 This will download the latest development version of WordPress Starter by Michael Cannon. While this version is usually stable, it is not recommended for use in a production environment.
 
-Bugs
-----
+## Bugs
 
 If you find an issue, [let us know here](https://github.com/michael-cannon/wordpress-starter-plugin/issues/new)!
 
-Support
--------
+## Support
 
 This is a developer's portal for WordPress Starter by Michael Cannon and should not be used for support. Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
 
-Contributions
--------------
+## Contributions
 
 Anyone is welcome to contribute to WordPress Starter. Please [read the guidelines](https://github.com/michael-cannon/wordpress-starter-plugin/blob/master/CONTRIBUTING.md) for contributing to this repository.
 
@@ -42,6 +36,5 @@ There are various ways you can contribute:
 * ~~[Translate WordPress Starter by Michael Cannon into different languages](https://aihrus.zendesk.com/entries/23691557-How-do-I-change-Testimonials-Widget-text-labels-).~~
 * Provide feedback and [suggestions on enhancements](https://github.com/michael-cannon/wordpress-starter-plugin/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open).
 
-Thank You
----------
+## Thank You
 * Thank you [WordPress SEO by Yoast](https://github.com/jdevalk/wordpress-seo/blob/master/README.md) for this README.md and like inspirations.

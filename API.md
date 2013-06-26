@@ -1,15 +1,12 @@
-WordPress Starter API Documentation
-========================================
+# WordPress Starter API Documentation
 
 The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter-plugin/) comes with its own set of actions and filters, as described below.
 
-Actions
--------
+## Actions
 
 None at this time.
 
-Filters
--------
+## Filters
 
 * `wordpress_starter_plugin_cache_get`
 	
@@ -68,7 +65,6 @@ Filters
 	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)
 
 
-Need More?
-==========
+## Need More?
 
 Further examples and more can be found by reading and searching the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) and [source code](https://github.com/michael-cannon/wordpress-starter-plugin).

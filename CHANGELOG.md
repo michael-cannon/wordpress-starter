@@ -1,4 +1,6 @@
-### TBD
+# CHANGELOG WordPress Starter plugin for WordPress
 
-### 0.0.1
+## TBD
+
+## 0.0.1
 * Initial code release 

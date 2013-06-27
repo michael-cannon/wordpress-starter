@@ -1,0 +1,156 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-starter\n"
+"POT-Creation-Date: 2013-06-27 00:02:59+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: lib/class-wordpress-starter-plugin-settings.php:66
+msgid "General"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:67
+msgid "Post Type"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:68
+msgid "Compatibility & Reset"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:69
+msgid "About WordPress Starter"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:83
+msgid "Hide built-in quotes?"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:84
+msgid "Remove open and close quote span tags surrounding asdf content"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:89
+msgid "Hide \"Testimonials Not Found\"?"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:94
+msgid "Enable Paging?"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:95
+msgid "For `[asdfswidget_list]`"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:98
+msgid "Disable"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:99
+msgid "Enable"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:100
+msgid "Before asdfs"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:101
+msgid "After asdfs"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:108
+msgid "URL slug-name for <a href=\"%1s\">asdfs archive</a> page."
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:114
+msgid "Archive Page URL"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:124
+msgid "Don't Use Default Taxonomies?"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:126
+msgid ""
+"If checked, use WordPress Starter's own category and tag taxonomies instead"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:137
+msgid "Export Settings"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:139
+msgid ""
+"These are your current settings in a serialized format. Copy the contents to "
+"make a backup of your settings."
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:147
+msgid "Import Settings"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:149
+msgid ""
+"Paste new serialized settings here to overwrite your current configuration."
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:155
+msgid "Remove Plugin Data on Deletion?"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:158
+msgid ""
+"Delete all WordPress Starter data and options from database on plugin "
+"deletion"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:164
+msgid "Reset to Defaults?"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:167
+msgid "Check this box to reset options to their defaults"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:228
+#: lib/class-wordpress-starter-plugin-settings.php:265
+msgid "WordPress Starter Settings"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:228
+msgid "Custom Bulk/Quick"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:282
+msgid "Save Changes"
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:291
+msgid "Copyright &copy;%1$s %2$s."
+msgstr ""
+
+#: lib/class-wordpress-starter-plugin-settings.php:651
+msgid "Required"
+msgstr ""
+
+#: wordpress-starter-plugin.php:48
+msgid "Settings"
+msgstr ""
+
+#: wordpress-starter-plugin.php:117
+msgid ""
+"If your WordPress Starter display has gone to funky town, please <a href=\"%s"
+"\">read the FAQ</a> about possible CSS fixes."
+msgstr ""
+
+#: wordpress-starter-plugin.php:126
+msgid ""
+"Please donate $2 towards keeping WordPress Starter plugin supported and "
+"maintained %s"
+msgstr ""

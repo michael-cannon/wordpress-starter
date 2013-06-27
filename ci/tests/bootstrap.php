@@ -3,7 +3,7 @@
 require_once getenv( 'WP_TESTS_DIR' ) . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	require dirname( __FILE__ ) . '/../../wordpress-starter-plugin.php';
+	require dirname( __FILE__ ) . '/../../wordpress-starter.php';
 }
 
 

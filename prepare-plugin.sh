@@ -7,9 +7,9 @@ NEW_SLUG="custom-bulk-quick-edit"
 NEW_TITLE="Custom Bulk/Quick Edit"
 
 OLD_CLASS="WordPress_Starter"
-OLD_FILTER="wordpress_starter_plugin"
+OLD_FILTER="wordpress_starter"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
-OLD_SLUG="wordpress-starter-plugin"
+OLD_SLUG="wordpress-starter"
 OLD_TITLE="WordPress Starter"
 
 echo
@@ -29,3 +29,4 @@ mv ${OLD_SLUG}.css ${NEW_SLUG}.css
 mv ${OLD_SLUG}.php ${NEW_SLUG}.php
 mv languages/${OLD_SLUG}.pot languages/${NEW_SLUG}.pot
 mv lib/class-${OLD_SLUG}-settings.php lib/class-${NEW_SLUG}-settings.php
+rm ${0}

@@ -43,11 +43,11 @@ TBD
 
 = API =
 
-* Read the [WordPress Starter API](https://github.com/michael-cannon/wordpress-starter-plugin/blob/master/API.md).
+* Read the [WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
 
 = Languages =
 
-You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter-plugin.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
+You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
 
 See the FAQ for further localization tips.
 
@@ -55,13 +55,13 @@ See the FAQ for further localization tips.
 
 Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
 
-If you want to contribute and I hope you do, visit the [WordPress Starter Github repository](https://github.com/michael-cannon/wordpress-starter-plugin).
+If you want to contribute and I hope you do, visit the [WordPress Starter Github repository](https://github.com/michael-cannon/wordpress-starter).
 
 
 == Installation ==
 
-1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter-plugin.zip` file
-1. Alternately, via FTP, upload `wordpress-starter-plugin` directory to the `/wp-content/plugins/` directory
+1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter.zip` file
+1. Alternately, via FTP, upload `wordpress-starter` directory to the `/wp-content/plugins/` directory
 1. Activate the 'WordPress Starter' plugin after uploading or through WordPress Admin > Plugins
 
 
@@ -77,7 +77,7 @@ Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/c
 
 == Changelog ==
 
-See [Changelog](http://aihr.us/wordpress-starter-plugin/changelog/)
+See [Changelog](http://aihr.us/wordpress-starter/changelog/)
 
 
 == Upgrade Notice ==
@@ -99,4 +99,4 @@ Beta testers benefit directly with latest versions, a free 1-site license for Wo
 
 == TODO ==
 
-Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/wordpress-starter-plugin) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).
+Is there something you want done? Write it up on the [support forums](http://wordpress.org/support/plugin/wordpress-starter) and then [donate](http://aihr.us/about-aihrus/donate/) or [write an awesome testimonial](http://aihr.us/about-aihrus/testimonials/add-testimonial/).

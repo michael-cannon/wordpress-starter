@@ -77,7 +77,7 @@ Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/c
 
 == Changelog ==
 
-See [Changelog](http://aihr.us/wordpress-starter/changelog/)
+See [Changelog](https://github.com/michael-cannon/wordpress-starter/blob/master/CHANGELOG.md)
 
 
 == Upgrade Notice ==

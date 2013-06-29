@@ -1,10 +1,10 @@
-# Copyright (C) 2013 
-# This file is distributed under the same license as the  package.
+# Copyright (C) 2013 WordPress Starter
+# This file is distributed under the same license as the WordPress Starter package.
 msgid ""
 msgstr ""
-"Project-Id-Version:  \n"
+"Project-Id-Version: WordPress Starter 0.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-starter\n"
-"POT-Creation-Date: 2013-06-27 00:02:59+00:00\n"
+"POT-Creation-Date: 2013-06-29 18:57:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,18 +139,38 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: wordpress-starter-plugin.php:48
+#: wordpress-starter.php:48
 msgid "Settings"
 msgstr ""
 
-#: wordpress-starter-plugin.php:117
+#: wordpress-starter.php:117
 msgid ""
 "If your WordPress Starter display has gone to funky town, please <a href=\"%s"
 "\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: wordpress-starter-plugin.php:126
+#: wordpress-starter.php:126
 msgid ""
 "Please donate $2 towards keeping WordPress Starter plugin supported and "
 "maintained %s"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WordPress Starter"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/wordpress-starter/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "TBD"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Michael Cannon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://aihr.us/about-aihrus/michael-cannon-resume/"
 msgstr ""

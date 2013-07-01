@@ -15,11 +15,11 @@ before_install:
     - git submodule update --init --recursive
 
 before_script:
-    - sudo echo 'http://dl.hiphop-php.com/ubuntu precise main' >> /etc/apt/sources.list
-    - sudo perl -pi -e s"#(deb http://archive.ubuntu.com/ubuntu precise main)#\1 universe#g" /etc/apt/sources.list
-    - cat /etc/apt/sources.list
-    - sudo apt-get update
-    - sudo apt-get install hiphop-php
+#    - sudo echo 'http://dl.hiphop-php.com/ubuntu precise main' >> /etc/apt/sources.list
+#    - sudo perl -pi -e s"#(deb http://archive.ubuntu.com/ubuntu precise main)#\1 universe#g" /etc/apt/sources.list
+#    - cat /etc/apt/sources.list
+#    - sudo apt-get update
+#    - sudo apt-get install hiphop-php
     - pear config-set auto_discover 1
     - pear install pear.phpunit.de/hphpa
     - pear install PHP_CodeSniffer
@@ -38,7 +38,7 @@ before_script:
 
 script:
     - find . \( -name '*.php' -o -name '*.inc' \) -exec php -l {} \;
-    - hphpa .
+#    - hphpa .
     - clamscan --algorithmic-detection=yes --detect-pua=yes --detect-structured=yes --exclude='(pasteword|jquery)\.js' --infected --phishing-cloak=yes --phishing-sigs=yes --phishing-ssl=yes --recursive --scan-archive=yes --scan-elf=yes --scan-html=yes --scan-ole2=yes --scan-pdf=yes --scan-pe=yes .
     - phpcs -s -n --standard=ci/phpcs.travis.ruleset.xml .
     - phpcpd .

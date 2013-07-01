@@ -15,6 +15,7 @@ before_install:
     - git submodule update --init --recursive
 
 before_script:
+    - sudo perl -pi -e s"#(deb http://dl.hiphop-php.com/ubuntu precise main)#\1 universe#g" /etc/apt/sources.list
     - sudo apt-get update
     - sudo apt-get install hiphop-php
     - pear config-set auto_discover 1

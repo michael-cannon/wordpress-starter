@@ -1,6 +1,7 @@
 # CHANGELOG WordPress Starter plugin for WordPress
 
 ## master
+* Test hphpa
 * Add and highlight video introduction
 * Baseline API
 * Delete prepare script on run

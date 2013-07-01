@@ -15,7 +15,12 @@ before_install:
     - git submodule update --init --recursive
 
 before_script:
-#    - pear config-set auto_discover 1
+    - deb http://dl.hiphop-php.com/ubuntu precise main
+    - deb http://archive.ubuntu.com/ubuntu precise main universe
+    - sudo apt-get update
+    - sudo apt-get install hiphop-php
+    - pear config-set auto_discover 1
+    - pear install pear.phpunit.de/hphpa
     - pear install PHP_CodeSniffer
     - pear install phpunit/phpcpd
     - pear channel-discover pear.phpmd.org
@@ -32,6 +37,7 @@ before_script:
 
 script:
     - find . \( -name '*.php' -o -name '*.inc' \) -exec php -l {} \;
+    - hphpa .
     - clamscan --algorithmic-detection=yes --detect-pua=yes --detect-structured=yes --exclude='(pasteword|jquery)\.js' --infected --phishing-cloak=yes --phishing-sigs=yes --phishing-ssl=yes --recursive --scan-archive=yes --scan-elf=yes --scan-html=yes --scan-ole2=yes --scan-pdf=yes --scan-pe=yes .
     - phpcs -s -n --standard=ci/phpcs.travis.ruleset.xml .
     - phpcpd .

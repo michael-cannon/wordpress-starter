@@ -15,7 +15,7 @@ before_install:
     - git submodule update --init --recursive
 
 before_script:
-    - echo 'http://dl.hiphop-php.com/ubuntu precise main' >> /etc/apt/sources.list
+    - sudo echo 'http://dl.hiphop-php.com/ubuntu precise main' >> /etc/apt/sources.list
     - sudo perl -pi -e s"#(deb http://archive.ubuntu.com/ubuntu precise main)#\1 universe#g" /etc/apt/sources.list
     - cat /etc/apt/sources.list
     - sudo apt-get update

@@ -30,8 +30,8 @@ class WordPress_Starter {
 
 	private static $base = null;
 
-	public static $donate_button   = '';
-	public static $settings_link   = '';
+	public static $donate_button = '';
+	public static $settings_link = '';
 
 
 	public function __construct() {
@@ -147,6 +147,7 @@ EOD;
 		}
 	}
 
+
 	public static function scripts() {
 		wp_enqueue_script( 'jquery' );
 	}
@@ -166,7 +167,7 @@ register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation'
 register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
 
 
-add_action( 'plugins_loaded', 'wordpress_starter_plugin_init' );
+add_action( 'plugins_loaded', 'wordpress_starter_plugin_init', 99 );
 
 
 /**

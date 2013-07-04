@@ -1,6 +1,7 @@
 # WordPress Starter plugin for WordPress
 
 [![Build Status](https://travis-ci.org/michael-cannon/wordpress-starter.png?branch=master)](https://travis-ci.org/michael-cannon/wordpress-starter)
+[![ProjectStatus](http://stillmaintained.com/michael-cannon/wordpress-starter.png)](http://stillmaintained.com/michael-cannon/wordpress-starter)
 
 ## Welcome to the WordPress Starter Github repository
 

@@ -29,4 +29,5 @@ mv ${OLD_SLUG}.css ${NEW_SLUG}.css
 mv ${OLD_SLUG}.php ${NEW_SLUG}.php
 mv languages/${OLD_SLUG}.pot languages/${NEW_SLUG}.pot
 mv lib/class-${OLD_SLUG}-settings.php lib/class-${NEW_SLUG}-settings.php
+rm -f .git
 rm ${0}

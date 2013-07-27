@@ -2,8 +2,8 @@
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
-Tags: custom, bulk edit, quick edit, custom post types
-Requires at least: 3.4
+Tags: t, b, d
+Requires at least: 3.5
 Tested up to: 3.6.0
 Stable tag: 0.0.1
 License: GPLv2 or later

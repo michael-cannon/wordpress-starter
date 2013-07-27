@@ -36,6 +36,7 @@ class WordPress_Starter {
 
 	public function __construct() {
 		add_action( 'admin_init', array( &$this, 'admin_init' ) );
+		// add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
 		add_action( 'init', array( &$this, 'init' ) );
 		self::$base = plugin_basename( __FILE__ );
 	}
@@ -89,7 +90,7 @@ EOD;
 		global $wpdb;
 
 		require_once 'lib/class-wordpress-starter-settings.php';
-		$delete_data = cbqe_get_option( 'delete_data', false );
+		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( WordPress_Starter_Settings::ID );
 			$wpdb->query( 'OPTIMIZE TABLE `' . $wpdb->options . '`' );
@@ -113,7 +114,7 @@ EOD;
 
 
 	public function admin_notices_0_0_1() {
-		$content  = '<div class="updated"><p>';
+		$content  = '<div class="updated fade"><p>';
 		$content .= sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 		$content .= '</p></div>';
 
@@ -122,7 +123,7 @@ EOD;
 
 
 	public function admin_notices_donate() {
-		$content  = '<div class="updated"><p>';
+		$content  = '<div class="updated fade"><p>';
 		$content .= sprintf( __( 'Please donate $2 towards development and support of this WordPress Starter plugin. %s', 'wordpress-starter' ), self::$donate_button );
 		$content .= '</p></div>';
 
@@ -131,19 +132,19 @@ EOD;
 
 
 	public function update() {
-		$prior_version = cbqe_get_option( 'admin_notices' );
+		$prior_version = wps_get_option( 'admin_notices' );
 		if ( $prior_version ) {
 			if ( $prior_version < '0.0.1' )
 				add_action( 'admin_notices', array( $this, 'admin_notices_0_0_1' ) );
 
-			cbqe_set_option( 'admin_notices' );
+			wps_set_option( 'admin_notices' );
 		}
 
 		// display donate on major/minor version release
-		$donate_version = cbqe_get_option( 'donate_version', false );
+		$donate_version = wps_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
 			add_action( 'admin_notices', array( $this, 'admin_notices_donate' ) );
-			cbqe_set_option( 'donate_version', self::VERSION );
+			wps_set_option( 'donate_version', self::VERSION );
 		}
 	}
 

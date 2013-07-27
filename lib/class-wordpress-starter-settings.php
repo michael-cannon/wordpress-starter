@@ -68,7 +68,7 @@ class WordPress_Starter_Settings {
 		self::$sections['reset']     = esc_html__( 'Compatibility & Reset', 'wordpress-starter' );
 		self::$sections['about']     = esc_html__( 'About WordPress Starter', 'wordpress-starter' );
 
-		self::$sections = apply_filters( 'wordpress_starter_plugin_sections', self::$sections );
+		self::$sections = apply_filters( 'wordpress_starter_sections', self::$sections );
 	}
 
 
@@ -106,7 +106,7 @@ class WordPress_Starter_Settings {
 
 		// Post Type
 		$desc        = __( 'URL slug-name for <a href="%1s">asdfs archive</a> page.', 'wordpress-starter' );
-		$has_archive = cbqe_get_option( 'has_archive', '' );
+		$has_archive = wps_get_option( 'has_archive', '' );
 		$site_url    = site_url( '/' . $has_archive );
 
 		self::$settings['has_archive'] = array(
@@ -168,7 +168,7 @@ class WordPress_Starter_Settings {
 			'widget' => 0,
 		);
 
-		self::$settings = apply_filters( 'wordpress_starter_plugin_settings', self::$settings );
+		self::$settings = apply_filters( 'wordpress_starter_settings', self::$settings );
 
 		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
@@ -182,7 +182,7 @@ class WordPress_Starter_Settings {
 
 		$do_backwards = false;
 		if ( 'backwards' == $mode ) {
-			$old_version = cbqe_get_option( 'version' );
+			$old_version = wps_get_option( 'version' );
 			if ( ! empty( $old_version ) )
 				$do_backwards = true;
 		}
@@ -213,9 +213,9 @@ class WordPress_Starter_Settings {
 
 
 	public function admin_init() {
-		$version       = cbqe_get_option( 'version' );
+		$version       = wps_get_option( 'version' );
 		self::$version = WordPress_Starter::VERSION;
-		self::$version = apply_filters( 'wordpress_starter_plugin_version', self::$version );
+		self::$version = apply_filters( 'wordpress_starter_version', self::$version );
 
 		if ( $version != self::$version )
 			$this->initialize_settings();
@@ -225,7 +225,7 @@ class WordPress_Starter_Settings {
 
 
 	public function admin_menu() {
-		$admin_page = add_options_page( esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ), esc_html__( 'Custom Bulk/Quick', 'wordpress-starter' ), 'manage_options', self::ID, array( 'WordPress_Starter_Settings', 'display_page' ) );
+		$admin_page = add_options_page( esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ), esc_html__( 'WordPress Starter', 'wordpress-starter' ), 'manage_options', self::ID, array( 'WordPress_Starter_Settings', 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
@@ -480,7 +480,7 @@ class WordPress_Starter_Settings {
 		$defaults                 = self::get_defaults( 'backwards' );
 		$current                  = get_option( self::ID );
 		$current                  = wp_parse_args( $current, $defaults );
-		$current['admin_notices'] = cbqe_get_option( 'version', self::$version );
+		$current['admin_notices'] = wps_get_option( 'version', self::$version );
 		$current['version']       = self::$version;
 
 		update_option( self::ID, $current );
@@ -591,14 +591,14 @@ class WordPress_Starter_Settings {
 			$input['rewrite_slug'] = $defaults['rewrite_slug'];
 
 		// did URL slugs change?
-		$has_archive  = cbqe_get_option( 'has_archive' );
-		$rewrite_slug = cbqe_get_option( 'rewrite_slug' );
+		$has_archive  = wps_get_option( 'has_archive' );
+		$rewrite_slug = wps_get_option( 'rewrite_slug' );
 		if ( $has_archive != $input['has_archive'] || $rewrite_slug != $input['rewrite_slug'] )
 			flush_rewrite_rules();
 
 		$input['version']        = self::$version;
 		$input['donate_version'] = WordPress_Starter::VERSION;
-		$input                   = apply_filters( 'wordpress_starter_plugin_validate_settings', $input, $errors );
+		$input                   = apply_filters( 'wordpress_starter_validate_settings', $input, $errors );
 
 		unset( $input['export'] );
 		unset( $input['import'] );
@@ -734,7 +734,7 @@ class WordPress_Starter_Settings {
 }
 
 
-function cbqe_get_options() {
+function wps_get_options() {
 	$options = get_option( WordPress_Starter_Settings::ID );
 
 	if ( false === $options ) {
@@ -746,7 +746,7 @@ function cbqe_get_options() {
 }
 
 
-function cbqe_get_option( $option, $default = null ) {
+function wps_get_option( $option, $default = null ) {
 	$options = get_option( WordPress_Starter_Settings::ID, null );
 
 	if ( isset( $options[$option] ) )
@@ -756,7 +756,7 @@ function cbqe_get_option( $option, $default = null ) {
 }
 
 
-function cbqe_set_option( $option, $value = null ) {
+function wps_set_option( $option, $value = null ) {
 	$options = get_option( WordPress_Starter_Settings::ID );
 
 	if ( ! is_array( $options ) )

@@ -5,6 +5,7 @@
 * Add StillMaintained.com notice
 * Add and highlight video introduction
 * Adjust load priority to support other plugins tying in
+* Allow blank NEW_* settings
 * Baseline API
 * Baseline readme.txt tags
 * Correct cbqe_ options tagging

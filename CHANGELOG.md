@@ -5,6 +5,7 @@
 * Add Ajax processing screen
 * Add StillMaintained.com notice
 * Add and highlight video introduction
+* Add post_id to do_something
 * Adjust load priority to support other plugins tying in
 * Allow blank NEW_* settings
 * Baseline API
@@ -19,6 +20,7 @@
 * Update Travis
 * Update about image path
 * Update donate text
+* Use str_getcsv
 
 ## 0.0.1
 * Initial code release 

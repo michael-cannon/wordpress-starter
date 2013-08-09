@@ -69,13 +69,6 @@ class WordPress_Starter {
 
 
 	public function init() {
-		if ( wps_get_option( 'debug_mode' ) ) {
-			define( 'WP_DEBUG', true );
-			// log everything to the /wp-content/debug.log file
-			define( 'WP_DEBUG_LOG', true );
-			define( 'WP_DEBUG_DISPLAY', true );
-		}
-
 		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter/languages' );
 		self::set_post_types();
@@ -227,7 +220,7 @@ EOD;
 
 		$include_ids = wps_get_option( 'posts_to_import' );
 		if ( $include_ids ) {
-			$query[ 'post__in' ] = array( $include_ids );
+			$query[ 'post__in' ] = str_getcsv( $include_ids );
 		} else {
 			$query['posts_per_page'] = 1;
 			$query['meta_query']	 = array(
@@ -242,7 +235,7 @@ EOD;
 
 		$skip_ids = wps_get_option( 'skip_importing_post_ids' );
 		if ( $skip_ids )
-			$query[ 'post__not_in' ] = array( $skip_ids );
+			$query[ 'post__not_in' ] = str_getcsv( $skip_ids );
 
 		$results  = new WP_Query( $query );
 		$query_wp = $results->request;
@@ -446,13 +439,13 @@ EOD;
 		if ( ! $post || ! in_array( $post->post_type, self::$post_types )  )
 			die( json_encode( array( 'error' => sprintf( esc_html__( "Failed Processing: %s is incorrect post type.", 'wordpress-starter' ), esc_html( $this->post_id ) ) ) ) );
 
-		$this->do_something( $post );
+		$this->do_something( $this->post_id, $post );
 
 		die( json_encode( array( 'success' => sprintf( __( '&quot;<a href="%1$s" target="_blank">%2$s</a>&quot; Post ID %3$s was successfully processed in %4$s seconds.', 'wordpress-starter' ), get_permalink( $this->post_id ), esc_html( get_the_title( $this->post_id ) ), $this->post_id, timer_stop() ) ) ) );
 	}
 
 
-	public function do_something( $post ) {
+	public function do_something( $post_id, $post ) {
 		// do something there with the post
 		// use error_log to track happenings
 	}

@@ -1,6 +1,7 @@
 # CHANGELOG WordPress Starter plugin for WordPress
 
 ## master
+* Abstract get_posts_to_process method
 * Add Ajax processing screen
 * Add StillMaintained.com notice
 * Add and highlight video introduction

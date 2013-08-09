@@ -160,8 +160,6 @@ EOD;
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public function user_interface() {
-		global $wpdb;
-
 		// Capability check
 		if ( ! current_user_can( 'manage_options' ) )
 			wp_die( $this->post_id, esc_html__( "Your user account doesn't have permission to access this.", 'wordpress-starter' ) );
@@ -195,48 +193,17 @@ EOD;
 			if ( ! empty( $_REQUEST['posts'] ) ) {
 				$posts = explode( ',', trim( $_REQUEST['posts'], ',' ) );
 				$posts = array_map( 'intval', $posts );
-				$count = count( $posts );
-				$posts = implode( ',', $posts );
 			} else {
-				// Directly querying the database is normally frowned upon, but all of the API functions will return the full post objects which will suck up lots of memory. This is best, just not as future proof.
-				$query = "
-					SELECT ID
-					FROM $wpdb->posts
-					WHERE 1 = 1
-						AND post_type IN ( '" . implode( "','", self::$post_types ) . "' )
-						AND post_parent = 0
-				";
-
-				$include_ids = wps_get_option( 'posts_to_import' );
-				if ( $include_ids )
-					$query .= ' AND ID IN ( ' . $include_ids . ' )';
-
-				$skip_ids = wps_get_option( 'skip_importing_post_ids' );
-				if ( $skip_ids )
-					$query .= ' AND ID NOT IN ( ' . $skip_ids . ' )';
-
-				$limit = wps_get_option( 'limit' );
-				if ( $limit )
-					$query .= ' LIMIT ' . $limit;
-
-				$results = $wpdb->get_results( $query );
-				$count   = 0;
-
-				// Generate the list of IDs
-				$posts = array();
-				foreach ( $results as $post ) {
-					$posts[] = $post->ID;
-					$count++;
-				}
-
-				if ( ! $count ) {
-					echo '	<p>' . _e( 'All done. No posts needing processing found.', 'wordpress-starter' ) . '</p></div>';
-					return;
-				}
-
-				$posts = implode( ',', $posts );
+				$posts = self::get_posts_to_process();
 			}
 
+			$count = count( $posts );
+			if ( ! $count ) {
+				echo '	<p>' . _e( 'All done. No posts needing processing found.', 'wordpress-starter' ) . '</p></div>';
+				return;
+			}
+
+			$posts = implode( ',', $posts );
 			$this->show_status( $count, $posts );
 		} else {
 			// No button click? Display the form.
@@ -245,6 +212,50 @@ EOD;
 ?>
 	</div>
 <?php
+	}
+
+
+	public static function get_posts_to_process() {
+		global $wpdb;
+
+		$query					= array(
+			'post_status'		=> array( 'publish', 'private' ),
+			'post_type'			=> self::$post_types,
+			'orderby'			=> 'post_modified',
+			'order'				=> 'DESC',
+		);
+
+		$include_ids = wps_get_option( 'posts_to_import' );
+		if ( $include_ids ) {
+			$query[ 'post__in' ] = array( $include_ids );
+		} else {
+			$query['posts_per_page'] = 1;
+			$query['meta_query']	 = array(
+				array(
+					'key'			=> 'TBD',
+					'value'			=> '',
+					'compare'		=> '!=',
+				),
+			);
+			unset( $query['meta_query']	);
+		}
+
+		$skip_ids = wps_get_option( 'skip_importing_post_ids' );
+		if ( $skip_ids )
+			$query[ 'post__not_in' ] = array( $skip_ids );
+
+		$results  = new WP_Query( $query );
+		$query_wp = $results->request;
+
+		$limit = wps_get_option( 'limit' );
+		if ( $limit )
+			$query_wp = preg_replace( '#\bLIMIT 0,.*#', 'LIMIT 0,' . $limit, $query_wp );
+		else
+			$query_wp = preg_replace( '#\bLIMIT 0,.*#', '', $query_wp );
+
+		$posts = $wpdb->get_col( $query_wp );
+
+		return $posts;
 	}
 
 

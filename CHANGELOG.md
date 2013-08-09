@@ -1,6 +1,7 @@
 # CHANGELOG WordPress Starter plugin for WordPress
 
 ## master
+* Add Ajax processing screen
 * Add StillMaintained.com notice
 * Add and highlight video introduction
 * Adjust load priority to support other plugins tying in

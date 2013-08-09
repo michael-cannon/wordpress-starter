@@ -21,6 +21,7 @@ TBD
 
 = Primary Features =
 
+* Ajax based processing screen
 * API
 * Settings export/import
 * Settings screen
@@ -29,13 +30,19 @@ TBD
 
 **General**
 
-* Character Limit - Number of characters to limit testimonial views to
-	* `char_limit` - default none; char_limit=200
-	* Widget - default 500
+* Enable Paging? - For `[wps_widget_list]`
+	* Disable – Don't display paging
+	* Enable – display paging before and after post entries
+	* Before – display paging only before post entries
+	* After – display paging only after post entries
 
-**Post Type**
+**Testing**
 
-* Testimonial Page URL – URL slug-name for testimonial view pages. After changing, you must click "Save Changes" on Permalink Settings to update them.
+* Archive Page URL – URL slug-name for wps archive page.
+* Debug Mode - Bypass Ajax controller to handle posts_to_import directly for testing purposes.
+* Posts to Import - A CSV list of post ids to import, like '1,2,3'.
+* Skip Importing Posts - A CSV list of post ids to not import, like '1,2,3'.
+* Import Limit - Useful for testing import on a limited amount of posts. 0 or blank means unlimited.
 
 **Compatibility & Reset**
 

@@ -63,10 +63,10 @@ class WordPress_Starter_Settings {
 
 
 	public static function sections() {
-		self::$sections['general']   = esc_html__( 'General', 'wordpress-starter' );
-		self::$sections['post_type'] = esc_html__( 'Post Type', 'wordpress-starter' );
-		self::$sections['reset']     = esc_html__( 'Compatibility & Reset', 'wordpress-starter' );
-		self::$sections['about']     = esc_html__( 'About WordPress Starter', 'wordpress-starter' );
+		self::$sections['general'] = esc_html__( 'General', 'wordpress-starter' );
+		self::$sections['testing'] = esc_html__( 'Testing', 'wordpress-starter' );
+		self::$sections['reset']   = esc_html__( 'Compatibility & Reset', 'wordpress-starter' );
+		self::$sections['about']   = esc_html__( 'About WordPress Starter', 'wordpress-starter' );
 
 		self::$sections = apply_filters( 'wordpress_starter_sections', self::$sections );
 	}
@@ -79,54 +79,71 @@ class WordPress_Starter_Settings {
 	 */
 	public static function settings() {
 		// General
-		self::$settings['disable_quotes'] = array(
-			'title' => esc_html__( 'Hide built-in quotes?', 'wordpress-starter' ),
-			'desc' => esc_html__( 'Remove open and close quote span tags surrounding asdf content', 'wordpress-starter' ),
-			'type' => 'checkbox',
-		);
-
-		self::$settings['hide_not_found'] = array(
-			'title' => esc_html__( 'Hide "Testimonials Not Found"?', 'wordpress-starter' ),
-			'type' => 'checkbox',
-		);
-
 		self::$settings['paging'] = array(
 			'title' => esc_html__( 'Enable Paging?', 'wordpress-starter' ),
-			'desc' => esc_html__( 'For `[asdfswidget_list]`', 'wordpress-starter' ),
+			'desc' => esc_html__( 'For `[wps_widget_list]`', 'wordpress-starter' ),
 			'type' => 'select',
 			'choices' => array(
 				'' => esc_html__( 'Disable', 'wordpress-starter' ),
 				1 => esc_html__( 'Enable', 'wordpress-starter' ),
-				'before' => esc_html__( 'Before asdfs', 'wordpress-starter' ),
-				'after' => esc_html__( 'After asdfs', 'wordpress-starter' ),
+				'before' => esc_html__( 'Before wps', 'wordpress-starter' ),
+				'after' => esc_html__( 'After wps', 'wordpress-starter' ),
 			),
 			'std' => 1,
 			'widget' => 0,
 		);
 
 		// Post Type
-		$desc        = __( 'URL slug-name for <a href="%1s">asdfs archive</a> page.', 'wordpress-starter' );
+		$desc        = __( 'URL slug-name for <a href="%1s">wps archive</a> page.', 'wordpress-starter' );
 		$has_archive = wps_get_option( 'has_archive', '' );
 		$site_url    = site_url( '/' . $has_archive );
 
 		self::$settings['has_archive'] = array(
-			'section' => 'post_type',
+			'section' => 'testing',
 			'title' => esc_html__( 'Archive Page URL', 'wordpress-starter' ),
 			'desc' => sprintf( $desc, $site_url ),
-			'std' => 'asdfs-archive',
+			'std' => 'wps-archive',
 			'validate' => 'sanitize_title',
 			'widget' => 0,
 		);
 
-		// Reset
-		self::$settings['use_cpt_taxonomy'] = array(
-			'section' => 'reset',
-			'title' => esc_html__( 'Don\'t Use Default Taxonomies?', 'wordpress-starter' ),
+		// Testing
+		self::$settings['debug_mode'] = array(
+			'section' => 'testing',
+			'title' => esc_html__( 'Debug Mode?', 'wordpress-starter' ),
+			'desc' => esc_html__( 'Bypass Ajax controller to handle posts_to_import directly for testing purposes.', 'wordpress-starter' ),
 			'type' => 'checkbox',
-			'desc' => esc_html__( 'If checked, use WordPress Starter\'s own category and tag taxonomies instead', 'wordpress-starter' ),
-			'widget' => 0,
+			'std' => 0,
 		);
 
+		self::$settings['posts_to_import'] = array(
+			'title' => esc_html__( 'Posts to Import', 'wordpress-starter' ),
+			'desc' => esc_html__( "A CSV list of post ids to import, like '1,2,3'.", 'wordpress-starter' ),
+			'std' => '',
+			'type' => 'text',
+			'section' => 'testing',
+			'validate' => 'ids',
+		);
+
+		self::$settings['skip_importing_post_ids'] = array(
+			'title' => esc_html__( 'Skip Importing Posts', 'wordpress-starter' ),
+			'desc' => esc_html__( "A CSV list of post ids to not import, like '1,2,3'.", 'wordpress-starter' ),
+			'std' => '',
+			'type' => 'text',
+			'section' => 'testing',
+			'validate' => 'ids',
+		);
+
+		self::$settings['limit'] = array(
+			'title' => esc_html__( 'Import Limit', 'wordpress-starter' ),
+			'desc' => esc_html__( 'Useful for testing import on a limited amount of posts. 0 or blank means unlimited.', 'wordpress-starter' ),
+			'std' => '',
+			'type' => 'text',
+			'section' => 'testing',
+			'validate' => 'intval',
+		);
+
+		// Reset
 		$options = get_option( self::ID );
 		if ( ! empty( $options ) ) {
 			$serialized_options = serialize( $options );
@@ -229,6 +246,14 @@ class WordPress_Starter_Settings {
 
 		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
 		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
+
+		add_screen_meta_link(
+			'wsp_importer_link',
+			esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ),
+			admin_url( 'tools.php?page=' . WordPress_Starter::ID ),
+			$admin_page,
+			array( 'style' => 'font-weight: bold;' )
+		);
 	}
 
 

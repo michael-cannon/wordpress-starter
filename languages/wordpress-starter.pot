@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Starter 0.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-starter\n"
-"POT-Creation-Date: 2013-06-29 18:57:05+00:00\n"
+"POT-Creation-Date: 2013-08-09 06:07:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,151 +12,270 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/class-wordpress-starter-plugin-settings.php:66
+#: lib/class-wordpress-starter-settings.php:66
 msgid "General"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:67
-msgid "Post Type"
+#: lib/class-wordpress-starter-settings.php:67
+msgid "Testing"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:68
+#: lib/class-wordpress-starter-settings.php:68
 msgid "Compatibility & Reset"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:69
+#: lib/class-wordpress-starter-settings.php:69
 msgid "About WordPress Starter"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:83
-msgid "Hide built-in quotes?"
-msgstr ""
-
-#: lib/class-wordpress-starter-plugin-settings.php:84
-msgid "Remove open and close quote span tags surrounding asdf content"
-msgstr ""
-
-#: lib/class-wordpress-starter-plugin-settings.php:89
-msgid "Hide \"Testimonials Not Found\"?"
-msgstr ""
-
-#: lib/class-wordpress-starter-plugin-settings.php:94
+#: lib/class-wordpress-starter-settings.php:83
 msgid "Enable Paging?"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:95
-msgid "For `[asdfswidget_list]`"
+#: lib/class-wordpress-starter-settings.php:84
+msgid "For `[wps_widget_list]`"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:98
+#: lib/class-wordpress-starter-settings.php:87
 msgid "Disable"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:99
+#: lib/class-wordpress-starter-settings.php:88
 msgid "Enable"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:100
-msgid "Before asdfs"
+#: lib/class-wordpress-starter-settings.php:89
+msgid "Before wps"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:101
-msgid "After asdfs"
+#: lib/class-wordpress-starter-settings.php:90
+msgid "After wps"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:108
-msgid "URL slug-name for <a href=\"%1s\">asdfs archive</a> page."
+#: lib/class-wordpress-starter-settings.php:97
+msgid "URL slug-name for <a href=\"%1s\">wps archive</a> page."
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:114
+#: lib/class-wordpress-starter-settings.php:103
 msgid "Archive Page URL"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:124
-msgid "Don't Use Default Taxonomies?"
+#: lib/class-wordpress-starter-settings.php:113
+msgid "Debug Mode?"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:126
+#: lib/class-wordpress-starter-settings.php:114
 msgid ""
-"If checked, use WordPress Starter's own category and tag taxonomies instead"
+"Bypass Ajax controller to handle posts_to_import directly for testing "
+"purposes."
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:137
+#: lib/class-wordpress-starter-settings.php:120
+msgid "Posts to Import"
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:121
+msgid "A CSV list of post ids to import, like '1,2,3'."
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:129
+msgid "Skip Importing Posts"
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:130
+msgid "A CSV list of post ids to not import, like '1,2,3'."
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:138
+msgid "Import Limit"
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:139
+msgid ""
+"Useful for testing import on a limited amount of posts. 0 or blank means "
+"unlimited."
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:154
 msgid "Export Settings"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:139
+#: lib/class-wordpress-starter-settings.php:156
 msgid ""
 "These are your current settings in a serialized format. Copy the contents to "
 "make a backup of your settings."
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:147
+#: lib/class-wordpress-starter-settings.php:164
 msgid "Import Settings"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:149
+#: lib/class-wordpress-starter-settings.php:166
 msgid ""
 "Paste new serialized settings here to overwrite your current configuration."
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:155
+#: lib/class-wordpress-starter-settings.php:172
 msgid "Remove Plugin Data on Deletion?"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:158
+#: lib/class-wordpress-starter-settings.php:175
 msgid ""
 "Delete all WordPress Starter data and options from database on plugin "
 "deletion"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:164
+#: lib/class-wordpress-starter-settings.php:181
 msgid "Reset to Defaults?"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:167
+#: lib/class-wordpress-starter-settings.php:184
 msgid "Check this box to reset options to their defaults"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:228
-#: lib/class-wordpress-starter-plugin-settings.php:265
+#: lib/class-wordpress-starter-settings.php:245
+#: lib/class-wordpress-starter-settings.php:290 wordpress-starter.php:63
 msgid "WordPress Starter Settings"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:228
-msgid "Custom Bulk/Quick"
+#. #-#-#-#-#  wordpress-starter.pot (WordPress Starter 0.0.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: lib/class-wordpress-starter-settings.php:245
+msgid "WordPress Starter"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:282
+#: lib/class-wordpress-starter-settings.php:252 wordpress-starter.php:56
+#: wordpress-starter.php:174
+msgid "WordPress Starter Processer"
+msgstr ""
+
+#: lib/class-wordpress-starter-settings.php:307
 msgid "Save Changes"
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:291
+#: lib/class-wordpress-starter-settings.php:316
 msgid "Copyright &copy;%1$s %2$s."
 msgstr ""
 
-#: lib/class-wordpress-starter-plugin-settings.php:651
+#: lib/class-wordpress-starter-settings.php:676
 msgid "Required"
 msgstr ""
 
-#: wordpress-starter.php:48
+#: wordpress-starter.php:51
 msgid "Settings"
 msgstr ""
 
-#: wordpress-starter.php:117
+#: wordpress-starter.php:97
+msgid "Process"
+msgstr ""
+
+#: wordpress-starter.php:166
+msgid "Your user account doesn't have permission to access this."
+msgstr ""
+
+#: wordpress-starter.php:232
+msgid "All done. No posts needing processing found."
+msgstr ""
+
+#: wordpress-starter.php:255
+msgid "Use this tool to process posts for TBD."
+msgstr ""
+
+#: wordpress-starter.php:257
+msgid ""
+"This processing is not reversible. Backup your database beforehand or be "
+"prepared to revert each transformmed post manually."
+msgstr ""
+
+#: wordpress-starter.php:259
+msgid "Please review your %s before proceeding."
+msgstr ""
+
+#: wordpress-starter.php:261
+msgid "To begin, just press the button below."
+msgstr ""
+
+#: wordpress-starter.php:263
+msgid "Process WordPress Starter"
+msgstr ""
+
+#: wordpress-starter.php:265 wordpress-starter.php:289
+msgid "You must enable Javascript in order to proceed!"
+msgstr ""
+
+#: wordpress-starter.php:278
+msgid ""
+"Please be patient while this script run. This can take a while, up to a "
+"minute per post. Do not navigate away from this page until this script is "
+"done or the import will not be completed. You will be notified via this page "
+"when the import is completed."
+msgstr ""
+
+#: wordpress-starter.php:280
+msgid "Estimated time required to import is %1$s minutes."
+msgstr ""
+
+#: wordpress-starter.php:282
+msgid "To go back to the previous page, <a href=\"%s\">click here</a>."
+msgstr ""
+
+#: wordpress-starter.php:284
+msgid ""
+"All done! %1$s posts were successfully processed in %2$s seconds and there "
+"were %3$s failures. To try importing the failed posts again, <a href=\"%4$s"
+"\">click here</a>. %5$s"
+msgstr ""
+
+#: wordpress-starter.php:286
+msgid ""
+"All done! %1$s posts were successfully processed in %2$s seconds and there "
+"were no failures. %3$s"
+msgstr ""
+
+#: wordpress-starter.php:295
+msgid "Abort Processing Posts"
+msgstr ""
+
+#: wordpress-starter.php:297
+msgid "Debugging Information"
+msgstr ""
+
+#: wordpress-starter.php:300
+msgid "Total Postss: %s"
+msgstr ""
+
+#: wordpress-starter.php:301
+msgid "Posts Processed: %s"
+msgstr ""
+
+#: wordpress-starter.php:302
+msgid "Process Failures: %s"
+msgstr ""
+
+#: wordpress-starter.php:333
+msgid "Stopping, please wait a moment."
+msgstr ""
+
+#: wordpress-starter.php:435
+msgid "Failed Processing: %s is incorrect post type."
+msgstr ""
+
+#: wordpress-starter.php:439
+msgid ""
+"&quot;<a href=\"%1$s\" target=\"_blank\">%2$s</a>&quot; Post ID %3$s was "
+"successfully processed in %4$s seconds."
+msgstr ""
+
+#: wordpress-starter.php:451
 msgid ""
 "If your WordPress Starter display has gone to funky town, please <a href=\"%s"
 "\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: wordpress-starter.php:126
+#: wordpress-starter.php:460
 msgid ""
-"Please donate $2 towards keeping WordPress Starter plugin supported and "
-"maintained %s"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "WordPress Starter"
+"Please donate $2 towards development and support of this WordPress Starter "
+"plugin. %s"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

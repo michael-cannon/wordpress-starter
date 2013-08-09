@@ -42,7 +42,7 @@ script:
     - clamscan --algorithmic-detection=yes --detect-pua=yes --detect-structured=yes --exclude='(pasteword|jquery)\.js' --infected --phishing-cloak=yes --phishing-sigs=yes --phishing-ssl=yes --recursive --scan-archive=yes --scan-elf=yes --scan-html=yes --scan-ole2=yes --scan-pdf=yes --scan-pe=yes .
     - phpcs -s -n --standard=ci/phpcs.travis.ruleset.xml .
     - phpcpd .
-    - phpmd . --exclude TBD text ci/phpmd.ruleset.xml
+    - phpmd . --exclude lib/screen-meta-links.php text ci/phpmd.ruleset.xml
 #    - phpunit
 
 notifications:

@@ -28,35 +28,35 @@ class WordPress_Starter {
 	const PLUGIN_FILE = 'wordpress-starter/wordpress-starter.php';
 	const VERSION     = '0.0.1';
 
-	private static $base = null;
+	private static $base;
+	private static $post_types;
 
-	public static $donate_button = '';
-	public static $menu_id       = null;
-	public static $post_types    = null;
-	public static $settings_link = '';
+	public static $donate_button;
+	public static $menu_id;
+	public static $settings_link;
 
 
 	public function __construct() {
-		add_action( 'admin_init', array( &$this, 'admin_init' ) );
-		add_action( 'admin_menu', array( &$this, 'admin_menu' ) );
-		add_action( 'init', array( &$this, 'init' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		add_action( 'init', array( $this, 'init' ) );
 		self::$base = plugin_basename( __FILE__ );
 	}
 
 
 	public function admin_init() {
 		$this->update();
-		add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
-		add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
+		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . WordPress_Starter_Settings::ID . '">' . __( 'Settings', 'wordpress-starter' ) . '</a>';
 	}
 
 
 	public function admin_menu() {
-		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), 'manage_options', self::ID, array( &$this, 'user_interface' ) );
+		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), 'manage_options', self::ID, array( $this, 'user_interface' ) );
 
-		add_action( 'admin_print_scripts-' . self::$menu_id, array( &$this, 'scripts' ) );
-		add_action( 'admin_print_styles-' . self::$menu_id, array( &$this, 'styles' ) );
+		add_action( 'admin_print_scripts-' . self::$menu_id, array( $this, 'scripts' ) );
+		add_action( 'admin_print_styles-' . self::$menu_id, array( $this, 'styles' ) );
 
 		add_screen_meta_link(
 			'wps_settings_link',
@@ -76,6 +76,7 @@ class WordPress_Starter {
 			define( 'WP_DEBUG_DISPLAY', true );
 		}
 
+		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter/languages' );
 		self::set_post_types();
 
@@ -179,7 +180,7 @@ EOD;
 			$posts_to_import = explode( ',', $posts_to_import );
 			foreach ( $posts_to_import as $post_id ) {
 				$this->post_id = $post_id;
-				$this->ajax_process_shortcode();
+				$this->ajax_process_post();
 			}
 
 			exit( __LINE__ . ':' . basename( __FILE__ ) . " DONE<br />\n" );
@@ -378,7 +379,7 @@ EOD;
 					type: 'POST',
 					url: ajaxurl,
 					data: {
-						action: "ajax_process_shortcode",
+						action: "ajax_process_post",
 						id: id
 					},
 					success: function( response ) {
@@ -423,7 +424,7 @@ EOD;
 	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function ajax_process_shortcode() {
+	public function ajax_process_post() {
 		if ( ! wps_get_option( 'debug_mode' ) ) {
 			error_reporting( 0 ); // Don't break the JSON result
 			header( 'Content-type: application/json' );
@@ -440,7 +441,7 @@ EOD;
 	}
 
 
-	public function do_something( $post ){
+	public function do_something( $post ) {
 		// do something there with the post
 		// use error_log to track happenings
 	}
@@ -484,16 +485,17 @@ EOD;
 
 	public static function scripts() {
 		wp_enqueue_script( 'jquery' );
+
 		wp_enqueue_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
 	}
 
 
 	public static function styles() {
-		wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
-		wp_enqueue_style( 'jquery-ui-progressbar' );
-
 		wp_register_style( 'wordpress-starter', plugins_url( 'wordpress-starter.css', __FILE__ ) );
 		wp_enqueue_style( 'wordpress-starter' );
+
+		wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
+		wp_enqueue_style( 'jquery-ui-progressbar' );
 	}
 
 
@@ -505,7 +507,7 @@ register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation'
 register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
 
 
-add_action( 'plugins_loaded', 'wordpress_starter_plugin_init', 99 );
+add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
 
 
 /**
@@ -514,7 +516,7 @@ add_action( 'plugins_loaded', 'wordpress_starter_plugin_init', 99 );
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
-function wordpress_starter_plugin_init() {
+function wordpress_starter_init() {
 	if ( ! function_exists( 'add_screen_meta_link' ) )
 		require_once 'lib/screen-meta-links.php';
 

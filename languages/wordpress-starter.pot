@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Starter 0.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-starter\n"
-"POT-Creation-Date: 2013-08-09 06:07:02+00:00\n"
+"POT-Creation-Date: 2013-08-09 09:43:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -145,7 +145,7 @@ msgid "WordPress Starter"
 msgstr ""
 
 #: lib/class-wordpress-starter-settings.php:252 wordpress-starter.php:56
-#: wordpress-starter.php:174
+#: wordpress-starter.php:175
 msgid "WordPress Starter Processer"
 msgstr ""
 
@@ -165,45 +165,45 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: wordpress-starter.php:97
+#: wordpress-starter.php:98
 msgid "Process"
 msgstr ""
 
-#: wordpress-starter.php:166
+#: wordpress-starter.php:167
 msgid "Your user account doesn't have permission to access this."
 msgstr ""
 
-#: wordpress-starter.php:232
+#: wordpress-starter.php:233
 msgid "All done. No posts needing processing found."
 msgstr ""
 
-#: wordpress-starter.php:255
+#: wordpress-starter.php:256
 msgid "Use this tool to process posts for TBD."
 msgstr ""
 
-#: wordpress-starter.php:257
+#: wordpress-starter.php:258
 msgid ""
 "This processing is not reversible. Backup your database beforehand or be "
 "prepared to revert each transformmed post manually."
 msgstr ""
 
-#: wordpress-starter.php:259
+#: wordpress-starter.php:260
 msgid "Please review your %s before proceeding."
 msgstr ""
 
-#: wordpress-starter.php:261
+#: wordpress-starter.php:262
 msgid "To begin, just press the button below."
 msgstr ""
 
-#: wordpress-starter.php:263
+#: wordpress-starter.php:264
 msgid "Process WordPress Starter"
 msgstr ""
 
-#: wordpress-starter.php:265 wordpress-starter.php:289
+#: wordpress-starter.php:266 wordpress-starter.php:290
 msgid "You must enable Javascript in order to proceed!"
 msgstr ""
 
-#: wordpress-starter.php:278
+#: wordpress-starter.php:279
 msgid ""
 "Please be patient while this script run. This can take a while, up to a "
 "minute per post. Do not navigate away from this page until this script is "
@@ -211,68 +211,68 @@ msgid ""
 "when the import is completed."
 msgstr ""
 
-#: wordpress-starter.php:280
+#: wordpress-starter.php:281
 msgid "Estimated time required to import is %1$s minutes."
 msgstr ""
 
-#: wordpress-starter.php:282
+#: wordpress-starter.php:283
 msgid "To go back to the previous page, <a href=\"%s\">click here</a>."
 msgstr ""
 
-#: wordpress-starter.php:284
+#: wordpress-starter.php:285
 msgid ""
 "All done! %1$s posts were successfully processed in %2$s seconds and there "
 "were %3$s failures. To try importing the failed posts again, <a href=\"%4$s"
 "\">click here</a>. %5$s"
 msgstr ""
 
-#: wordpress-starter.php:286
+#: wordpress-starter.php:287
 msgid ""
 "All done! %1$s posts were successfully processed in %2$s seconds and there "
 "were no failures. %3$s"
 msgstr ""
 
-#: wordpress-starter.php:295
+#: wordpress-starter.php:296
 msgid "Abort Processing Posts"
 msgstr ""
 
-#: wordpress-starter.php:297
+#: wordpress-starter.php:298
 msgid "Debugging Information"
 msgstr ""
 
-#: wordpress-starter.php:300
+#: wordpress-starter.php:301
 msgid "Total Postss: %s"
 msgstr ""
 
-#: wordpress-starter.php:301
+#: wordpress-starter.php:302
 msgid "Posts Processed: %s"
 msgstr ""
 
-#: wordpress-starter.php:302
+#: wordpress-starter.php:303
 msgid "Process Failures: %s"
 msgstr ""
 
-#: wordpress-starter.php:333
+#: wordpress-starter.php:334
 msgid "Stopping, please wait a moment."
 msgstr ""
 
-#: wordpress-starter.php:435
+#: wordpress-starter.php:436
 msgid "Failed Processing: %s is incorrect post type."
 msgstr ""
 
-#: wordpress-starter.php:439
+#: wordpress-starter.php:440
 msgid ""
 "&quot;<a href=\"%1$s\" target=\"_blank\">%2$s</a>&quot; Post ID %3$s was "
 "successfully processed in %4$s seconds."
 msgstr ""
 
-#: wordpress-starter.php:451
+#: wordpress-starter.php:452
 msgid ""
 "If your WordPress Starter display has gone to funky town, please <a href=\"%s"
 "\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
 
-#: wordpress-starter.php:460
+#: wordpress-starter.php:461
 msgid ""
 "Please donate $2 towards development and support of this WordPress Starter "
 "plugin. %s"

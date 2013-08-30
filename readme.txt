@@ -16,7 +16,7 @@ TBD
 
 TBD
 
-[youtube http://youtu.be/TBD]
+[youtube http://www.youtube.com/watch?v=TBD]
 **[Video introduction](http://youtu.be/TBD)**
 
 = Primary Features =

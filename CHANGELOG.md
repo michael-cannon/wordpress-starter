@@ -10,6 +10,7 @@
 * Allow blank NEW_* settings
 * Baseline API
 * Baseline readme.txt tags
+* Correct Youtube video linking
 * Correct cbqe_ options tagging
 * Delete prepare script on run
 * Don't auto-delete prepare script
@@ -21,6 +22,7 @@
 * Update about image path
 * Update donate text
 * Use str_getcsv
+* apt-get update
 
 ## 0.0.1
 * Initial code release 

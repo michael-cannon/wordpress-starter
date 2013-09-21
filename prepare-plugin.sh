@@ -74,7 +74,7 @@ then
 fi
 
 git init
-git add *
+git add * .*
 git commit -m "Initial plugin creation"
 
 # rm ${0}

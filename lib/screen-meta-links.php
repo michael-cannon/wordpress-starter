@@ -34,8 +34,8 @@ class wsScreenMetaLinks11 {
 	function wsScreenMetaLinks11() {
 		$this->registered_links = array();
 
-		add_action('admin_notices', array(&$this, 'append_meta_links'));
-		add_action('admin_print_styles', array(&$this, 'add_link_styles'));
+		add_action('admin_notices', array($this, 'append_meta_links'));
+		add_action('admin_print_styles', array($this, 'add_link_styles'));
 	}
 
 

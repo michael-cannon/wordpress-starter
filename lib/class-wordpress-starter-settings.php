@@ -26,7 +26,8 @@
 class WordPress_Starter_Settings {
 	const ID = 'wordpress-starter-settings';
 
-	public static $default  = array(
+	public static $admin_page = '';
+	public static $default    = array(
 		'backwards' => array(
 			'version' => '', // below this version number, use std
 			'std' => '',
@@ -42,6 +43,7 @@ class WordPress_Starter_Settings {
 		'validate' => '', // required, term, slug, slugs, ids, order, single paramater PHP functions
 		'widget' => 1, // show in widget options, 0 off
 	);
+
 	public static $defaults = array();
 	public static $sections = array();
 	public static $settings = array();
@@ -51,14 +53,65 @@ class WordPress_Starter_Settings {
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'init', array( $this, 'init' ) );
+		// add_action( 'init', array( $this, 'init' ) );
 		load_plugin_textdomain( 'wordpress-starter', false, '/wordpress-starter/languages/' );
 	}
 
 
-	public function init() {
+	public function init() {}
+
+
+	public function admin_init() {
+		$version       = wps_get_option( 'version' );
+		self::$version = WordPress_Starter::VERSION;
+		self::$version = apply_filters( 'wordpress_starter_version', self::$version );
+
+		if ( $version != self::$version )
+			$this->initialize_settings();
+
+		if ( ! self::do_load() )
+			return;
+
 		self::sections();
 		self::settings();
+
+		$this->register_settings();
+	}
+
+
+	public function admin_menu() {
+		self::$admin_page = add_options_page( esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ), esc_html__( 'WordPress Starter', 'wordpress-starter' ), 'manage_options', self::ID, array( 'WordPress_Starter_Settings', 'display_page' ) );
+
+		add_action( 'admin_print_scripts-' . self::$admin_page, array( $this, 'scripts' ) );
+		add_action( 'admin_print_styles-' . self::$admin_page, array( $this, 'styles' ) );
+		add_action( 'load-' . self::$admin_page, array( $this, 'settings_add_help_tabs' ) );
+
+		add_screen_meta_link(
+			'wsp_importer_link',
+			esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ),
+			admin_url( 'tools.php?page=' . WordPress_Starter::ID ),
+			self::$admin_page,
+			array( 'style' => 'font-weight: bold;' )
+		);
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
+	public static function do_load() {
+		$do_load = false;
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
+			$do_load = true;
+		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
+			$do_load = true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$do_load = true;
+		}
+
+		return $do_load;
 	}
 
 
@@ -229,34 +282,6 @@ class WordPress_Starter_Settings {
 	}
 
 
-	public function admin_init() {
-		$version       = wps_get_option( 'version' );
-		self::$version = WordPress_Starter::VERSION;
-		self::$version = apply_filters( 'wordpress_starter_version', self::$version );
-
-		if ( $version != self::$version )
-			$this->initialize_settings();
-
-		$this->register_settings();
-	}
-
-
-	public function admin_menu() {
-		$admin_page = add_options_page( esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ), esc_html__( 'WordPress Starter', 'wordpress-starter' ), 'manage_options', self::ID, array( 'WordPress_Starter_Settings', 'display_page' ) );
-
-		add_action( 'admin_print_scripts-' . $admin_page, array( $this, 'scripts' ) );
-		add_action( 'admin_print_styles-' . $admin_page, array( $this, 'styles' ) );
-
-		add_screen_meta_link(
-			'wsp_importer_link',
-			esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ),
-			admin_url( 'tools.php?page=' . WordPress_Starter::ID ),
-			$admin_page,
-			array( 'style' => 'font-weight: bold;' )
-		);
-	}
-
-
 	/**
 	 *
 	 *
@@ -309,13 +334,26 @@ class WordPress_Starter_Settings {
 		</div>
 		';
 
-		echo '
-			<p>If you like this plugin, please <a href="http://aihr.us/about-aihrus/donate/" title="Donate for Good Karma"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="Donate for Good Karma" /></a> or <a href="http://aihr.us/downloads/wordpress-starter-premium-wordpress-plugin/" title="purchase WordPress Starter Premium">purchase WordPress Starter Premium</a> to help fund further development and <a href="http://wordpress.org/support/plugin/wordpress-starter" title="Support forums">support</a>.</p>
-		';
+		$disable_donate = wps_get_option( 'disable_donate' );
+		if ( ! $disable_donate ) {
+			echo '<p>' .
+				sprintf(
+				__( 'If you like this plugin, please <a href="%1$s" title="Donate for Good Karma"><img src="%2$s" border="0" alt="Donate for Good Karma" /></a> or <a href="%3$s" title="purchase WordPress Starter Premium">purchase WordPress Starter Premium</a> to help fund further development and <a href="%4$s" title="Support forums">support</a>.', 'wordpress-starter' ),
+				esc_url( 'http://aihr.us/about-aihrus/donate/' ),
+				esc_url( 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' ),
+				esc_url( 'http://aihr.us/downloads/' ),
+				esc_url( 'https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin' )
+			) .
+				'</p>';
+		}
 
-		$text = esc_html__( 'Copyright &copy;%1$s %2$s.', 'wordpress-starter' );
-		$link = '<a href="http://aihr.us">Aihrus</a>';
-		echo '<p class="copyright">' . sprintf( $text, date( 'Y' ), $link ) . '</p>';
+		echo '<p class="copyright">' .
+			sprintf(
+			__( 'Copyright &copy;%1$s <a href="%2$s">Aihrus</a>.', 'wordpress-starter' ),
+			date( 'Y' ),
+			esc_url( 'http://aihr.us' )
+		) .
+			'</p>';
 
 		self::section_scripts();
 
@@ -753,6 +791,34 @@ class WordPress_Starter_Settings {
 			else
 				return 0;
 		}
+	}
+
+
+	public function settings_add_help_tabs() {
+		$screen = get_current_screen();
+		if ( self::$admin_page != $screen->id )
+			return;
+
+		$screen->set_help_sidebar(
+			'<p><strong>' . esc_html__( 'For more information:', 'wordpress-starter' ) . '</strong></p><p>' .
+			esc_html__( 'These WordPress Starter Settings establish the default option values for shortcodes, theme functions, and widget instances.', 'wordpress-starter' ) .
+			'</p><p>' .
+			sprintf(
+				__( 'View the <a href="%s">WordPress Starter documentation</a>.', 'wordpress-starter' ),
+				esc_url( 'http://wordpress.org/extend/plugins/wordpress-starter/' )
+			) .
+			'</p>'
+		);
+
+		$screen->add_help_tab(
+			array(
+				'id'     => 'tw-general',
+				'title'     => esc_html__( 'General', 'wordpress-starter' ),
+				'content' => '<p>' . esc_html__( 'Show or hide optional fields.', 'wordpress-starter' ) . '</p>'
+			)
+		);
+
+		do_action( 'wps_settings_add_help_tabs', $screen );
 	}
 
 

@@ -2,7 +2,7 @@
 
 NEW_ABBR="cbqe_"
 NEW_CLASS="Custom_Bulk_Quick_Edit"
-NEW_FILTER="custom_bulk_quick_edit"
+NEW_FILTER="${NEW_ABBR}"
 NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
 NEW_SITE=""
 NEW_SLUG="custom-bulk-quick-edit"

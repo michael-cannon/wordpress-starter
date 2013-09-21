@@ -48,6 +48,16 @@ class WordPress_Starter {
 		$this->update();
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
+
+		self::$donate_button = <<<EOD
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="WM4F995W9LHXE">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+EOD;
+
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . WordPress_Starter_Settings::ID . '">' . __( 'Settings', 'wordpress-starter' ) . '</a>';
 	}
 
@@ -72,15 +82,6 @@ class WordPress_Starter {
 		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter/languages' );
 		self::set_post_types();
-
-		self::$donate_button = <<<EOD
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="WM4F995W9LHXE">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-EOD;
 	}
 
 
@@ -211,11 +212,11 @@ EOD;
 	public static function get_posts_to_process() {
 		global $wpdb;
 
-		$query					= array(
-			'post_status'		=> array( 'publish', 'private' ),
-			'post_type'			=> self::$post_types,
-			'orderby'			=> 'post_modified',
-			'order'				=> 'DESC',
+		$query = array(
+			'post_status'  => array( 'publish', 'private' ),
+			'post_type'   => self::$post_types,
+			'orderby'   => 'post_modified',
+			'order'    => 'DESC',
 		);
 
 		$include_ids = wps_get_option( 'posts_to_import' );
@@ -223,14 +224,14 @@ EOD;
 			$query[ 'post__in' ] = str_getcsv( $include_ids );
 		} else {
 			$query['posts_per_page'] = 1;
-			$query['meta_query']	 = array(
+			$query['meta_query']     = array(
 				array(
-					'key'			=> 'TBD',
-					'value'			=> '',
-					'compare'		=> '!=',
+					'key'   => 'TBD',
+					'value'   => '',
+					'compare'  => '!=',
 				),
 			);
-			unset( $query['meta_query']	);
+			unset( $query['meta_query'] );
 		}
 
 		$skip_ids = wps_get_option( 'skip_importing_post_ids' );
@@ -437,7 +438,7 @@ EOD;
 
 		$post = get_post( $this->post_id );
 		if ( ! $post || ! in_array( $post->post_type, self::$post_types )  )
-			die( json_encode( array( 'error' => sprintf( esc_html__( "Failed Processing: %s is incorrect post type.", 'wordpress-starter' ), esc_html( $this->post_id ) ) ) ) );
+			die( json_encode( array( 'error' => sprintf( esc_html__( 'Failed Processing: %s is incorrect post type.', 'wordpress-starter' ), esc_html( $this->post_id ) ) ) ) );
 
 		$this->do_something( $this->post_id, $post );
 
@@ -445,6 +446,11 @@ EOD;
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public function do_something( $post_id, $post ) {
 		// do something there with the post
 		// use error_log to track happenings
@@ -490,7 +496,8 @@ EOD;
 	public static function scripts() {
 		wp_enqueue_script( 'jquery' );
 
-		wp_enqueue_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
+		wp_register_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
+		wp_enqueue_script( 'jquery-ui-progressbar' );
 	}
 
 
@@ -521,6 +528,9 @@ add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function wordpress_starter_init() {
+	if ( ! is_admin() )
+		return;
+
 	if ( ! function_exists( 'add_screen_meta_link' ) )
 		require_once 'lib/screen-meta-links.php';
 

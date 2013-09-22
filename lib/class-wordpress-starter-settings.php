@@ -648,16 +648,6 @@ class WordPress_Starter_Settings {
 			}
 		}
 
-		// same has_archive and rewrite_slug causes problems
-		if ( $input['has_archive'] == $input['rewrite_slug'] )
-			$input['rewrite_slug'] = $defaults['rewrite_slug'];
-
-		// did URL slugs change?
-		$has_archive  = wps_get_option( 'has_archive' );
-		$rewrite_slug = wps_get_option( 'rewrite_slug' );
-		if ( $has_archive != $input['has_archive'] || $rewrite_slug != $input['rewrite_slug'] )
-			flush_rewrite_rules();
-
 		$input['version']        = self::$version;
 		$input['donate_version'] = WordPress_Starter::VERSION;
 		$input                   = apply_filters( 'wordpress_starter_validate_settings', $input, $errors );

@@ -152,7 +152,6 @@ class WordPress_Starter_Settings {
 		$site_url    = site_url( '/' . $has_archive );
 
 		self::$settings['has_archive'] = array(
-			'section' => 'testing',
 			'title' => esc_html__( 'Archive Page URL', 'wordpress-starter' ),
 			'desc' => sprintf( $desc, $site_url ),
 			'std' => 'wps-archive',

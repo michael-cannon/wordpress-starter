@@ -128,6 +128,10 @@ EOD;
 		if ( $file != self::$base )
 			return $input;
 
+		$disable_donate = wps_get_option( 'disable_donate' );
+		if ( $disable_donate )
+			return $input;
+
 		$links = array(
 			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
 			'<a href="http://aihr.us/downloads/wordpress-starter-premium-wordpress-plugin/">Purchase WordPress Starter Premium</a>',
@@ -213,10 +217,10 @@ EOD;
 		global $wpdb;
 
 		$query = array(
-			'post_status'  => array( 'publish', 'private' ),
-			'post_type'   => self::$post_types,
-			'orderby'   => 'post_modified',
-			'order'    => 'DESC',
+			'post_status' => array( 'publish', 'private' ),
+			'post_type' => self::$post_types,
+			'orderby' => 'post_modified',
+			'order' => 'DESC',
 		);
 
 		$include_ids = wps_get_option( 'posts_to_import' );
@@ -226,9 +230,9 @@ EOD;
 			$query['posts_per_page'] = 1;
 			$query['meta_query']     = array(
 				array(
-					'key'   => 'TBD',
-					'value'   => '',
-					'compare'  => '!=',
+					'key' => 'TBD',
+					'value' => '',
+					'compare' => '!=',
 				),
 			);
 			unset( $query['meta_query'] );

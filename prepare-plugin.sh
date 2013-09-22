@@ -74,7 +74,9 @@ then
 fi
 
 git init
-git add * .*
+git add *
+git add .gitignore
+git add .travis.yml
 git commit -m "Initial plugin creation"
 
 # rm ${0}

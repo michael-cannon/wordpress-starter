@@ -38,7 +38,6 @@ TBD
 
 **Testing**
 
-* Archive Page URL – URL slug-name for wps archive page.
 * Debug Mode - Bypass Ajax controller to handle posts_to_import directly for testing purposes.
 * Posts to Import - A CSV list of post ids to import, like '1,2,3'.
 * Skip Importing Posts - A CSV list of post ids to not import, like '1,2,3'.

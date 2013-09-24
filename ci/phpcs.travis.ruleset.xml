@@ -22,7 +22,10 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 	</rule>
 
-	<rule ref="Squiz.PHP.CommentedOutCode"/>
+	<rule ref="Squiz.PHP.CommentedOutCode">
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+	</rule>
+
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
 	</rule>

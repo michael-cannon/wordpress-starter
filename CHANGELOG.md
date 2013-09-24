@@ -20,6 +20,7 @@
 * Enqueue jquery-ui-progressbar
 * Minimally require WordPress 3.5
 * Purge excess code
+* Revise installation instructions
 * Simplify filter naming
 * Test hphpa
 * Update POT

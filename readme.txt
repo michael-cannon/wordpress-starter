@@ -70,8 +70,8 @@ If you want to contribute and I hope you do, visit the [WordPress Starter Github
 == Installation ==
 
 1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter.zip` file
-1. Alternately, via FTP, upload `wordpress-starter` directory to the `/wp-content/plugins/` directory
-1. Activate the 'WordPress Starter' plugin after uploading or through WordPress Admin > Plugins
+1. Alternately, unzip `wordpress-starter.zip` the file and then via FTP, upload `wordpress-starter` directory to the `/wp-content/plugins/` directory
+1. Activate the 'WordPress Starter' plugin after uploading or through WP Admin > Plugins
 
 
 == Frequently Asked Questions ==

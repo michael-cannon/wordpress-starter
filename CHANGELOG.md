@@ -18,11 +18,13 @@
 * Delete prepare script on run
 * Don't auto-delete prepare script
 * Enqueue jquery-ui-progressbar
+* Full stack developer verbiage
 * Minimally require WordPress 3.5
 * Purge excess code
 * Revise installation instructions
 * Simplify filter naming
 * Test hphpa
+* Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Update POT
 * Update Travis
 * Update about image path

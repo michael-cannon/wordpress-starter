@@ -32,6 +32,7 @@
 * Use static for $admin_page
 * Use str_getcsv
 * apt-get update
+* https jQuery transport
 
 ## 0.0.1
 * Initial code release 

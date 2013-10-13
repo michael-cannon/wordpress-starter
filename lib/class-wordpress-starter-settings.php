@@ -721,6 +721,14 @@ class WordPress_Starter_Settings {
 			$input[ $id ] = strtolower( $input[ $id ] );
 			break;
 
+		case 'trim':
+			$options = explode( "\n", $input[ $id ] );
+			foreach ( $options as $key => $value )
+				$options[ $key ] = trim( $value );
+
+			$input[ $id ] = implode( "\n", $options );
+			break;
+
 		default:
 			$input[ $id ] = $validate( $input[ $id ] );
 			break;

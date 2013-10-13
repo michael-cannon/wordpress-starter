@@ -1,6 +1,7 @@
 # CHANGELOG WordPress Starter plugin for WordPress
 
 ## master
+* Add trim validator
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
 * Add StillMaintained.com notice

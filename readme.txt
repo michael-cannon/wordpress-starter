@@ -14,10 +14,12 @@ TBD
 
 == Description ==
 
-TBD
+WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter](http://wordpress.org/extend/plugins/wordpress-starter/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/downloads/). Additionally, SECONDARY_FEATURES.
 
 [youtube http://www.youtube.com/watch?v=TBD]
 **[Video introduction](http://youtu.be/TBD)**
+
+The WordPress KEYWORD plugin, WordPress Starter, FREE_DESCRIPTION.
 
 = Primary Features =
 

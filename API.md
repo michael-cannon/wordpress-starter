@@ -4,37 +4,39 @@ The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) 
 
 ## Actions
 
-None at this time.
+* `wps_update`
+
+	Update helper.
+		
+* `wps_settings_add_help_tabs`
+
+	Customize settings page help tabs.
+
+* `wps_styles`
+
+	Styles tie-in.
+
+* `wps_scripts`
+
+	Scripts tie-in.
 
 ## Filters
 
-* `wordpress_starter_validate_settings`
+* `wps_validate_settings`
 
 	Validate settings helper. [example](https://gist.github.com/michael-cannon/5833768)
 
-* `wordpress_starter_version`
+* `wps_version`
 
 	Version tracking for settings. [example](https://gist.github.com/michael-cannon/5833774)
 
-* `wordpress_starter_sections`
+* `wps_sections`
 
 	Alter section options. [example](https://gist.github.com/michael-cannon/5833757)
 
-* `wordpress_starter_settings`
+* `wps_settings`
 
 	Alter setting options. [example](https://gist.github.com/michael-cannon/5833757)
-
-* `wordpress_starter_columns`
-
-	Customize post type column headers. [example](https://gist.github.com/michael-cannon/5833693)
-
-* `wordpress_starter_posts_custom_column`
-
-	Customize post type column contents. [example](https://gist.github.com/michael-cannon/5833716)
-	
-* `wordpress_starter_get_post_types_args`
-	
-	Alter `get_post_types` arguments for loading post types. [example]()
 
 ## Need More?
 

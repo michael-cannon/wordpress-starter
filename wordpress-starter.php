@@ -40,6 +40,7 @@ class WordPress_Starter {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'init', array( $this, 'init' ) );
+		add_shortcode( 'wordpress_starter_shortcode', array( $this, 'wordpress_starter_shortcode' ) );
 		self::$base = plugin_basename( __FILE__ );
 	}
 
@@ -472,7 +473,7 @@ EOD;
 
 	public function admin_notices_donate() {
 		$content  = '<div class="updated fade"><p>';
-		$content .= sprintf( __( 'Please donate $2 towards development and support of this WordPress Starter plugin. %s', 'wordpress-starter' ), self::$donate_button );
+		$content .= sprintf( __( 'Please donate $5 towards development and support of this WordPress Starter plugin. %s', 'wordpress-starter' ), self::$donate_button );
 		$content .= '</p></div>';
 
 		echo $content;
@@ -484,6 +485,9 @@ EOD;
 		if ( $prior_version ) {
 			if ( $prior_version < '0.0.1' )
 				add_action( 'admin_notices', array( $this, 'admin_notices_0_0_1' ) );
+
+			if ( $prior_version < self::VERSION )
+				do_action( 'wps_update' );
 
 			wps_set_option( 'admin_notices' );
 		}
@@ -498,19 +502,35 @@ EOD;
 
 
 	public static function scripts() {
-		wp_enqueue_script( 'jquery' );
+		if ( is_admin() ) {
+			wp_enqueue_script( 'jquery' );
 
-		wp_register_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
-		wp_enqueue_script( 'jquery-ui-progressbar' );
+			wp_register_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
+			wp_enqueue_script( 'jquery-ui-progressbar' );
+		}
+
+		do_action( 'wps_scripts' );
 	}
 
 
 	public static function styles() {
-		wp_register_style( 'wordpress-starter', plugins_url( 'wordpress-starter.css', __FILE__ ) );
-		wp_enqueue_style( 'wordpress-starter' );
+		if ( is_admin() ) {
+			wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
+			wp_enqueue_style( 'jquery-ui-progressbar' );
+		} else {
+			wp_register_style( __CLASS__, plugins_url( 'wordpress-starter.css', __FILE__ ) );
+			wp_enqueue_style( __CLASS__ );
+		}
 
-		wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
-		wp_enqueue_style( 'jquery-ui-progressbar' );
+		do_action( 'wps_styles' );
+	}
+
+
+	public static function wordpress_starter_shortcode( $atts ) {
+		self::scripts();
+		self::styles();
+
+		return __CLASS__ . ' shortcode';
 	}
 
 

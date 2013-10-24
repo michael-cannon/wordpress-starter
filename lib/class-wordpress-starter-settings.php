@@ -64,7 +64,7 @@ class WordPress_Starter_Settings {
 	public function admin_init() {
 		$version       = wps_get_option( 'version' );
 		self::$version = WordPress_Starter::VERSION;
-		self::$version = apply_filters( 'wordpress_starter_version', self::$version );
+		self::$version = apply_filters( 'wps_version', self::$version );
 
 		if ( $version != self::$version )
 			$this->initialize_settings();
@@ -121,7 +121,7 @@ class WordPress_Starter_Settings {
 		self::$sections['reset']   = esc_html__( 'Compatibility & Reset', 'wordpress-starter' );
 		self::$sections['about']   = esc_html__( 'About WordPress Starter', 'wordpress-starter' );
 
-		self::$sections = apply_filters( 'wordpress_starter_sections', self::$sections );
+		self::$sections = apply_filters( 'wps_sections', self::$sections );
 	}
 
 
@@ -237,7 +237,7 @@ class WordPress_Starter_Settings {
 			'widget' => 0,
 		);
 
-		self::$settings = apply_filters( 'wordpress_starter_settings', self::$settings );
+		self::$settings = apply_filters( 'wps_settings', self::$settings );
 
 		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
@@ -572,10 +572,7 @@ class WordPress_Starter_Settings {
 
 
 	public function styles() {
-		if ( ! is_ssl() )
-			wp_enqueue_style( 'jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
-		else
-			wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		wp_enqueue_style( 'jquery-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
 	}
 
 
@@ -653,7 +650,7 @@ class WordPress_Starter_Settings {
 
 		$input['version']        = self::$version;
 		$input['donate_version'] = WordPress_Starter::VERSION;
-		$input                   = apply_filters( 'wordpress_starter_validate_settings', $input, $errors );
+		$input                   = apply_filters( 'wps_validate_settings', $input, $errors );
 
 		unset( $input['export'] );
 		unset( $input['import'] );

@@ -31,6 +31,7 @@
 * Simplify `wp_enqueue_style` handling
 * Simplify filter naming
 * Test hphpa
+* Tested up to: 3.8.0
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Update POT
 * Update Travis

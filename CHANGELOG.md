@@ -1,8 +1,9 @@
-# CHANGELOG WordPress Starter plugin for WordPress
+# CHANGELOG for WordPress WordPress Starter plugin
 
 ## master
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
+* Add LICENSE
 * Add StillMaintained.com notice
 * Add action `wordpress_starter_update`
 * Add and highlight video introduction
@@ -24,6 +25,7 @@
 * Enqueue jquery-ui-progressbar
 * Full stack developer verbiage
 * Minimally require WordPress 3.5
+* Prevent unwanted slug__ naming
 * Purge excess code
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Revise installation instructions
@@ -33,6 +35,7 @@
 * Test hphpa
 * Tested up to: 3.8.0
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
+* Tweaks titles
 * Update POT
 * Update Travis
 * Update about image path

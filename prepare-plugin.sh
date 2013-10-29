@@ -25,6 +25,7 @@ do
 	if [[ '' != ${NEW_ABBR} ]]
 	then
 		perl -pi -e "s#${OLD_ABBR}#${NEW_ABBR}#g" ${FILE}
+		perl -pi -e "s#${NEW_ABBR}_#${NEW_ABBR}#g" ${FILE}
 	fi
 
 	if [[ '' != ${NEW_CLASS} ]]

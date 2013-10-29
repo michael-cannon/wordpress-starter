@@ -1,4 +1,4 @@
-# WordPress Starter API Documentation
+# API for WordPress WordPress Starter plugin
 
 The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) comes with its own set of actions and filters, as described below.
 

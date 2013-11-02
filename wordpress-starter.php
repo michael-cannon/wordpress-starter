@@ -26,6 +26,7 @@
 class WordPress_Starter {
 	const ID          = 'wordpress-starter';
 	const PLUGIN_FILE = 'wordpress-starter/wordpress-starter.php';
+	const SLUG        = 'wps_';
 	const VERSION     = '0.0.1';
 
 	private static $base;
@@ -33,6 +34,7 @@ class WordPress_Starter {
 
 	public static $donate_button;
 	public static $menu_id;
+	public static $notice_key;
 	public static $settings_link;
 
 
@@ -41,7 +43,8 @@ class WordPress_Starter {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'init', array( $this, 'init' ) );
 		add_shortcode( 'wordpress_starter_shortcode', array( $this, 'wordpress_starter_shortcode' ) );
-		self::$base = plugin_basename( __FILE__ );
+		
+		self::set_base();
 	}
 
 
@@ -534,6 +537,101 @@ EOD;
 	}
 
 
+	public static function version_check() {
+		$good_version = true;
+
+		if ( is_null( self::$base ) )
+			self::set_base();
+
+		if ( ! is_plugin_active( self::$base ) )
+			$good_version = false;
+
+		// if ( is_plugin_inactive( self::FREE_PLUGIN_FILE ) || Testimonials_Widget::VERSION < self::REQUIRED_FREE_VERSION )
+		// 	$good_version = false;
+
+		if ( ! $good_version && is_plugin_active( self::$base ) ) {
+			deactivate_plugins( self::$base );
+			self::set_notice( 'notice_version' );
+			self::check_notices();
+		} else
+			self::clear_notices();
+
+		return $good_version;
+	}
+
+
+	public static function set_base() {
+		self::$base = plugin_basename( __FILE__ );
+	}
+
+
+	public function notice_version() {
+		$free_slug = 'wordpress-starter';
+		$is_active = is_plugin_active( self::FREE_PLUGIN_FILE );
+
+		if ( $is_active ) {
+			$link = sprintf( __( '<a href="%1$s">update to</a>' ), self_admin_url( 'update-core.php' ) );
+		} else {
+			$plugins = get_plugins();
+			if ( empty( $plugins[ self::FREE_PLUGIN_FILE ] ) ) {
+				$install = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $free_slug ), 'install-plugin_' . $free_slug ) );
+				$link    = sprintf( __( '<a href="%1$s">install</a>' ), $install );
+			} else {
+				$activate = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . self::FREE_PLUGIN_FILE ), 'activate-plugin_' . self::FREE_PLUGIN_FILE ) );
+				$link     = sprintf( __( '<a href="%1$s">activate</a>' ), $activate );
+			}
+		}
+
+		$content  = '<div class="error"><p>';
+		$content .= sprintf( __( 'Plugin %3$s Premium has been deactivated. Please %1$s WordPress Starter version %2$s or newer before activating %3$s Premium.' ), $link, self::REQUIRED_FREE_VERSION, 'WordPress Starter' );
+		$content .= '</p></div>';
+
+		echo $content;
+	}
+
+
+	public static function set_notice( $notice_name ) {
+		self::set_notice_key();
+
+		$notices = get_site_transient( self::$notice_key );
+		if ( false === $notices )
+			$notices = array();
+
+		$notices[] = $notice_name;
+
+		self::clear_notices();
+		$hmm = set_site_transient( self::$notice_key, $notices, HOUR_IN_SECONDS );
+	}
+
+
+	public static function clear_notices() {
+		self::set_notice_key();
+
+		delete_site_transient( self::$notice_key );
+	}
+
+
+	public static function check_notices() {
+		self::set_notice_key();
+
+		$notices = get_site_transient( self::$notice_key );
+
+		if ( false === $notices )
+			return;
+
+		foreach ( $notices as $key => $notice )
+			add_action( 'admin_notices', array( 'WordPress_Starter', $notice ) );
+
+		self::clear_notices();
+	}
+
+
+	public static function set_notice_key() {
+		if ( is_null( self::$notice_key ) )
+			self::$notice_key = self::SLUG . 'notices';
+	}
+
+
 }
 
 
@@ -559,7 +657,8 @@ function wordpress_starter_init() {
 		require_once 'lib/screen-meta-links.php';
 
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
-	if ( is_plugin_active( WordPress_Starter::PLUGIN_FILE ) ) {
+
+	if ( WordPress_Starter::version_check() ) {
 		require_once 'lib/class-wordpress-starter-settings.php';
 
 		global $WordPress_Starter;

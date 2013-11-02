@@ -583,7 +583,7 @@ EOD;
 		}
 
 		$content  = '<div class="error"><p>';
-		$content .= sprintf( __( 'Plugin %3$s Premium has been deactivated. Please %1$s WordPress Starter version %2$s or newer before activating %3$s Premium.' ), $link, self::REQUIRED_FREE_VERSION, 'WordPress Starter' );
+		$content .= sprintf( __( 'Plugin %3$s Premium has been deactivated. Please %1$s %3$s version %2$s or newer before activating %3$s Premium.' ), $link, self::REQUIRED_FREE_VERSION, 'WordPress Starter' );
 		$content .= '</p></div>';
 
 		echo $content;

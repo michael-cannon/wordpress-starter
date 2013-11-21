@@ -1,6 +1,7 @@
 # CHANGELOG for WordPress WordPress Starter plugin
 
 ## master
+* Add aihrus framework
 * Enable activation and version checking
 * Abstract get_posts_to_process method
 * Add Ajax processing screen

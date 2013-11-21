@@ -308,7 +308,7 @@ EOD;
 
 	<p><input type="button" class="button hide-if-no-js" name="wpsposts-stop" id="wpsposts-stop" value="<?php _e( 'Abort Processing Posts', 'wordpress-starter' ) ?>" /></p>
 
-	<h3 class="title"><?php _e( 'Debugging Information', 'wordpress-starter' ) ?></h3>
+	<h3 class="title"><?php _e( 'Status', 'wordpress-starter' ) ?></h3>
 
 	<p>
 		<?php printf( esc_html__( 'Total Postss: %s', 'wordpress-starter' ), $count ); ?><br />

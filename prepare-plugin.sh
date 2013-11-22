@@ -14,7 +14,7 @@ OLD_BASE="wordpress-starter"
 OLD_CLASS="WordPress_Starter"
 OLD_FILTER="wordpress_starter"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
-OLD_SITE="http://wordpress.org/extend/plugins/wordpress-starter/"
+OLD_SITE="http://wordpress.org/plugins/wordpress-starter/"
 OLD_SLUG="WPS_"
 OLD_TITLE="WordPress Starter"
 

@@ -1,4 +1,4 @@
-# CHANGELOG for WordPress WordPress Starter plugin
+# CHANGELOG WordPress Starter
 
 ## master
 * TBD
@@ -7,6 +7,8 @@
 * Initial code release 
 
 ## 0.0.0
+* Revise headers
+* Use abstract class Aihrus_Settings
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
 * Add EDD_SL_Plugin_Updater.php

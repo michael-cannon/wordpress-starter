@@ -52,6 +52,7 @@
 * Update Travis
 * Update about image path
 * Update donate text
+* Use do_load
 * Use static for $admin_page
 * Use str_getcsv
 * apt-get update

@@ -590,6 +590,25 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
+	public static function do_load() {
+		$do_load = false;
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
+			$do_load = true;
+		} elseif ( ! empty( $_REQUEST['page'] ) && WordPress_Starter_Settings::ID == $_REQUEST['page'] ) {
+			$do_load = true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$do_load = true;
+		}
+
+		return $do_load;
+	}
+
+
 }
 
 

@@ -53,12 +53,13 @@ class WordPress_Starter_Settings {
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		// add_action( 'init', array( $this, 'init' ) );
-		load_plugin_textdomain( 'wordpress-starter', false, '/wordpress-starter/languages/' );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 
-	public function init() {}
+	public function init() {
+		load_plugin_textdomain( 'wordpress-starter', false, '/wordpress-starter/languages/' );
+	}
 
 
 	public function admin_init() {
@@ -69,7 +70,7 @@ class WordPress_Starter_Settings {
 		if ( $version != self::$version )
 			$this->initialize_settings();
 
-		if ( ! self::do_load() )
+		if ( ! WordPress_Starter::do_load() )
 			return;
 
 		self::sections();
@@ -93,25 +94,6 @@ class WordPress_Starter_Settings {
 			self::$admin_page,
 			array( 'style' => 'font-weight: bold;' )
 		);
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
-	public static function do_load() {
-		$do_load = false;
-		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
-			$do_load = true;
-		} elseif ( ! empty( $_REQUEST['page'] ) && self::ID == $_REQUEST['page'] ) {
-			$do_load = true;
-		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			$do_load = true;
-		}
-
-		return $do_load;
 	}
 
 

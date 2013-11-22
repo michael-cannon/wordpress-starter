@@ -45,7 +45,10 @@ class WordPress_Starter extends Aihrus_Common {
 	public static $class;
 	public static $menu_id;
 	public static $notice_key;
+	public static $scripts = array();
 	public static $settings_link;
+	public static $styles        = array();
+	public static $styles_called = false;
 
 
 	public function __construct() {
@@ -504,15 +507,19 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public static function scripts() {
+	public static function scripts( $atts = array() ) {
 		if ( is_admin() ) {
 			wp_enqueue_script( 'jquery' );
 
 			wp_register_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
 			wp_enqueue_script( 'jquery-ui-progressbar' );
+
+			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_scripts' ) );
+		} else {
+			add_action( 'wp_footer', array( 'WordPress_Starter', 'get_scripts' ) );
 		}
 
-		do_action( 'wps_scripts' );
+		do_action( 'wps_scripts', $atts );
 	}
 
 
@@ -520,9 +527,13 @@ class WordPress_Starter extends Aihrus_Common {
 		if ( is_admin() ) {
 			wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
 			wp_enqueue_style( 'jquery-ui-progressbar' );
+
+			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_styles' ) );
 		} else {
 			wp_register_style( __CLASS__, plugins_url( 'wordpress-starter.css', __FILE__ ) );
 			wp_enqueue_style( __CLASS__ );
+
+			add_action( 'wp_footer', array( 'WordPress_Starter', 'get_styles' ) );
 		}
 
 		do_action( 'wps_styles' );
@@ -530,8 +541,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function wordpress_starter_shortcode( $atts ) {
-		self::scripts();
-		self::styles();
+		self::call_scripts_styles( $atts );
 
 		return __CLASS__ . ' shortcode';
 	}
@@ -545,6 +555,38 @@ class WordPress_Starter extends Aihrus_Common {
 			$good_version = false;
 
 		return $good_version;
+	}
+
+
+	public static function call_scripts_styles( $atts ) {
+		self::scripts( $atts );
+		self::styles();
+	}
+
+
+	public static function get_scripts() {
+		if ( empty( self::$scripts ) )
+			return;
+
+		foreach ( self::$scripts as $script )
+			echo $script;
+	}
+
+
+	public static function get_styles() {
+		if ( empty( self::$styles ) )
+			return;
+
+		if ( empty( self::$styles_called ) ) {
+			echo '<style>';
+
+			foreach ( self::$styles as $style )
+				echo $style;
+
+			echo '</style>';
+
+			self::$styles_called = true;
+		}
 	}
 
 

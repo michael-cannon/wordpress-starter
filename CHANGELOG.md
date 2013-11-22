@@ -1,6 +1,12 @@
 # CHANGELOG for WordPress WordPress Starter plugin
 
 ## master
+* TBD
+
+## 0.0.1
+* Initial code release 
+
+## 0.0.0
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
 * Add EDD_SL_Plugin_Updater.php
@@ -49,6 +55,3 @@
 * Use str_getcsv
 * apt-get update
 * https jQuery transport
-
-## 0.0.1
-* Initial code release 

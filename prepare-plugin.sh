@@ -86,11 +86,11 @@ git add *
 git add .gitignore
 git add .travis.yml
 git commit -m "Initial plugin creation"
+echo "git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git"
 
 git remote add aihrus git@github.com:michael-cannon/aihrus-framework.git
 git fetch aihrus 
-git subtree add -P lib/aihrus aihrus master
+git subtree add -P lib/aihrus --squash aihrus master
 git commit -a -m "Add in aihrus framework"
 git push origin master
-
-# rm ${0}
+echo "git push origin master"

@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: WordPress Starter
- * Plugin URI: http://wordpress.org/extend/plugins/wordpress-starter/
+ * Plugin URI: http://wordpress.org/plugins/wordpress-starter/
  * Description: TBD
  * Version: 0.0.1
  * Author: Michael Cannon
- * Author URI: http://aihr.us/about-aihrus/michael-cannon-resume/
+ * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
  */
 

@@ -23,16 +23,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-class WordPress_Starter {
+
+if ( ! defined( 'WPS_PLUGIN_DIR' ) )
+	define( 'WPS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
+if ( ! defined( 'WPS_PLUGIN_DIR_LIB' ) )
+	define( 'WPS_PLUGIN_DIR_LIB', WPS_PLUGIN_DIR . '/lib' );
+
+require_once WPS_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
+
+
+class WordPress_Starter extends Aihrus_Common {
 	const ID          = 'wordpress-starter';
-	const PLUGIN_FILE = 'wordpress-starter/wordpress-starter.php';
+	const ITEM_NAME   = 'WordPress Starter';
+	const PLUGIN_BASE = 'wordpress-starter/wordpress-starter.php';
 	const SLUG        = 'wps_';
 	const VERSION     = '0.0.1';
 
-	private static $base;
 	private static $post_types;
 
-	public static $donate_button;
+	public static $class;
 	public static $menu_id;
 	public static $notice_key;
 	public static $settings_link;
@@ -43,24 +53,14 @@ class WordPress_Starter {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'init', array( $this, 'init' ) );
 		add_shortcode( 'wordpress_starter_shortcode', array( $this, 'wordpress_starter_shortcode' ) );
-		
-		self::set_base();
 	}
 
 
 	public function admin_init() {
 		$this->update();
+
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
-
-		self::$donate_button = <<<EOD
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="WM4F995W9LHXE">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-EOD;
 
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . WordPress_Starter_Settings::ID . '">' . __( 'Settings', 'wordpress-starter' ) . '</a>';
 	}
@@ -83,14 +83,16 @@ EOD;
 
 
 	public function init() {
-		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter/languages' );
+
+		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
+
 		self::set_post_types();
 	}
 
 
 	public function plugin_action_links( $links, $file ) {
-		if ( $file == self::$base ) {
+		if ( self::PLUGIN_BASE == $file ) {
 			array_unshift( $links, self::$settings_link );
 
 			$link = '<a href="' . get_admin_url() . 'tools.php?page=' . self::ID . '">' . esc_html__( 'Process', 'wordpress-starter' ) . '</a>';
@@ -110,6 +112,8 @@ EOD;
 	public function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+
+		WordPress_Starter::delete_notices();
 	}
 
 
@@ -119,7 +123,7 @@ EOD;
 
 		global $wpdb;
 
-		require_once 'lib/class-wordpress-starter-settings.php';
+		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
 		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( WordPress_Starter_Settings::ID );
@@ -129,7 +133,7 @@ EOD;
 
 
 	public static function plugin_row_meta( $input, $file ) {
-		if ( $file != self::$base )
+		if ( self::PLUGIN_BASE != $file )
 			return $input;
 
 		$disable_donate = wps_get_option( 'disable_donate' );
@@ -465,21 +469,17 @@ EOD;
 	}
 
 
-	public function admin_notices_0_0_1() {
-		$content  = '<div class="updated fade"><p>';
-		$content .= sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
-		$content .= '</p></div>';
+	public function notice_0_0_1() {
+		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
-		echo $content;
+		parent::notice_updated( $text );
 	}
 
 
-	public function admin_notices_donate() {
-		$content  = '<div class="updated fade"><p>';
-		$content .= sprintf( __( 'Please donate $5 towards development and support of this WordPress Starter plugin. %s', 'wordpress-starter' ), self::$donate_button );
-		$content .= '</p></div>';
+	public static function notice_donate( $disable_donate = null, $item_name = null ) {
+		$disable_donate = wps_get_option( 'disable_donate' );
 
-		echo $content;
+		parent::notice_donate( $disable_donate, self::ITEM_NAME );
 	}
 
 
@@ -487,7 +487,7 @@ EOD;
 		$prior_version = wps_get_option( 'admin_notices' );
 		if ( $prior_version ) {
 			if ( $prior_version < '0.0.1' )
-				add_action( 'admin_notices', array( $this, 'admin_notices_0_0_1' ) );
+				add_action( 'admin_notices', array( $this, 'notice_0_0_1' ) );
 
 			if ( $prior_version < self::VERSION )
 				do_action( 'wps_update' );
@@ -498,7 +498,7 @@ EOD;
 		// display donate on major/minor version release
 		$donate_version = wps_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notices_donate' ) );
+			add_action( 'admin_notices', array( $this, 'notice_donate' ) );
 			wps_set_option( 'donate_version', self::VERSION );
 		}
 	}
@@ -538,97 +538,13 @@ EOD;
 
 
 	public static function version_check() {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
 		$good_version = true;
-
-		if ( is_null( self::$base ) )
-			self::set_base();
-
-		if ( ! is_plugin_active( self::$base ) )
+		if ( ! is_plugin_active( self::PLUGIN_BASE ) )
 			$good_version = false;
 
-		// if ( is_plugin_inactive( self::FREE_PLUGIN_FILE ) || Testimonials_Widget::VERSION < self::REQUIRED_FREE_VERSION )
-		// 	$good_version = false;
-
-		if ( ! $good_version && is_plugin_active( self::$base ) ) {
-			deactivate_plugins( self::$base );
-			self::set_notice( 'notice_version' );
-			self::check_notices();
-		} else
-			self::clear_notices();
-
 		return $good_version;
-	}
-
-
-	public static function set_base() {
-		self::$base = plugin_basename( __FILE__ );
-	}
-
-
-	public function notice_version() {
-		$free_slug = 'wordpress-starter';
-		$is_active = is_plugin_active( self::FREE_PLUGIN_FILE );
-
-		if ( $is_active ) {
-			$link = sprintf( __( '<a href="%1$s">update to</a>' ), self_admin_url( 'update-core.php' ) );
-		} else {
-			$plugins = get_plugins();
-			if ( empty( $plugins[ self::FREE_PLUGIN_FILE ] ) ) {
-				$install = esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $free_slug ), 'install-plugin_' . $free_slug ) );
-				$link    = sprintf( __( '<a href="%1$s">install</a>' ), $install );
-			} else {
-				$activate = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . self::FREE_PLUGIN_FILE ), 'activate-plugin_' . self::FREE_PLUGIN_FILE ) );
-				$link     = sprintf( __( '<a href="%1$s">activate</a>' ), $activate );
-			}
-		}
-
-		$content  = '<div class="error"><p>';
-		$content .= sprintf( __( 'Plugin %3$s Premium has been deactivated. Please %1$s %3$s version %2$s or newer before activating %3$s Premium.' ), $link, self::REQUIRED_FREE_VERSION, 'WordPress Starter' );
-		$content .= '</p></div>';
-
-		echo $content;
-	}
-
-
-	public static function set_notice( $notice_name ) {
-		self::set_notice_key();
-
-		$notices = get_site_transient( self::$notice_key );
-		if ( false === $notices )
-			$notices = array();
-
-		$notices[] = $notice_name;
-
-		self::clear_notices();
-		set_site_transient( self::$notice_key, $notices, HOUR_IN_SECONDS );
-	}
-
-
-	public static function clear_notices() {
-		self::set_notice_key();
-
-		delete_site_transient( self::$notice_key );
-	}
-
-
-	public static function check_notices() {
-		self::set_notice_key();
-
-		$notices = get_site_transient( self::$notice_key );
-
-		if ( false === $notices )
-			return;
-
-		foreach ( $notices as $key => $notice )
-			add_action( 'admin_notices', array( 'WordPress_Starter', $notice ) );
-
-		self::clear_notices();
-	}
-
-
-	public static function set_notice_key() {
-		if ( is_null( self::$notice_key ) )
-			self::$notice_key = self::SLUG . 'notices';
 	}
 
 
@@ -654,12 +570,10 @@ function wordpress_starter_init() {
 		return;
 
 	if ( ! function_exists( 'add_screen_meta_link' ) )
-		require_once 'lib/screen-meta-links.php';
-
-	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		require_once WPS_PLUGIN_DIR_LIB . '/screen-meta-links.php';
 
 	if ( WordPress_Starter::version_check() ) {
-		require_once 'lib/class-wordpress-starter-settings.php';
+		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
 
 		global $WordPress_Starter;
 		if ( is_null( $WordPress_Starter ) )

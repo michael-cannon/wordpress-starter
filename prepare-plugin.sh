@@ -1,19 +1,21 @@
 #!/bin/bash
 
 NEW_ABBR="cbqe_"
+NEW_BASE="custom-bulk-quick-edit"
 NEW_CLASS="Custom_Bulk_Quick_Edit"
 NEW_FILTER="${NEW_ABBR}"
 NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
 NEW_SITE=""
-NEW_SLUG="custom-bulk-quick-edit"
+NEW_SLUG="CBQE_"
 NEW_TITLE="Custom Bulk/Quick Edit"
 
 OLD_ABBR="wps_"
+OLD_BASE="wordpress-starter"
 OLD_CLASS="WordPress_Starter"
 OLD_FILTER="wordpress_starter"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
 OLD_SITE="http://wordpress.org/extend/plugins/wordpress-starter/"
-OLD_SLUG="wordpress-starter"
+OLD_SLUG="WPS_"
 OLD_TITLE="WordPress Starter"
 
 echo
@@ -26,6 +28,11 @@ do
 	then
 		perl -pi -e "s#${OLD_ABBR}#${NEW_ABBR}#g" ${FILE}
 		perl -pi -e "s#${NEW_ABBR}_#${NEW_ABBR}#g" ${FILE}
+	fi
+
+	if [[ '' != ${NEW_BASE} ]]
+	then
+		perl -pi -e "s#${OLD_BASE}#${NEW_BASE}#g" ${FILE}
 	fi
 
 	if [[ '' != ${NEW_CLASS} ]]
@@ -79,5 +86,11 @@ git add *
 git add .gitignore
 git add .travis.yml
 git commit -m "Initial plugin creation"
+
+git remote add aihrus git@github.com:michael-cannon/aihrus-framework.git
+git fetch aihrus 
+git subtree add -P lib/aihrus aihrus master
+git commit -a -m "Add in aihrus framework"
+git push origin master
 
 # rm ${0}

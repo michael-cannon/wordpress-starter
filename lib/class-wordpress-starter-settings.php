@@ -47,7 +47,7 @@ class WordPress_Starter_Settings {
 	public static $defaults = array();
 	public static $sections = array();
 	public static $settings = array();
-	public static $version  = null;
+	public static $version;
 
 
 	public function __construct() {

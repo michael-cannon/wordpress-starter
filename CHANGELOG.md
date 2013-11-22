@@ -1,14 +1,15 @@
 # CHANGELOG for WordPress WordPress Starter plugin
 
 ## master
-* Add aihrus framework
-* Enable activation and version checking
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
+* Add EDD_SL_Plugin_Updater.php
 * Add LICENSE
 * Add StillMaintained.com notice
 * Add action `wordpress_starter_update`
+* Add aihrus framework
 * Add and highlight video introduction
+* Add licensing helper
 * Add post_id to do_something
 * Add settings help tabs
 * Add shortcode `wordpress_starter_shortcode`
@@ -24,6 +25,7 @@
 * Correct cbqe_ options tagging
 * Delete prepare script on run
 * Don't auto-delete prepare script
+* Enable activation and version checking
 * Enqueue jquery-ui-progressbar
 * Full stack developer verbiage
 * Minimally require WordPress 3.5
@@ -34,6 +36,7 @@
 * SEO tweaks
 * Simplify `wp_enqueue_style` handling
 * Simplify filter naming
+* Support base and slug settings
 * Test hphpa
 * Tested up to: 3.8.0
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives

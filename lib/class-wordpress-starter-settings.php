@@ -26,8 +26,8 @@ require_once WPS_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 
 class WordPress_Starter_Settings extends Aihrus_Settings {
-	const ID          = 'wordpress-starter-settings';
-	const ITEM_NAME   = 'WordPress Starter Settings';
+	const ID        = 'wordpress-starter-settings';
+	const ITEM_NAME = 'WordPress Starter Settings';
 
 	public static $admin_page  = '';
 	public static $class       = __CLASS__;
@@ -45,13 +45,6 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
 		add_action( 'init', array( __CLASS__, 'init' ) );
-	}
-
-
-	public static function init() {
-		load_plugin_textdomain( 'wordpress-starter', false, '/wordpress-starter/languages/' );
-
-		self::$plugin_path = plugins_url( '', dirname( __FILE__ ) );
 	}
 
 
@@ -85,6 +78,13 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 			self::$admin_page,
 			array( 'style' => 'font-weight: bold;' )
 		);
+	}
+
+
+	public static function init() {
+		load_plugin_textdomain( 'wordpress-starter', false, '/wordpress-starter/languages/' );
+
+		self::$plugin_path = plugins_url( '', dirname( __FILE__ ) );
 	}
 
 
@@ -255,6 +255,23 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 		);
 
 		do_action( 'wps_settings_add_help_tabs', $screen );
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
+	public static function display_setting( $args = array(), $do_echo = true, $input = null ) {
+		$content = apply_filters( 'wps_display_setting', '', $args, $input );
+		if ( empty( $content ) )
+			$content = parent::display_setting( $args, false, $input );
+
+		if ( ! $do_echo )
+			return $content;
+
+		echo $content;
 	}
 
 

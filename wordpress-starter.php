@@ -42,7 +42,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 	private static $post_types;
 
-	public static $class;
+	public static $class = __CLASS__;
 	public static $menu_id;
 	public static $notice_key;
 	public static $scripts = array();
@@ -55,6 +55,7 @@ class WordPress_Starter extends Aihrus_Common {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 		add_shortcode( 'wordpress_starter_shortcode', array( $this, 'wordpress_starter_shortcode' ) );
 	}
 
@@ -606,6 +607,21 @@ class WordPress_Starter extends Aihrus_Common {
 		}
 
 		return $do_load;
+	}
+
+
+	public function widgets_init() {
+		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-widget.php';
+
+		register_widget( 'WordPress_Starter_Widget' );
+	}
+
+
+	public static function get_defaults( $single_view = false ) {
+		if ( empty( $single_view ) )
+			return apply_filters( 'wps_defaults', wps_get_options() );
+		else
+			return apply_filters( 'wps_defaults_single', wps_get_options() );
 	}
 
 

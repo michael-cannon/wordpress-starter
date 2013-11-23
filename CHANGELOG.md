@@ -7,8 +7,6 @@
 * Initial code release 
 
 ## 0.0.0
-* Revise headers
-* Use abstract class Aihrus_Settings
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
 * Add EDD_SL_Plugin_Updater.php
@@ -22,6 +20,7 @@
 * Add settings help tabs
 * Add shortcode `wordpress_starter_shortcode`
 * Add trim validator
+* Add widget template
 * Adjust load priority to support other plugins tying in
 * Allow blank NEW_* settings
 * Baseline API
@@ -41,6 +40,7 @@
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Rename `wordpress_starter` to `wps` for action and filter names
+* Revise headers
 * Revise installation instructions
 * SEO tweaks
 * Simplify `wp_enqueue_style` handling
@@ -54,6 +54,8 @@
 * Update Travis
 * Update about image path
 * Update donate text
+* Use abstract class Aihrus_Settings
+* Use abstract class Aihrus_Widget
 * Use do_load
 * Use static for $admin_page
 * Use str_getcsv

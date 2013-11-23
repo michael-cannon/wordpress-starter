@@ -38,6 +38,22 @@ The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) 
 
 	Alter setting options. [example](https://gist.github.com/michael-cannon/5833757)
 
+* `wps_display_setting`
+
+	Customize display settings content.
+
+* `wps_widget_options`
+
+	Customize widget options.
+
+* `wps_defaults`
+
+	Customize defaults.
+
+* `wps_defaults_single`
+
+	Customize defaults for single instance.
+
 ## Need More?
 
 Further examples and more can be found by reading and searching the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) and [source code](https://github.com/michael-cannon/wordpress-starter).

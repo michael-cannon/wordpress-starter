@@ -37,8 +37,15 @@ class WordPress_Starter_Widget extends Aihrus_Widget {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+
+
 	public static function get_content( $instance, $widget_number ) {
-		return '';
+		return $widget_number;
 	}
 
 
@@ -58,6 +65,12 @@ class WordPress_Starter_Widget extends Aihrus_Widget {
 		return $instance;
 	}
 
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function form_parts( $instance, $number ) {
 		$form_parts = WordPress_Starter_Settings::get_settings();
 		$form_parts = self::widget_options( $form_parts );
@@ -74,8 +87,13 @@ class WordPress_Starter_Widget extends Aihrus_Widget {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function get_suggest( $id, $suggest_id ) {
-		return '';
+		return $suggest_id;
 	}
 
 

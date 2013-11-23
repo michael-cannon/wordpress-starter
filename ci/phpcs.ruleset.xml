@@ -5,6 +5,8 @@
 	</description>
 
 	<exclude-pattern>lib/screen-meta-links.php</exclude-pattern>
+	<exclude-pattern>jquery-ui-1.10.3.custom.css</exclude-pattern>
+	<exclude-pattern>jquery-ui-1.10.3.custom.min.css</exclude-pattern>
 
 	<rule ref="Generic">
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />

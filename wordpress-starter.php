@@ -23,7 +23,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 if ( ! defined( 'WPS_PLUGIN_DIR' ) )
 	define( 'WPS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -480,6 +479,11 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
 		$disable_donate = wps_get_option( 'disable_donate' );
 

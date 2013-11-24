@@ -58,6 +58,7 @@ do
 	if [[ '' != ${NEW_SLUG} ]]
 	then
 		perl -pi -e "s#${OLD_SLUG}#${NEW_SLUG}#g" ${FILE}
+		perl -pi -e "s#${NEW_SLUG}_#${NEW_SLUG}#g" ${FILE}
 	fi
 
 	if [[ '' != ${NEW_TITLE} ]]

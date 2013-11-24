@@ -85,10 +85,12 @@ Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/c
 
 1. TBD
 
+[gallery]
+
 
 == Changelog ==
 
-See [Changelog](https://github.com/michael-cannon/wordpress-starter/blob/master/CHANGELOG.md)
+See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter/blob/master/CHANGELOG.md)
 
 
 == Upgrade Notice ==

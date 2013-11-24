@@ -7,6 +7,7 @@
 * Initial code release 
 
 ## 0.0.0
+* $this to __CLASS__
 * Abstract get_posts_to_process method
 * Add Ajax processing screen
 * Add EDD_SL_Plugin_Updater.php

@@ -49,31 +49,33 @@ class WordPress_Starter extends Aihrus_Common {
 	public static $styles        = array();
 	public static $styles_called = false;
 
+	public static $post_id;
+
 
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
-		add_shortcode( 'wordpress_starter_shortcode', array( $this, 'wordpress_starter_shortcode' ) );
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
+		add_action( 'init', array( __CLASS__, 'init' ) );
+		add_action( 'widgets_init', array( __CLASS__, 'widgets_init' ) );
+		add_shortcode( 'wordpress_starter_shortcode', array( __CLASS__, 'wordpress_starter_shortcode' ) );
 	}
 
 
-	public function admin_init() {
-		$this->update();
+	public static function admin_init() {
+		self::update();
 
-		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
-		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
+		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
 
 		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . WordPress_Starter_Settings::ID . '">' . __( 'Settings', 'wordpress-starter' ) . '</a>';
 	}
 
 
-	public function admin_menu() {
-		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), 'manage_options', self::ID, array( $this, 'user_interface' ) );
+	public static function admin_menu() {
+		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
 
-		add_action( 'admin_print_scripts-' . self::$menu_id, array( $this, 'scripts' ) );
-		add_action( 'admin_print_styles-' . self::$menu_id, array( $this, 'styles' ) );
+		add_action( 'admin_print_scripts-' . self::$menu_id, array( __CLASS__, 'scripts' ) );
+		add_action( 'admin_print_styles-' . self::$menu_id, array( __CLASS__, 'styles' ) );
 
 		add_screen_meta_link(
 			'wps_settings_link',
@@ -85,16 +87,16 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public function init() {
+	public static function init() {
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter/languages' );
 
-		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
+		add_action( 'wp_ajax_ajax_process_post', array( __CLASS__, 'ajax_process_post' ) );
 
 		self::set_post_types();
 	}
 
 
-	public function plugin_action_links( $links, $file ) {
+	public static function plugin_action_links( $links, $file ) {
 		if ( self::PLUGIN_BASE == $file ) {
 			array_unshift( $links, self::$settings_link );
 
@@ -106,13 +108,13 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public function activation() {
+	public static function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 	}
 
 
-	public function deactivation() {
+	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -120,7 +122,7 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public function uninstall() {
+	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -168,10 +170,10 @@ class WordPress_Starter extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function user_interface() {
+	public static function user_interface() {
 		// Capability check
 		if ( ! current_user_can( 'manage_options' ) )
-			wp_die( $this->post_id, esc_html__( "Your user account doesn't have permission to access this.", 'wordpress-starter' ) );
+			wp_die( self::$post_id, esc_html__( "Your user account doesn't have permission to access this.", 'wordpress-starter' ) );
 
 ?>
 
@@ -186,8 +188,8 @@ class WordPress_Starter extends Aihrus_Common {
 			$posts_to_import = wps_get_option( 'posts_to_import' );
 			$posts_to_import = explode( ',', $posts_to_import );
 			foreach ( $posts_to_import as $post_id ) {
-				$this->post_id = $post_id;
-				$this->ajax_process_post();
+				self::$post_id = $post_id;
+				self::ajax_process_post();
 			}
 
 			exit( __LINE__ . ':' . basename( __FILE__ ) . " DONE<br />\n" );
@@ -213,10 +215,10 @@ class WordPress_Starter extends Aihrus_Common {
 			}
 
 			$posts = implode( ',', $posts );
-			$this->show_status( $count, $posts );
+			self::show_status( $count, $posts );
 		} else {
 			// No button click? Display the form.
-			$this->show_greeting();
+			self::show_greeting();
 		}
 ?>
 	</div>
@@ -268,7 +270,7 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public function show_greeting() {
+	public static function show_greeting() {
 ?>
 	<form method="post" action="">
 <?php wp_nonce_field( self::ID ); ?>
@@ -295,7 +297,7 @@ class WordPress_Starter extends Aihrus_Common {
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function show_status( $count, $posts ) {
+	public static function show_status( $count, $posts ) {
 		echo '<p>' . esc_html__( 'Please be patient while this script run. This can take a while, up to a minute per post. Do not navigate away from this page until this script is done or the import will not be completed. You will be notified via this page when the import is completed.', 'wordpress-starter' ) . '</p>';
 
 		echo '<p>' . sprintf( esc_html__( 'Estimated time required to import is %1$s minutes.', 'wordpress-starter' ), ( $count * 1 ) ) . '</p>';
@@ -444,20 +446,20 @@ class WordPress_Starter extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public function ajax_process_post() {
+	public static function ajax_process_post() {
 		if ( ! wps_get_option( 'debug_mode' ) ) {
 			error_reporting( 0 ); // Don't break the JSON result
 			header( 'Content-type: application/json' );
-			$this->post_id = intval( $_REQUEST['id'] );
+			self::$post_id = intval( $_REQUEST['id'] );
 		}
 
-		$post = get_post( $this->post_id );
+		$post = get_post( self::$post_id );
 		if ( ! $post || ! in_array( $post->post_type, self::$post_types )  )
-			die( json_encode( array( 'error' => sprintf( esc_html__( 'Failed Processing: %s is incorrect post type.', 'wordpress-starter' ), esc_html( $this->post_id ) ) ) ) );
+			die( json_encode( array( 'error' => sprintf( esc_html__( 'Failed Processing: %s is incorrect post type.', 'wordpress-starter' ), esc_html( self::$post_id ) ) ) ) );
 
-		$this->do_something( $this->post_id, $post );
+		self::do_something( self::$post_id, $post );
 
-		die( json_encode( array( 'success' => sprintf( __( '&quot;<a href="%1$s" target="_blank">%2$s</a>&quot; Post ID %3$s was successfully processed in %4$s seconds.', 'wordpress-starter' ), get_permalink( $this->post_id ), esc_html( get_the_title( $this->post_id ) ), $this->post_id, timer_stop() ) ) ) );
+		die( json_encode( array( 'success' => sprintf( __( '&quot;<a href="%1$s" target="_blank">%2$s</a>&quot; Post ID %3$s was successfully processed in %4$s seconds.', 'wordpress-starter' ), get_permalink( self::$post_id ), esc_html( get_the_title( self::$post_id ) ), self::$post_id, timer_stop() ) ) ) );
 	}
 
 
@@ -466,13 +468,13 @@ class WordPress_Starter extends Aihrus_Common {
 	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
-	public function do_something( $post_id, $post ) {
+	public static function do_something( $post_id, $post ) {
 		// do something there with the post
 		// use error_log to track happenings
 	}
 
 
-	public function notice_0_0_1() {
+	public static function notice_0_0_1() {
 		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		parent::notice_updated( $text );
@@ -491,11 +493,11 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public function update() {
+	public static function update() {
 		$prior_version = wps_get_option( 'admin_notices' );
 		if ( $prior_version ) {
 			if ( $prior_version < '0.0.1' )
-				add_action( 'admin_notices', array( $this, 'notice_0_0_1' ) );
+				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
 
 			if ( $prior_version < self::VERSION )
 				do_action( 'wps_update' );
@@ -506,7 +508,7 @@ class WordPress_Starter extends Aihrus_Common {
 		// display donate on major/minor version release
 		$donate_version = wps_get_option( 'donate_version', false );
 		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
-			add_action( 'admin_notices', array( $this, 'notice_donate' ) );
+			add_action( 'admin_notices', array( __CLASS__, 'notice_donate' ) );
 			wps_set_option( 'donate_version', self::VERSION );
 		}
 	}
@@ -614,7 +616,7 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
-	public function widgets_init() {
+	public static function widgets_init() {
 		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-widget.php';
 
 		register_widget( 'WordPress_Starter_Widget' );

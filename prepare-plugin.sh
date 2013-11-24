@@ -1,22 +1,22 @@
 #!/bin/bash
 
-NEW_ABBR="cbqe_"
+NEW_ABBR="CBQE_"
 NEW_BASE="custom-bulk-quick-edit"
 NEW_CLASS="Custom_Bulk_Quick_Edit"
-NEW_FILTER="${NEW_ABBR}"
 NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
 NEW_SITE=""
-NEW_SLUG="CBQE_"
+NEW_SLUG="cbqe_"
 NEW_TITLE="Custom Bulk/Quick Edit"
+NEW_FILTER="${NEW_SLUG}"
 
-OLD_ABBR="wps_"
+OLD_ABBR="WPS_"
 OLD_BASE="wordpress-starter"
 OLD_CLASS="WordPress_Starter"
-OLD_FILTER="wordpress_starter"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
 OLD_SITE="http://wordpress.org/plugins/wordpress-starter/"
-OLD_SLUG="WPS_"
+OLD_SLUG="wps_"
 OLD_TITLE="WordPress Starter"
+OLD_FILTER="${OLD_SLUG}"
 
 echo
 echo "Begin converting ${OLD_TITLE} to ${NEW_TITLE} plugin"
@@ -71,10 +71,10 @@ then
 	rm 000-code-qa.txt
 fi
 
-mv ${OLD_SLUG}.css ${NEW_SLUG}.css
-mv ${OLD_SLUG}.php ${NEW_SLUG}.php
-mv languages/${OLD_SLUG}.pot languages/${NEW_SLUG}.pot
-mv lib/class-${OLD_SLUG}-settings.php lib/class-${NEW_SLUG}-settings.php
+mv ${OLD_BASE}.css ${NEW_BASE}.css
+mv ${OLD_BASE}.php ${NEW_BASE}.php
+mv languages/${OLD_BASE}.pot languages/${NEW_BASE}.pot
+mv lib/class-${OLD_BASE}-settings.php lib/class-${NEW_BASE}-settings.php
 
 if [[ -e .git ]]
 then

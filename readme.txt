@@ -108,7 +108,7 @@ I need beta testers to help with ensuring pending releases of WordPress Starter 
 
 [Please contact me directly](http://aihr.us/contact-aihrus/).
 
-Beta testers benefit directly with latest versions, a free 1-site license for WordPress Starter Premium, and personalized support assistance.
+Beta testers benefit directly with latest versions, a free unlimited sites license for WordPress Starter Premium, and personalized support assistance.
 
 == TODO ==
 

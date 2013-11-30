@@ -20,7 +20,7 @@ require_once WPS_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-widget.php';
 
 
 class WordPress_Starter_Widget extends Aihrus_Widget {
-	const ID = 'wordpress_starter_widget';
+	const ID = 'wordpress-starter-widget';
 
 	public function __construct( $classname = null, $description = null, $id_base = null, $title = null ) {
 		$classname   = 'WordPress_Starter_Widget';

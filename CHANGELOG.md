@@ -14,7 +14,7 @@
 * Add LICENSE
 * Add StillMaintained.com notice
 * Add [[gallery]]
-* Add action `wordpress_starter_update`
+* Add action `wps_update`
 * Add aihrus framework
 * Add and highlight video introduction
 * Add licensing helper

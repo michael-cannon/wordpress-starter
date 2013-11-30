@@ -72,7 +72,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function admin_menu() {
-		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
+		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
 
 		add_action( 'admin_print_scripts-' . self::$menu_id, array( __CLASS__, 'scripts' ) );
 		add_action( 'admin_print_styles-' . self::$menu_id, array( __CLASS__, 'styles' ) );
@@ -181,7 +181,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 <div class="wrap wpsposts">
 	<div class="icon32" id="icon-tools"></div>
-	<h2><?php _e( 'WordPress Starter Processer', 'wordpress-starter' ); ?></h2>
+	<h2><?php _e( 'WordPress Starter Processor', 'wordpress-starter' ); ?></h2>
 
 <?php
 		if ( wps_get_option( 'debug_mode' ) ) {
@@ -277,7 +277,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 	<p><?php _e( 'Use this tool to process posts for TBD.', 'wordpress-starter' ); ?></p>
 
-	<p><?php _e( 'This processing is not reversible. Backup your database beforehand or be prepared to revert each transformmed post manually.', 'wordpress-starter' ); ?></p>
+	<p><?php _e( 'This processing is not reversible. Backup your database beforehand or be prepared to revert each transformed post manually.', 'wordpress-starter' ); ?></p>
 
 	<p><?php printf( esc_html__( 'Please review your %s before proceeding.', 'wordpress-starter' ), self::$settings_link ); ?></p>
 

@@ -73,7 +73,7 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 
 		add_screen_meta_link(
 			'wsp_importer_link',
-			esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ),
+			esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ),
 			admin_url( 'tools.php?page=' . WordPress_Starter::ID ),
 			self::$admin_page,
 			array( 'style' => 'font-weight: bold;' )

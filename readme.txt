@@ -3,7 +3,7 @@
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
 Tags: t, b, d
-Requires at least: 3.5
+Requires at least: 3.6
 Tested up to: 3.8.0
 Stable tag: 0.0.1
 License: GPLv2 or later

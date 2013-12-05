@@ -31,6 +31,11 @@ if ( ! defined( 'WPS_PLUGIN_DIR_LIB' ) )
 
 require_once WPS_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
+if ( af_php_version_check( __FILE__ ) )
+	add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
+else
+	return;
+
 
 class WordPress_Starter extends Aihrus_Common {
 	const ID          = 'wordpress-starter';
@@ -637,9 +642,6 @@ class WordPress_Starter extends Aihrus_Common {
 register_activation_hook( __FILE__, array( 'WordPress_Starter', 'activation' ) );
 register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation' ) );
 register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
-
-
-add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
 
 
 /**

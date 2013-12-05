@@ -29,6 +29,7 @@
 * Baseline readme.txt tags
 * Centralize styles/scripts handling
 * Change $2 donation request to $5
+* Check for PHP 5.3
 * Check for sections() and settings() as needed
 * Comment out init() by default
 * Correct Youtube video linking

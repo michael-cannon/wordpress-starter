@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WordPress Starter
+ * Plugin Name: WordPress Starter by Aihrus
  * Plugin URI: http://wordpress.org/plugins/wordpress-starter/
  * Description: TBD
  * Version: 1.0.0

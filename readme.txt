@@ -57,12 +57,6 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 * TBD
 
-= Localization =
-
-You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
-
-**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
-
 = Shortcode and Widget Options =
 
 **General**
@@ -93,14 +87,14 @@ You can translate this plugin into your own language if it's not done so already
 = Install Methods =
 
 * Through WordPress Admin > Plugins > Add New, Search for "WordPress Starter"
-	* Find WordPress Starter, make sure it's by Aihrus or Michael Cannon per the Description
-	* Click "Install Now" of WordPress Starter
-* Download `wordpress-starter.zip` locally
+	* Find "WordPress Starter by Aihrus"
+	* Click "Install Now" of "WordPress Starter by Aihrus"
+* Download [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
 	* Through WordPress Admin > Plugins > Add New
 	* Click Upload
 	* "Choose File" `wordpress-starter.zip`
 	* Click "Install Now"
-* Download and unzip `wordpress-starter.zip` locally
+* Download and unzip [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
 	* Using FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
 
 = Activatation Options =
@@ -118,7 +112,7 @@ You can translate this plugin into your own language if it's not done so already
 	* Via WordPress Admin > Dashboard > Updates, click "Check Again"
 	* Select plugins for update, click "Update Plugins"
 * Using FTP
-	* Download and unzip `wordpress-starter.zip` locally
+	* Download and unzip [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
 	* FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
 	* Be sure to overwrite your existing `wordpress-starter` folder contents
 
@@ -169,6 +163,13 @@ See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter/blob/master/
 * Read the [WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
 
 
-== Thanks ==
+== Localization ==
+
+You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
+
+**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+
+
+== Thank You ==
 
 TBD

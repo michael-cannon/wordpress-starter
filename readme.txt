@@ -133,7 +133,7 @@ You can translate this plugin into your own language if it's not done so already
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon 125+ frequently asked questions
+1. [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
 1. [Open WordPress Starter Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
 1. [WordPress Starter Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - ask questions and review responses
 1. [Contribute Code to WordPress Starter](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md)

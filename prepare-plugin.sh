@@ -8,6 +8,7 @@ NEW_SITE=""
 NEW_SLUG="cbqe_"
 NEW_SLUG_LONG="custom_bulk_quick_edit"
 NEW_TITLE="Custom Bulk/Quick Edit"
+NEW_TITLE_SHORT="${NEW_TITLE}"
 NEW_FILTER="${NEW_SLUG}"
 
 OLD_ABBR="WPS_"
@@ -18,12 +19,13 @@ OLD_SITE="http://wordpress.org/plugins/wordpress-starter/"
 OLD_SLUG="wps_"
 OLD_SLUG_LONG="wordpress_starter"
 OLD_TITLE="WordPress Starter"
+OLD_TITLE_SHORT="${OLD_TITLE}"
 OLD_FILTER="${OLD_SLUG}"
 
 echo
 echo "Begin converting ${OLD_TITLE} to ${NEW_TITLE} plugin"
 
-FILES=`find . -type f \( -name "*.md" -o -name "*.php" -o -name "*.txt" -o -name "*.xml" \)`
+FILES=`find . -type f \( -name "*.css" -o -name "*.md" -o -name "*.php" -o -name "*.txt" -o -name "*.xml" \)`
 for FILE in ${FILES} 
 do
 	if [[ '' != ${NEW_ABBR} ]]
@@ -72,6 +74,11 @@ do
 	then
 		perl -pi -e "s#${OLD_TITLE}#${NEW_TITLE}#g" ${FILE}
 	fi
+
+	if [[ '' != ${NEW_TITLE_SHORT} ]]
+	then
+		perl -pi -e "s#${OLD_TITLE_SHORT}#${NEW_TITLE_SHORT}#g" ${FILE}
+	fi
 done
 
 if [[ -e 000-code-qa.txt ]]
@@ -101,9 +108,4 @@ git add .gitignore
 git add .travis.yml
 git commit -m "Initial plugin creation"
 git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git
-
-git remote add aihrus git@github.com:michael-cannon/aihrus-framework.git
-git fetch aihrus 
-git subtree add -P lib/aihrus --squash aihrus master
-git commit -a -m "Link in Aihrus Framework"
 echo "git push origin master"

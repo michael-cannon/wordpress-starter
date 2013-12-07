@@ -14,7 +14,7 @@ TBD
 
 == Description ==
 
-WordPress Starter by Aihrus does TBD.
+WordPress Starter [by Aihrus](http://aihr.us/about-aihrus/) does TBD.
 
 http://www.youtube.com/watch?v=TBD
 

@@ -1,4 +1,4 @@
-=== WordPress Starter ===
+=== WordPress Starter by Aihrus ===
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
@@ -14,7 +14,7 @@ TBD
 
 == Description ==
 
-WordPress Starter does TBD.
+WordPress Starter by Aihrus does TBD.
 
 http://www.youtube.com/watch?v=TBD
 
@@ -93,7 +93,7 @@ You can translate this plugin into your own language if it's not done so already
 = Install Methods =
 
 * Through WordPress Admin > Plugins > Add New, Search for "WordPress Starter"
-	* Find WordPress Starter, make sure it's by Michael Cannon per the Description
+	* Find WordPress Starter, make sure it's by Aihrus or Michael Cannon per the Description
 	* Click "Install Now" of WordPress Starter
 * Download `wordpress-starter.zip` locally
 	* Through WordPress Admin > Plugins > Add New

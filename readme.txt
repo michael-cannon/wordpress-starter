@@ -161,7 +161,7 @@ See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter/blob/master/
 
 == Notes ==
 
-* TBD
+* When plugin is uninstalled, all data and settings are deleted if "Remove Plugin Data on Deletion" is checked in Settings
 
 
 == API ==

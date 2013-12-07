@@ -33,7 +33,7 @@ Anyone is welcome to contribute to WordPress Starter. Please [read the guideline
 There are various ways you can contribute:
 
 * [Raise an issue](https://github.com/michael-cannon/wordpress-starter/issues) on GitHub.
-* Send us a Pull Request with your bug fixes and/or new features.
+* Fork WordPress Starter and send us a Pull Request with your bug fixes and/or new features.
 * [Translate WordPress Starter by Michael Cannon into different languages](https://aihrus.zendesk.com/entries/23691557-How-do-I-change-Testimonials-Widget-text-labels-).
 * Provide feedback and [suggestions on enhancements](https://github.com/michael-cannon/wordpress-starter/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open).
 

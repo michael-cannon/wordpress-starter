@@ -3,7 +3,7 @@
 ## master
 * TBD
 
-## 0.0.1
+## 1.0.0
 * Initial code release 
 
 ## 0.0.0
@@ -45,6 +45,7 @@
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Revise headers
 * Revise installation instructions
+* Revise readme.txt structure
 * SEO tweaks
 * Simplify `wp_enqueue_style` handling
 * Simplify filter naming

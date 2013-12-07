@@ -3,7 +3,7 @@
  * Plugin Name: WordPress Starter
  * Plugin URI: http://wordpress.org/plugins/wordpress-starter/
  * Description: TBD
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -42,7 +42,7 @@ class WordPress_Starter extends Aihrus_Common {
 	const ITEM_NAME   = 'WordPress Starter';
 	const PLUGIN_BASE = 'wordpress-starter/wordpress-starter.php';
 	const SLUG        = 'wps_';
-	const VERSION     = '0.0.1';
+	const VERSION     = '1.0.0';
 
 	private static $post_types;
 

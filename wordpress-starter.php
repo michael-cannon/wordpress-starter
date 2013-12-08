@@ -39,7 +39,7 @@ else
 
 class WordPress_Starter extends Aihrus_Common {
 	const ID          = 'wordpress-starter';
-	const ITEM_NAME   = 'WordPress Starter';
+	const ITEM_NAME   = 'WordPress Starter by Aihrus';
 	const PLUGIN_BASE = 'wordpress-starter/wordpress-starter.php';
 	const SLUG        = 'wps_';
 	const VERSION     = '1.0.0';

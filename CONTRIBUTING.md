@@ -33,6 +33,7 @@ For localization, please refer to [How do I change WordPress Starter text labels
 At this point you're waiting on us to merge your pull request. We'll review all pull requests, and make suggestions and changes if necessary.
 
 ## Additional Resources
+
 * [WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md)
 * [General GitHub Documentation](http://help.github.com/)
 * [GitHub Pull Request documentation](http://help.github.com/send-pull-requests/)

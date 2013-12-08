@@ -20,8 +20,6 @@ http://www.youtube.com/watch?v=TBD
 
 **[Video introduction](http://www.youtube.com/watch?v=TBD)**
 
-**Version 2.16.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
-
 The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Primary Features =
@@ -84,6 +82,8 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 == Installation ==
 
+**WordPress Starter requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
+
 = Install Methods =
 
 * Through WordPress Admin > Plugins > Add New, Search for "WordPress Starter"
@@ -104,7 +104,8 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Usage =
 
-1. TBD
+1. Edit options through WordPress Admin > Settings > WordPress Starter 
+1. Process posts via WordPress Admin > Tools > WordPress Starter
 
 = Upgrading =
 

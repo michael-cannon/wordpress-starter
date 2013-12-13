@@ -135,14 +135,14 @@ class WordPress_Starter extends Aihrus_Common {
 			return;
 
 		global $wpdb;
+		
+		require WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
 
 		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( WordPress_Starter_Settings::ID );
 			$wpdb->query( 'OPTIMIZE TABLE `' . $wpdb->options . '`' );
 		}
-		
-		wps_set_option( 'donate_version' );
 	}
 
 

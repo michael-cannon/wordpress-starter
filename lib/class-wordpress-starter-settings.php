@@ -22,12 +22,15 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
-require_once WPS_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-settings.php';
+if ( class_exists( 'WordPress_Starter_Settings' ) )
+	return;
+
+require_once WPS_DIR_LIB . '/aihrus/class-aihrus-settings.php';
 
 
 class WordPress_Starter_Settings extends Aihrus_Settings {
-	const ID        = 'wordpress-starter-settings';
-	const ITEM_NAME = 'WordPress Starter Settings';
+	const ID   = 'wordpress-starter-settings';
+	const NAME = 'WordPress Starter Settings';
 
 	public static $admin_page  = '';
 	public static $class       = __CLASS__;

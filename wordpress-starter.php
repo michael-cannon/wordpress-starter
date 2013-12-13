@@ -23,26 +23,29 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-if ( ! defined( 'WPS_PLUGIN_DIR' ) )
-	define( 'WPS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
-if ( ! defined( 'WPS_PLUGIN_DIR_LIB' ) )
-	define( 'WPS_PLUGIN_DIR_LIB', WPS_PLUGIN_DIR . '/lib' );
+define( 'WPS_BASE', plugin_basename( __FILE__ ) );
+define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WPS_DIR_LIB', WPS_DIR . '/lib' );
+define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
+define( 'WPS_VERSION', '1.0.0' );
 
-require_once WPS_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require WPS_DIR_LIB . '/requirements.php';
 
-if ( af_php_version_check( __FILE__ ) )
-	add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
-else
-	return;
+if ( ! wps_requirements_check() ) {
+	return false;
+}
+
+require WPS_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
+require WPS_DIR_LIB . '/class-wordpress-starter-widget.php';
 
 
 class WordPress_Starter extends Aihrus_Common {
-	const ID          = 'wordpress-starter';
-	const ITEM_NAME   = 'WordPress Starter by Aihrus';
-	const PLUGIN_BASE = 'wordpress-starter/wordpress-starter.php';
-	const SLUG        = 'wps_';
-	const VERSION     = '1.0.0';
+	const BASE    = WPS_BASE;
+	const ID      = 'wordpress-starter';
+	const SLUG    = 'wps_';
+	const VERSION = WPS_VERSION;
 
 	private static $post_types;
 
@@ -58,6 +61,8 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public function __construct() {
+		parent::__construct();
+
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
 		add_action( 'init', array( __CLASS__, 'init' ) );
@@ -102,7 +107,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function plugin_action_links( $links, $file ) {
-		if ( self::PLUGIN_BASE == $file ) {
+		if ( self::BASE == $file ) {
 			array_unshift( $links, self::$settings_link );
 
 			$link = '<a href="' . get_admin_url() . 'tools.php?page=' . self::ID . '">' . esc_html__( 'Process', 'wordpress-starter' ) . '</a>';
@@ -122,8 +127,6 @@ class WordPress_Starter extends Aihrus_Common {
 	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		WordPress_Starter::delete_notices();
 	}
 
 
@@ -133,17 +136,18 @@ class WordPress_Starter extends Aihrus_Common {
 
 		global $wpdb;
 
-		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
 		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {
 			delete_option( WordPress_Starter_Settings::ID );
 			$wpdb->query( 'OPTIMIZE TABLE `' . $wpdb->options . '`' );
 		}
+		
+		wps_set_option( 'donate_version' );
 	}
 
 
 	public static function plugin_row_meta( $input, $file ) {
-		if ( self::PLUGIN_BASE != $file )
+		if ( self::BASE != $file )
 			return $input;
 
 		$disable_donate = wps_get_option( 'disable_donate' );
@@ -482,7 +486,7 @@ class WordPress_Starter extends Aihrus_Common {
 	public static function notice_0_0_1() {
 		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
-		self::notice_updated( $text );
+		aihr_notice_updated( $text );
 	}
 
 
@@ -494,7 +498,7 @@ class WordPress_Starter extends Aihrus_Common {
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
 		$disable_donate = wps_get_option( 'disable_donate' );
 
-		parent::notice_donate( $disable_donate, self::ITEM_NAME );
+		parent::notice_donate( $disable_donate, WPS_NAME );
 	}
 
 
@@ -560,11 +564,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function version_check() {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-
 		$good_version = true;
-		if ( ! is_plugin_active( self::PLUGIN_BASE ) )
-			$good_version = false;
 
 		return $good_version;
 	}
@@ -622,8 +622,6 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function widgets_init() {
-		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-widget.php';
-
 		register_widget( 'WordPress_Starter_Widget' );
 	}
 
@@ -644,6 +642,9 @@ register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation'
 register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
 
 
+add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
+
+
 /**
  *
  *
@@ -655,11 +656,9 @@ function wordpress_starter_init() {
 		return;
 
 	if ( ! function_exists( 'add_screen_meta_link' ) )
-		require_once WPS_PLUGIN_DIR_LIB . '/screen-meta-links.php';
+		require_once WPS_DIR_LIB . '/screen-meta-links.php';
 
 	if ( WordPress_Starter::version_check() ) {
-		require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
-
 		global $WordPress_Starter;
 		if ( is_null( $WordPress_Starter ) )
 			$WordPress_Starter = new WordPress_Starter();

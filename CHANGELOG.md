@@ -25,6 +25,7 @@
 * Add widget template
 * Adjust load priority to support other plugins tying in
 * Allow blank NEW_* settings
+* Always include settings class
 * Baseline API
 * Baseline readme.txt tags
 * Centralize styles/scripts handling
@@ -39,18 +40,23 @@
 * Enable activation and version checking
 * Enqueue jquery-ui-progressbar
 * Full stack developer verbiage
+* Implement PHP version checking
+* Implement WordPress version checking
 * Minimally require WordPress 3.5
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Revise headers
 * Revise installation instructions
+* Revise readme installation
+* Revise readme structure
 * Revise readme.txt structure
 * SEO tweaks
 * Simplify `wp_enqueue_style` handling
 * Simplify filter naming
 * Support base and slug settings
 * Test hphpa
+* Tested up to 3.9.0
 * Tested up to: 3.8.0
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Tweaks titles

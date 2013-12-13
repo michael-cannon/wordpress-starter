@@ -4,7 +4,7 @@ Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
 Tags: t, b, d
 Requires at least: 3.6
-Tested up to: 3.8.0
+Tested up to: 3.9.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -82,7 +82,9 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 == Installation ==
 
-**WordPress Starter requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
+= Requirements =
+
+* PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006)
 
 = Install Methods =
 
@@ -97,7 +99,7 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 * Download and unzip [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
 	* Using FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
 
-= Activatation Options =
+= Activation Options =
 
 * Activate the "WordPress Starter" plugin after uploading
 * Activate the "WordPress Starter" plugin through WordPress Admin > Plugins

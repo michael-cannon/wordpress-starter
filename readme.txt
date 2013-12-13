@@ -116,7 +116,7 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 	* Select plugins for update, click "Update Plugins"
 * Using FTP
 	* Download and unzip [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
-	* FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
+	* Upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
 	* Be sure to overwrite your existing `wordpress-starter` folder contents
 
 

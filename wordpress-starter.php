@@ -30,15 +30,15 @@ define( 'WPS_DIR_LIB', WPS_DIR . '/lib' );
 define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
 define( 'WPS_VERSION', '1.0.0' );
 
-require WPS_DIR_LIB . '/requirements.php';
+require_once WPS_DIR_LIB . '/requirements.php';
 
 if ( ! wps_requirements_check() ) {
 	return false;
 }
 
-require WPS_DIR_LIB . '/aihrus/class-aihrus-common.php';
-require WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
-require WPS_DIR_LIB . '/class-wordpress-starter-widget.php';
+require_once WPS_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require_once WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
+require_once WPS_DIR_LIB . '/class-wordpress-starter-widget.php';
 
 
 class WordPress_Starter extends Aihrus_Common {
@@ -136,7 +136,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 		global $wpdb;
 		
-		require WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
+		require_once WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
 
 		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {

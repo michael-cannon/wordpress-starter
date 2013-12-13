@@ -15,10 +15,10 @@ if ( !class_exists('wsScreenMetaLinks11') ):
 		$class_json_path = ABSPATH.WPINC.'/class-json.php';
 		$class_moxiecode_json_path = ABSPATH.WPINC.'/js/tinymce/plugins/spellchecker/classes/utils/JSON.php';
 		if ( file_exists($class_json_path) ) {
-			require $class_json_path;
+			require_once $class_json_path;
 
 		} elseif ( file_exists($class_moxiecode_json_path) ) {
-			require $class_moxiecode_json_path;
+			require_once $class_moxiecode_json_path;
 		}
 	}
 

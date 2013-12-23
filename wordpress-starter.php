@@ -24,10 +24,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+define( 'WPS_AIHR_VERSION', '1.0.0' );
 define( 'WPS_BASE', plugin_basename( __FILE__ ) );
 define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPS_DIR_LIB', WPS_DIR . '/lib' );
 define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
+define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Purchase WordPress Starter Premium</a>' );
 define( 'WPS_VERSION', '1.0.0' );
 
 require_once WPS_DIR_LIB . '/requirements.php';
@@ -155,9 +157,12 @@ class WordPress_Starter extends Aihrus_Common {
 			return $input;
 
 		$links = array(
-			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
-			'<a href="http://aihr.us/downloads/wordpress-starter-premium-wordpress-plugin/">Purchase WordPress Starter Premium</a>',
+			self::$donate_link,
 		);
+
+		global $WordPress_Starter_Premium;
+		if ( ! isset( $WordPress_Starter_Premium ) )
+			$links[] = WPS_PREMIUM_LINK;
 
 		$input = array_merge( $input, $links );
 

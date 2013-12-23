@@ -64,8 +64,10 @@
 * Update Travis
 * Update about image path
 * Update donate text
+* Use WPS_PREMIUM_LINK constant
 * Use abstract class Aihrus_Settings
 * Use abstract class Aihrus_Widget
+* Use aihr_check_aihrus_framework
 * Use do_load
 * Use static for $admin_page
 * Use str_getcsv

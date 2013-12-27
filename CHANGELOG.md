@@ -1,4 +1,4 @@
-# CHANGELOG WordPress Starter
+# CHANGELOG WordPress Starter by Aihrus
 
 ## master
 * TBD

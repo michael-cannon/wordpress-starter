@@ -24,7 +24,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-define( 'WPS_AIHR_VERSION', '1.0.0' );
+define( 'WPS_AIHR_VERSION', '1.0.1' );
 define( 'WPS_BASE', plugin_basename( __FILE__ ) );
 define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPS_DIR_LIB', WPS_DIR . '/lib' );

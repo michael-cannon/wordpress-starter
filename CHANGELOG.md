@@ -71,5 +71,6 @@
 * Use do_load
 * Use static for $admin_page
 * Use str_getcsv
+* Use strip_protocol to help prevent non-SSL path issues
 * apt-get update
 * https jQuery transport

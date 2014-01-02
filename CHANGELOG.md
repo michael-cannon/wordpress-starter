@@ -71,6 +71,7 @@
 * Use abstract class Aihrus_Settings
 * Use abstract class Aihrus_Widget
 * Use aihr_check_aihrus_framework
+* Use bash regex
 * Use do_load
 * Use static for $admin_page
 * Use strip_protocol to help prevent non-SSL path issues

@@ -1,7 +1,6 @@
 # CHANGELOG WordPress Starter by Aihrus
 
 ## master
-* TBD
 
 ## 1.0.0
 * Initial code release 
@@ -16,6 +15,7 @@
 * Add EDD_SL_Plugin_Updater.php
 * Add LICENSE
 * Add licensing helper
+* Add phpunit.xml
 * Add post_id to do_something
 * Add settings help tabs
 * Add shortcode `wordpress_starter_shortcode`
@@ -45,6 +45,7 @@
 * Implement PHP version checking
 * Implement WordPress version checking
 * Minimally require WordPress 3.5
+* Move ci to tests
 * Move files to assets and includes
 * Move lib/aihrus to includes/libraries/aihrus-framework
 * Prevent unwanted slug__ naming

@@ -9,23 +9,24 @@
 ## 0.0.0
 * $this to __CLASS__
 * Abstract get_posts_to_process method
-* Add Ajax processing screen
-* Add EDD_SL_Plugin_Updater.php
-* Add LICENSE
-* Add StillMaintained.com notice
-* Add [[gallery]]
 * Add action `wps_update`
 * Add aihrus framework
+* Add Ajax processing screen
 * Add and highlight video introduction
+* Add EDD_SL_Plugin_Updater.php
+* Add LICENSE
 * Add licensing helper
 * Add post_id to do_something
 * Add settings help tabs
 * Add shortcode `wordpress_starter_shortcode`
+* Add StillMaintained.com notice
 * Add trim validator
 * Add widget template
+* Add [[gallery]]
 * Adjust load priority to support other plugins tying in
 * Allow blank NEW_* settings
 * Always include settings class
+* apt-get update
 * Baseline API
 * Baseline readme.txt tags
 * Centralize styles/scripts handling
@@ -33,16 +34,18 @@
 * Check for PHP 5.3
 * Check for sections() and settings() as needed
 * Comment out init() by default
-* Correct Youtube video linking
 * Correct cbqe_ options tagging
+* Correct Youtube video linking
 * Delete prepare script on run
 * Don't auto-delete prepare script
 * Enable activation and version checking
 * Enqueue jquery-ui-progressbar
 * Full stack developer verbiage
+* https jQuery transport
 * Implement PHP version checking
 * Implement WordPress version checking
 * Minimally require WordPress 3.5
+* Move files to assets and includes
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Rename `wordpress_starter` to `wps` for action and filter names
@@ -52,8 +55,8 @@
 * Revise readme structure
 * Revise readme.txt structure
 * SEO tweaks
-* Simplify `wp_enqueue_style` handling
 * Simplify filter naming
+* Simplify `wp_enqueue_style` handling
 * Specify a “Text Domain” and “Domain Path”
 * Support base and slug settings
 * Test hphpa
@@ -61,17 +64,15 @@
 * Tested up to: 3.8.0
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Tweaks titles
-* Update POT
-* Update Travis
 * Update about image path
 * Update donate text
-* Use WPS_PREMIUM_LINK constant
+* Update POT
+* Update Travis
 * Use abstract class Aihrus_Settings
 * Use abstract class Aihrus_Widget
 * Use aihr_check_aihrus_framework
 * Use do_load
 * Use static for $admin_page
-* Use str_getcsv
 * Use strip_protocol to help prevent non-SSL path issues
-* apt-get update
-* https jQuery transport
+* Use str_getcsv
+* Use WPS_PREMIUM_LINK constant

@@ -29,20 +29,21 @@
 define( 'WPS_AIHR_VERSION', '1.0.1' );
 define( 'WPS_BASE', plugin_basename( __FILE__ ) );
 define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WPS_DIR_LIB', WPS_DIR . '/lib' );
+define( 'WPS_DIR_INC', WPS_DIR . '/includes' );
+define( 'WPS_DIR_LIB', WPS_DIR_INC . '/libraries' );
 define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
 define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Purchase WordPress Starter Premium</a>' );
 define( 'WPS_VERSION', '1.0.0' );
 
-require_once WPS_DIR_LIB . '/requirements.php';
+require_once WPS_DIR_INC . '/requirements.php';
 
 if ( ! wps_requirements_check() ) {
 	return false;
 }
 
 require_once WPS_DIR_LIB . '/aihrus/class-aihrus-common.php';
-require_once WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
-require_once WPS_DIR_LIB . '/class-wordpress-starter-widget.php';
+require_once WPS_DIR_INC . '/class-wordpress-starter-settings.php';
+require_once WPS_DIR_INC . '/class-wordpress-starter-widget.php';
 
 
 class WordPress_Starter extends Aihrus_Common {
@@ -140,7 +141,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 		global $wpdb;
 		
-		require_once WPS_DIR_LIB . '/class-wordpress-starter-settings.php';
+		require_once WPS_DIR_INC . '/class-wordpress-starter-settings.php';
 
 		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {
@@ -534,7 +535,7 @@ class WordPress_Starter extends Aihrus_Common {
 		if ( is_admin() ) {
 			wp_enqueue_script( 'jquery' );
 
-			wp_register_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
+			wp_register_script( 'jquery-ui-progressbar', plugins_url( 'assets/js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
 			wp_enqueue_script( 'jquery-ui-progressbar' );
 
 			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_scripts' ) );
@@ -548,7 +549,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 	public static function styles() {
 		if ( is_admin() ) {
-			wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
+			wp_register_style( 'jquery-ui-progressbar', plugins_url( 'assets/css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
 			wp_enqueue_style( 'jquery-ui-progressbar' );
 
 			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_styles' ) );

@@ -54,6 +54,7 @@
 * SEO tweaks
 * Simplify `wp_enqueue_style` handling
 * Simplify filter naming
+* Specify a “Text Domain” and “Domain Path”
 * Support base and slug settings
 * Test hphpa
 * Tested up to 3.9.0

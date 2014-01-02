@@ -41,7 +41,7 @@ if ( ! wps_requirements_check() ) {
 	return false;
 }
 
-require_once WPS_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require_once WPS_DIR_LIB . '/aihrus-framework/class-aihrus-common.php';
 require_once WPS_DIR_INC . '/class-wordpress-starter-settings.php';
 require_once WPS_DIR_INC . '/class-wordpress-starter-widget.php';
 

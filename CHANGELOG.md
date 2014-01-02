@@ -46,6 +46,7 @@
 * Implement WordPress version checking
 * Minimally require WordPress 3.5
 * Move files to assets and includes
+* Move lib/aihrus to includes/libraries/aihrus-framework
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Rename `wordpress_starter` to `wps` for action and filter names

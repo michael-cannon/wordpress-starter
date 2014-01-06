@@ -48,6 +48,7 @@
 * Move ci to tests
 * Move files to assets and includes
 * Move lib/aihrus to includes/libraries/aihrus-framework
+* Move main class to own class file
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Rename `wordpress_starter` to `wps` for action and filter names

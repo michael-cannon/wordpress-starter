@@ -72,4 +72,8 @@ function wordpress_starter_init() {
 }
 
 
+register_activation_hook( __FILE__, array( 'WordPress_Starter', 'activation' ) );
+register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation' ) );
+register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
+
 ?>

@@ -86,11 +86,12 @@ then
 	rm 000-code-qa.txt
 fi
 
-mv ${OLD_BASE}.css ${NEW_BASE}.css
 mv ${OLD_BASE}.php ${NEW_BASE}.php
+mv assets/css/${OLD_BASE}.css assets/css/${NEW_BASE}.css
+mv includes/class-${OLD_BASE}-settings.php includes/class-${NEW_BASE}-settings.php
+mv includes/class-${OLD_BASE}-widget.php includes/class-${NEW_BASE}-widget.php
+mv includes/class-${OLD_BASE}.php includes/class-${NEW_BASE}.php
 mv languages/${OLD_BASE}.pot languages/${NEW_BASE}.pot
-mv lib/class-${OLD_BASE}-settings.php lib/class-${NEW_BASE}-settings.php
-mv lib/class-${OLD_BASE}-widget.php lib/class-${NEW_BASE}-widget.php
 
 if [[ -e .git ]]
 then

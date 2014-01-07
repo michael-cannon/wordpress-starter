@@ -29,19 +29,19 @@
 define( 'WPS_AIHR_VERSION', '1.0.1' );
 define( 'WPS_BASE', plugin_basename( __FILE__ ) );
 define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WPS_DIR_INC', WPS_DIR . '/includes' );
-define( 'WPS_DIR_LIB', WPS_DIR_INC . '/libraries' );
+define( 'WPS_DIR_INC', WPS_DIR . 'includes/' );
+define( 'WPS_DIR_LIB', WPS_DIR_INC . 'libraries/' );
 define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
 define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Purchase WordPress Starter Premium</a>' );
 define( 'WPS_VERSION', '1.0.0' );
 
-require_once WPS_DIR_INC . '/requirements.php';
+require_once WPS_DIR_INC . 'requirements.php';
 
 if ( ! wps_requirements_check() ) {
 	return false;
 }
 
-require_once WPS_DIR_INC . '/class-wordpress-starter.php';
+require_once WPS_DIR_INC . 'class-wordpress-starter.php';
 
 
 add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
@@ -58,7 +58,7 @@ function wordpress_starter_init() {
 		return;
 
 	if ( ! function_exists( 'add_screen_meta_link' ) )
-		require_once WPS_DIR_LIB . '/screen-meta-links.php';
+		require_once WPS_DIR_LIB . 'screen-meta-links.php';
 
 	if ( WordPress_Starter::version_check() ) {
 		global $WordPress_Starter;

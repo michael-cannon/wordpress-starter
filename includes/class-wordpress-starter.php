@@ -13,9 +13,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-require_once WPS_DIR_LIB . '/aihrus-framework/class-aihrus-common.php';
-require_once WPS_DIR_INC . '/class-wordpress-starter-settings.php';
-require_once WPS_DIR_INC . '/class-wordpress-starter-widget.php';
+require_once WPS_DIR_LIB . 'aihrus-framework/class-aihrus-common.php';
+require_once WPS_DIR_INC . 'class-wordpress-starter-settings.php';
+require_once WPS_DIR_INC . 'class-wordpress-starter-widget.php';
 
 if ( class_exists( 'WordPress_Starter' ) )
 	return;
@@ -32,6 +32,7 @@ class WordPress_Starter extends Aihrus_Common {
 	public static $class = __CLASS__;
 	public static $menu_id;
 	public static $notice_key;
+	public static $plugin_assets;
 	public static $scripts = array();
 	public static $settings_link;
 	public static $styles        = array();
@@ -42,6 +43,9 @@ class WordPress_Starter extends Aihrus_Common {
 
 	public function __construct() {
 		parent::__construct();
+
+		self::$plugin_assets = plugins_url( '/assets/', dirname( __FILE__ ) );
+		self::$plugin_assets = self::strip_protocol( self::$plugin_assets );
 
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
@@ -116,7 +120,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 		global $wpdb;
 		
-		require_once WPS_DIR_INC . '/class-wordpress-starter-settings.php';
+		require_once WPS_DIR_INC . 'class-wordpress-starter-settings.php';
 
 		$delete_data = wps_get_option( 'delete_data', false );
 		if ( $delete_data ) {
@@ -510,7 +514,7 @@ class WordPress_Starter extends Aihrus_Common {
 		if ( is_admin() ) {
 			wp_enqueue_script( 'jquery' );
 
-			wp_register_script( 'jquery-ui-progressbar', plugins_url( 'assets/js/jquery.ui.progressbar.js', dirname( __FILE__ ) ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
+			wp_register_script( 'jquery-ui-progressbar', self::$plugin_assets . 'js/jquery.ui.progressbar.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
 			wp_enqueue_script( 'jquery-ui-progressbar' );
 
 			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_scripts' ) );
@@ -524,12 +528,12 @@ class WordPress_Starter extends Aihrus_Common {
 
 	public static function styles() {
 		if ( is_admin() ) {
-			wp_register_style( 'jquery-ui-progressbar', plugins_url( 'assets/css/redmond/jquery-ui-1.10.3.custom.min.css', dirname( __FILE__ ) ), false, '1.10.3' );
+			wp_register_style( 'jquery-ui-progressbar', self::$plugin_assets . 'css/redmond/jquery-ui-1.10.3.custom.min.css', false, '1.10.3' );
 			wp_enqueue_style( 'jquery-ui-progressbar' );
 
 			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_styles' ) );
 		} else {
-			wp_register_style( __CLASS__, plugins_url( 'wordpress-starter.css', dirname( __FILE__ ) ) );
+			wp_register_style( __CLASS__, self::$plugin_assets . 'css/wordpress-starter.css' );
 			wp_enqueue_style( __CLASS__ );
 
 			add_action( 'wp_footer', array( 'WordPress_Starter', 'get_styles' ) );

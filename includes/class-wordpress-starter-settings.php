@@ -22,7 +22,7 @@
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
 
-require_once WPS_DIR_LIB . '/aihrus-framework/class-aihrus-settings.php';
+require_once WPS_DIR_LIB . 'aihrus-framework/class-aihrus-settings.php';
 
 if ( class_exists( 'WordPress_Starter_Settings' ) )
 	return;
@@ -35,8 +35,8 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 	public static $admin_page;
 	public static $class      = __CLASS__;
 	public static $defaults   = array();
+	public static $plugin_assets;
 	public static $plugin_url = 'http://wordpress.org/plugins/wordpress-starter/';
-	public static $plugin_path;
 	public static $sections = array();
 	public static $settings = array();
 	public static $version;
@@ -87,10 +87,7 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 	public static function init() {
 		load_plugin_textdomain( 'wordpress-starter', false, '/wordpress-starter/languages/' );
 
-		$plugin_path = plugins_url( '', dirname( __FILE__ ) );
-		$plugin_path = WordPress_Starter::strip_protocol( $plugin_path );
-
-		self::$plugin_path = $plugin_path;
+		self::$plugin_assets = WordPress_Starter::$plugin_assets;
 	}
 
 

@@ -12,6 +12,7 @@
 * Add aihrus framework
 * Add Ajax processing screen
 * Add and highlight video introduction
+* Add Codeship.io configuration
 * Add EDD_SL_Plugin_Updater.php
 * Add LICENSE
 * Add licensing helper

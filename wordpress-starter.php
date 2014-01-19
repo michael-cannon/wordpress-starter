@@ -53,21 +53,23 @@ add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
-function wordpress_starter_init() {
-	if ( ! is_admin() )
-		return;
+if ( ! function_exists( 'wordpress_starter_init' ) ) {
+	function wordpress_starter_init() {
+		if ( ! is_admin() )
+			return;
 
-	if ( ! function_exists( 'add_screen_meta_link' ) )
-		require_once WPS_DIR_LIB . 'screen-meta-links.php';
+		if ( ! function_exists( 'add_screen_meta_link' ) )
+			require_once WPS_DIR_LIB . 'screen-meta-links.php';
 
-	if ( WordPress_Starter::version_check() ) {
-		global $WordPress_Starter;
-		if ( is_null( $WordPress_Starter ) )
-			$WordPress_Starter = new WordPress_Starter();
+		if ( WordPress_Starter::version_check() ) {
+			global $WordPress_Starter;
+			if ( is_null( $WordPress_Starter ) )
+				$WordPress_Starter = new WordPress_Starter();
 
-		global $WordPress_Starter_Settings;
-		if ( is_null( $WordPress_Starter_Settings ) )
-			$WordPress_Starter_Settings = new WordPress_Starter_Settings();
+			global $WordPress_Starter_Settings;
+			if ( is_null( $WordPress_Starter_Settings ) )
+				$WordPress_Starter_Settings = new WordPress_Starter_Settings();
+		}
 	}
 }
 
@@ -75,5 +77,12 @@ function wordpress_starter_init() {
 register_activation_hook( __FILE__, array( 'WordPress_Starter', 'activation' ) );
 register_deactivation_hook( __FILE__, array( 'WordPress_Starter', 'deactivation' ) );
 register_uninstall_hook( __FILE__, array( 'WordPress_Starter', 'uninstall' ) );
+
+
+if ( ! function_exists( 'wordpress_starter_shortcode' ) ) {
+	function wordpress_starter_shortcode( $atts ) {
+		return WordPress_Starter::wordpress_starter_shortcode( $atts );
+	}
+}
 
 ?>

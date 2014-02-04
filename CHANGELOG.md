@@ -8,6 +8,7 @@
 ## 0.0.0
 * $this to __CLASS__
 * Abstract get_posts_to_process method
+* Adapt for `hide_update_notice` usage
 * Add action `wps_update`
 * Add aihrus framework
 * Add Ajax processing screen
@@ -32,8 +33,9 @@
 * Baseline readme.txt tags
 * Centralize styles/scripts handling
 * Change $2 donation request to $5
-* Check for PHP 5.3
+* Check for class definitions before setting
 * Check for init and theme functions to exist
+* Check for PHP 5.3
 * Check for sections() and settings() as needed
 * Comment out init() by default
 * Correct cbqe_ options tagging
@@ -59,6 +61,7 @@
 * Revise readme installation
 * Revise readme structure
 * Revise readme.txt structure
+* Revise `get_defaults` usage with filter `wps_settings_defaults`
 * SEO tweaks
 * Simplify filter naming
 * Simplify `wp_enqueue_style` handling

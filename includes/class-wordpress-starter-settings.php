@@ -33,8 +33,9 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 	const NAME = 'WordPress Starter Settings';
 
 	public static $admin_page;
-	public static $class      = __CLASS__;
-	public static $defaults   = array();
+	public static $class              = __CLASS__;
+	public static $defaults           = array();
+	public static $hide_update_notice = true;
 	public static $plugin_assets;
 	public static $plugin_url = 'http://wordpress.org/plugins/wordpress-starter/';
 	public static $sections = array();
@@ -183,7 +184,10 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 	public static function get_defaults( $mode = null, $old_version = null ) {
 		$old_version = wps_get_option( 'version' );
 
-		return parent::get_defaults( $mode, $old_version );
+		$defaults = parent::get_defaults( $mode, $old_version );
+		$defaults = apply_filters( 'wps_settings_defaults', $defaults );
+
+		return $defaults;
 	}
 
 

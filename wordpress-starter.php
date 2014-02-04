@@ -26,14 +26,29 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-define( 'WPS_AIHR_VERSION', '1.0.1' );
-define( 'WPS_BASE', plugin_basename( __FILE__ ) );
-define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WPS_DIR_INC', WPS_DIR . 'includes/' );
-define( 'WPS_DIR_LIB', WPS_DIR_INC . 'libraries/' );
-define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
-define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Purchase WordPress Starter Premium</a>' );
-define( 'WPS_VERSION', '1.0.0' );
+if ( ! defined( 'WPS_AIHR_VERSION' ) )
+	define( 'WPS_AIHR_VERSION', '1.0.1' );
+
+if ( ! defined( 'WPS_BASE' ) )
+	define( 'WPS_BASE', plugin_basename( __FILE__ ) );
+
+if ( ! defined( 'WPS_DIR' ) )
+	define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
+
+if ( ! defined( 'WPS_DIR_INC' ) )
+	define( 'WPS_DIR_INC', WPS_DIR . 'includes/' );
+
+if ( ! defined( 'WPS_DIR_LIB' ) )
+	define( 'WPS_DIR_LIB', WPS_DIR_INC . 'libraries/' );
+
+if ( ! defined( 'WPS_NAME' ) )
+	define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
+
+if ( ! defined( 'WPS_PREMIUM_LINK' ) )
+	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Purchase WordPress Starter Premium</a>' );
+
+if ( ! defined( 'WPS_VERSION' ) )
+	define( 'WPS_VERSION', '1.0.0' );
 
 require_once WPS_DIR_INC . 'requirements.php';
 

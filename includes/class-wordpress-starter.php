@@ -165,6 +165,7 @@ class WordPress_Starter extends Aihrus_Common {
 	 *
 	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 * @SuppressWarnings(PHPMD.Superglobals)
+	 * @codingStandardsIgnoreStart
 	 */
 	public static function user_interface() {
 		// Capability check
@@ -220,6 +221,7 @@ class WordPress_Starter extends Aihrus_Common {
 	</div>
 <?php
 	}
+	// @codingStandardsIgnoreEnd
 
 
 	public static function get_posts_to_process() {
@@ -266,6 +268,9 @@ class WordPress_Starter extends Aihrus_Common {
 	}
 
 
+	/**
+	 * @codingStandardsIgnoreStart
+	 */
 	public static function show_greeting() {
 ?>
 	<form method="post" action="">
@@ -286,12 +291,14 @@ class WordPress_Starter extends Aihrus_Common {
 	</form>
 <?php
 	}
+	// @codingStandardsIgnoreEnd
 
 
 	/**
 	 *
 	 *
 	 * @SuppressWarnings(PHPMD.Superglobals)
+	 * @codingStandardsIgnoreStart
 	 */
 	public static function show_status( $count, $posts ) {
 		echo '<p>' . esc_html__( 'Please be patient while this script run. This can take a while, up to a minute per post. Do not navigate away from this page until this script is done or the import will not be completed. You will be notified via this page when the import is completed.', 'wordpress-starter' ) . '</p>';
@@ -434,6 +441,7 @@ class WordPress_Starter extends Aihrus_Common {
 	</script>
 <?php
 	}
+	// @codingStandardsIgnoreEnd
 
 
 	/**

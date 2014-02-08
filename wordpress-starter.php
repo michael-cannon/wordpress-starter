@@ -27,7 +27,7 @@
  */
 
 if ( ! defined( 'WPS_AIHR_VERSION' ) )
-	define( 'WPS_AIHR_VERSION', '1.0.1' );
+	define( 'WPS_AIHR_VERSION', '1.0.3' );
 
 if ( ! defined( 'WPS_BASE' ) )
 	define( 'WPS_BASE', plugin_basename( __FILE__ ) );
@@ -52,7 +52,12 @@ if ( ! defined( 'WPS_VERSION' ) )
 
 require_once WPS_DIR_INC . 'requirements.php';
 
+global $wps_activated;
+
+$wps_activated = true;
 if ( ! wps_requirements_check() ) {
+	$wps_activated = false;
+
 	return false;
 }
 
@@ -84,6 +89,8 @@ if ( ! function_exists( 'wordpress_starter_init' ) ) {
 			global $WordPress_Starter_Settings;
 			if ( is_null( $WordPress_Starter_Settings ) )
 				$WordPress_Starter_Settings = new WordPress_Starter_Settings();
+			
+			do_action( 'wps_init' );
 		}
 	}
 }

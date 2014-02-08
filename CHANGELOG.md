@@ -28,6 +28,7 @@
 * Adjust load priority to support other plugins tying in
 * Allow blank NEW_* settings
 * Always include settings class
+* Always load CSS
 * apt-get update
 * Baseline API
 * Baseline readme.txt tags

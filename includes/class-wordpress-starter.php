@@ -87,6 +87,7 @@ class WordPress_Starter extends Aihrus_Common {
 		add_action( 'wp_ajax_ajax_process_post', array( __CLASS__, 'ajax_process_post' ) );
 
 		self::set_post_types();
+		self::styles();
 	}
 
 
@@ -567,7 +568,6 @@ class WordPress_Starter extends Aihrus_Common {
 
 	public static function call_scripts_styles( $atts ) {
 		self::scripts( $atts );
-		self::styles();
 	}
 
 

@@ -107,7 +107,6 @@ fi
 git init
 git add *
 git add .gitignore
-git add .travis.yml
 git commit -m "Initial plugin creation"
 git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git
 echo "git push origin master"

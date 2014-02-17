@@ -45,7 +45,7 @@ if ( ! defined( 'WPS_NAME' ) )
 	define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
 
 if ( ! defined( 'WPS_PREMIUM_LINK' ) )
-	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Purchase WordPress Starter Premium</a>' );
+	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Buy Premium</a>' );
 
 if ( ! defined( 'WPS_VERSION' ) )
 	define( 'WPS_VERSION', '1.0.0' );

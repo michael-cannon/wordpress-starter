@@ -16,9 +16,9 @@ TBD
 
 WordPress Starter [by Aihrus](http://aihr.us/about-aihrus/) does TBD.
 
-http://www.youtube.com/watch?v=TBD
+[youtube https://www.youtube.com/watch?v=TBD]
 
-**[Video introduction](http://www.youtube.com/watch?v=TBD)**
+**[Video introduction](https://www.youtube.com/watch?v=TBD)**
 
 The WordPress KEYWORD plugin, WordPress Starter, TBD.
 

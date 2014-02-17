@@ -57,6 +57,7 @@
 * Move main class to own class file
 * Prevent unwanted slug__ naming
 * Purge excess code
+* Put YouTube to https
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Revise headers
 * Revise installation instructions

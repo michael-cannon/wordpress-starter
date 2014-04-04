@@ -24,7 +24,7 @@ If you find an issue, [let us know here](https://github.com/michael-cannon/wordp
 
 ## Support
 
-This is a developer's portal for WordPress Starter by Michael Cannon and should not be used for support. Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
+This is a developer's portal for WordPress Starter by Michael Cannon and should not be used for support. Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) for frequently asked questions, offering ideas, or getting support.
 
 ## Contributions
 

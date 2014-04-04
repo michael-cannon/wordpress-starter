@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2013 Michael Cannon (email: mc@aihr.us)
+	Copyright 2014 Michael Cannon (email: mc@aihr.us)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -213,9 +213,10 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 	public static function validate_settings( $input, $options = null, $do_errors = false ) {
 		$validated = parent::validate_settings( $input, $options, $do_errors );
 
-		if ( empty( $do_errors ) )
-			$input = $validated;
-		else {
+		if ( empty( $do_errors ) ) {
+			$input  = $validated;
+			$errors = array();
+		} else {
 			$input  = $validated['input'];
 			$errors = $validated['errors'];
 		}

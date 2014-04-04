@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2013 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2014 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -87,7 +87,10 @@ class WordPress_Starter extends Aihrus_Common {
 		add_action( 'wp_ajax_ajax_process_post', array( __CLASS__, 'ajax_process_post' ) );
 
 		self::set_post_types();
-		self::styles();
+
+		if ( self::do_load() ) {
+			self::styles();
+		}
 	}
 
 
@@ -523,7 +526,7 @@ class WordPress_Starter extends Aihrus_Common {
 		if ( is_admin() ) {
 			wp_enqueue_script( 'jquery' );
 
-			wp_register_script( 'jquery-ui-progressbar', self::$plugin_assets . 'js/jquery.ui.progressbar.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
+			wp_register_script( 'jquery-ui-progressbar', self::$plugin_assets . 'js/jquery.ui.progressbar.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3', true );
 			wp_enqueue_script( 'jquery-ui-progressbar' );
 
 			add_action( 'admin_footer', array( 'WordPress_Starter', 'get_scripts' ) );

@@ -58,6 +58,7 @@
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Put YouTube to https
+* Register scritps to footer
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Revise headers
 * Revise installation instructions
@@ -76,7 +77,9 @@
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Tweaks titles
 * Update about image path
+* Update copyright
 * Update donate text
+* Update KB links
 * Update POT
 * Update Travis
 * Use abstract class Aihrus_Settings

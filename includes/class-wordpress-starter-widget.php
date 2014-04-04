@@ -16,7 +16,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once WPS_DIR_LIB . 'aihrus-framework/class-aihrus-widget.php';
+require_once AIHR_DIR_INC . 'class-aihrus-widget.php';
 
 if ( class_exists( 'WordPress_Starter_Widget' ) )
 	return;

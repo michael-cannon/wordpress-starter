@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) )
 	exit;
 
 if ( ! defined( 'WPS_AIHR_VERSION' ) )
-	define( 'WPS_AIHR_VERSION', '1.0.3' );
+	define( 'WPS_AIHR_VERSION', '1.1.0RC5' );
 
 if ( ! defined( 'WPS_BASE' ) )
 	define( 'WPS_BASE', plugin_basename( __FILE__ ) );

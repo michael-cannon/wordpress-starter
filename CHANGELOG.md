@@ -84,7 +84,7 @@
 * Update Travis
 * Use abstract class Aihrus_Settings
 * Use abstract class Aihrus_Widget
-* Use Aihrus Framework 1.0.3
+* Use Aihrus Framework 1.1.0RC5
 * Use aihr_check_aihrus_framework
 * Use bash regex
 * Use do_load

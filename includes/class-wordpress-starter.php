@@ -13,7 +13,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-require_once WPS_DIR_LIB . 'aihrus-framework/class-aihrus-common.php';
+require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 require_once WPS_DIR_INC . 'class-wordpress-starter-settings.php';
 require_once WPS_DIR_INC . 'class-wordpress-starter-widget.php';
 
@@ -571,32 +571,6 @@ class WordPress_Starter extends Aihrus_Common {
 
 	public static function call_scripts_styles( $atts ) {
 		self::scripts( $atts );
-	}
-
-
-	public static function get_scripts() {
-		if ( empty( self::$scripts ) )
-			return;
-
-		foreach ( self::$scripts as $script )
-			echo $script;
-	}
-
-
-	public static function get_styles() {
-		if ( empty( self::$styles ) )
-			return;
-
-		if ( empty( self::$styles_called ) ) {
-			echo '<style>';
-
-			foreach ( self::$styles as $style )
-				echo $style;
-
-			echo '</style>';
-
-			self::$styles_called = true;
-		}
 	}
 
 

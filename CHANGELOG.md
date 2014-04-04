@@ -58,7 +58,7 @@
 * Prevent unwanted slug__ naming
 * Purge excess code
 * Put YouTube to https
-* Register scritps to footer
+* Register scripts to footer
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Revise headers
 * Revise installation instructions

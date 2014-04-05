@@ -563,9 +563,14 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function version_check() {
-		$good_version = true;
+		$valid_version = true;
+		if ( ! $valid_version ) {
+			$deactivate_reason = esc_html__( 'Failed version check' );
+			aihr_deactivate_plugin( self::BASE, WPS_NAME, $deactivate_reason );
+			self::check_notices();
+		}
 
-		return $good_version;
+		return $valid_version;
 	}
 
 

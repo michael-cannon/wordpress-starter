@@ -76,17 +76,9 @@ class WordPress_Starter_Widget extends Aihrus_Widget {
 	 */
 	public static function form_parts( $instance, $number ) {
 		$form_parts = WordPress_Starter_Settings::get_settings();
-		$form_parts = self::widget_options( $form_parts );
+		$form_parts = apply_filters( 'wps_widget_options', $form_parts );
 
 		return $form_parts;
-	}
-
-
-	public static function widget_options( $options ) {
-		$options = parent::widget_options( $options );
-		$options = apply_filters( 'wps_widget_options', $options );
-
-		return $options;
 	}
 
 

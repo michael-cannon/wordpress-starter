@@ -59,7 +59,9 @@
 * Purge excess code
 * Put YouTube to https
 * Register scripts to footer
+* Remove unused `widget_options`
 * Rename `wordpress_starter` to `wps` for action and filter names
+* Require Aihrus 1.1.0
 * Revise headers
 * Revise installation instructions
 * Revise readme installation
@@ -84,7 +86,6 @@
 * Update Travis
 * Use abstract class Aihrus_Settings
 * Use abstract class Aihrus_Widget
-* Use Aihrus Framework 1.1.0RC5
 * Use aihr_check_aihrus_framework
 * Use bash regex
 * Use do_load

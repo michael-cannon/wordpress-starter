@@ -1,16 +1,21 @@
 <?php
 /**
- * Copyright 2014 Michael Cannon (email: mc@aihr.us)
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+Aihrus WordPress Starter
+Copyright (C) 2014  Michael Cannon
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 require_once AIHR_DIR_INC . 'class-aihrus-common.php';
@@ -66,14 +71,14 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function admin_menu() {
-		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
+		self::$menu_id = add_management_page( esc_html__( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ), esc_html__( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
 
 		add_action( 'admin_print_scripts-' . self::$menu_id, array( __CLASS__, 'scripts' ) );
 		add_action( 'admin_print_styles-' . self::$menu_id, array( __CLASS__, 'styles' ) );
 
 		add_screen_meta_link(
 			'wps_settings_link',
-			esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ),
+			esc_html__( 'Aihrus WordPress Starter Settings', 'wordpress-starter' ),
 			admin_url( 'options-general.php?page=' . WordPress_Starter_Settings::ID ),
 			self::$menu_id,
 			array( 'style' => 'font-weight: bold;' )
@@ -182,7 +187,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 <div class="wrap wpsposts">
 	<div class="icon32" id="icon-tools"></div>
-	<h2><?php _e( 'WordPress Starter Processor', 'wordpress-starter' ); ?></h2>
+	<h2><?php _e( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ); ?></h2>
 
 <?php
 		if ( wps_get_option( 'debug_mode' ) ) {
@@ -288,7 +293,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 	<p><?php _e( 'To begin, just press the button below.', 'wordpress-starter' ); ?></p>
 
-	<p><input type="submit" class="button hide-if-no-js" name="<?php echo self::ID; ?>" id="<?php echo self::ID; ?>" value="<?php _e( 'Process WordPress Starter', 'wordpress-starter' ) ?>" /></p>
+	<p><input type="submit" class="button hide-if-no-js" name="<?php echo self::ID; ?>" id="<?php echo self::ID; ?>" value="<?php _e( 'Process Aihrus WordPress Starter', 'wordpress-starter' ) ?>" /></p>
 
 	<noscript><p><em><?php _e( 'You must enable Javascript in order to proceed!', 'wordpress-starter' ) ?></em></p></noscript>
 
@@ -483,7 +488,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function notice_0_0_1() {
-		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
+		$text = sprintf( __( 'If your Aihrus WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		aihr_notice_updated( $text );
 	}

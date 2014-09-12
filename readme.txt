@@ -1,4 +1,4 @@
-=== WordPress Starter by Aihrus ===
+=== Aihrus WordPress Starter ===
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
@@ -14,13 +14,13 @@ TBD
 
 == Description ==
 
-WordPress Starter [by Aihrus](http://aihr.us/about-aihrus/) does TBD.
+Aihrus WordPress Starter does TBD.
 
 [youtube https://www.youtube.com/watch?v=TBD]
 
 **[Video introduction](https://www.youtube.com/watch?v=TBD)**
 
-The WordPress KEYWORD plugin, WordPress Starter, TBD.
+The WordPress KEYWORD plugin, Aihrus WordPress Starter, TBD.
 
 = Primary Features =
 
@@ -29,15 +29,15 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 * Settings export/import
 * Settings screen
 
-= WordPress Starter Premium =
+= Aihrus WordPress Starter Premium =
 
-[Buy WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
+[Buy Aihrus WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
 
 = Primary Premium Features =
 
 * TBD
 
-[Buy WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
+[Buy Aihrus WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
 
 = Shortcodes =
 
@@ -76,7 +76,7 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 * Export Settings – These are your current settings in a serialized format. Copy the contents to make a backup of your settings.
 * Import Settings – Paste new serialized settings here to overwrite your current configuration.
-* Remove Plugin Data on Deletion? - Delete all WordPress Starter data and options from database on plugin deletion
+* Remove Plugin Data on Deletion? - Delete all Aihrus WordPress Starter data and options from database on plugin deletion
 * Reset to Defaults? – Check this box to reset options to their defaults
 
 
@@ -88,9 +88,9 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Install Methods =
 
-* Through WordPress Admin > Plugins > Add New, Search for "WordPress Starter"
-	* Find "WordPress Starter by Aihrus"
-	* Click "Install Now" of "WordPress Starter by Aihrus"
+* Through WordPress Admin > Plugins > Add New, Search for "Aihrus WordPress Starter"
+	* Find "Aihrus WordPress Starter"
+	* Click "Install Now" of "Aihrus WordPress Starter"
 * Download [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
 	* Through WordPress Admin > Plugins > Add New
 	* Click Upload
@@ -101,13 +101,12 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Activation Options =
 
-* Activate the "WordPress Starter" plugin after uploading
-* Activate the "WordPress Starter" plugin through WordPress Admin > Plugins
+* Activate the "Aihrus WordPress Starter" plugin after uploading through WordPress Admin > Plugins
 
 = Usage =
 
-1. Edit options through WordPress Admin > Settings > WordPress Starter 
-1. Process posts via WordPress Admin > Tools > WordPress Starter
+1. Edit options through WordPress Admin > Settings > Aihrus WordPress Starter 
+1. Process posts via WordPress Admin > Tools > Aihrus WordPress Starter
 
 = Upgrading =
 
@@ -124,17 +123,18 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Most Common Issues =
 
-* Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006) for the fixes.
-* [Debug common theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
-* [Change or debug CSS](https://aihrus.zendesk.com/entries/24910733)
+* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006)
+* [Change styling or debug CSS](https://aihrus.zendesk.com/entries/24910733)
+* [Debug theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
-1. [Open WordPress Starter Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
-1. [WordPress Starter Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - ask questions and review responses
-1. [Contribute Code to WordPress Starter](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md)
-1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest WordPress Starter version
+1. [Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
+1. [Open Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
+1. [Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - ask questions and review responses
+1. [Contribute Code](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md)
+1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - provide feedback and direction to plugin development
+1. [Old Plugin Versions](http://wordpress.org/plugins/wordpress-starter/developers/)
 
 
 == Screenshots ==
@@ -163,7 +163,7 @@ See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter/blob/master/
 
 == API ==
 
-* Read the [WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
+* Read the [Aihrus WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
 
 
 == Localization ==

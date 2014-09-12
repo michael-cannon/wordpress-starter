@@ -1,6 +1,6 @@
-# API WordPress Starter
+# API Aihrus WordPress Starter
 
-The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) comes with its own set of actions and filters, as described below.
+The [Aihrus WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) comes with its own set of actions and filters, as described below.
 
 ## Actions
 
@@ -56,4 +56,4 @@ The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) 
 
 ## Need More?
 
-Further examples and more can be found by reading and searching the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) and [source code](https://github.com/michael-cannon/wordpress-starter).
+Further examples and more can be found by reading and searching the [Aihrus WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) and [source code](https://github.com/michael-cannon/wordpress-starter).

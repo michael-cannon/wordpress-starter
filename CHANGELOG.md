@@ -1,4 +1,4 @@
-# CHANGELOG WordPress Starter by Aihrus
+# CHANGELOG Aihrus WordPress Starter
 
 ## master
 
@@ -26,6 +26,7 @@
 * Add widget template
 * Add [[gallery]]
 * Adjust load priority to support other plugins tying in
+* Aihrus WordPress Starter branding
 * Allow blank NEW_* settings
 * Always include settings class
 * Always load CSS
@@ -61,7 +62,8 @@
 * Register scripts to footer
 * Remove unused `widget_options`
 * Rename `wordpress_starter` to `wps` for action and filter names
-* Require Aihrus 1.1.0
+* Require Aihrus 1.1.4
+* Revise FAQ section
 * Revise headers
 * Revise installation instructions
 * Revise readme installation
@@ -82,6 +84,7 @@
 * Update copyright
 * Update donate text
 * Update KB links
+* Update LICENSE
 * Update POT
 * Update Travis
 * Use abstract class Aihrus_Settings

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WordPress Starter by Aihrus
+ * Plugin Name: Aihrus WordPress Starter
  * Plugin URI: http://wordpress.org/plugins/wordpress-starter/
  * Description: TBD
  * Version: 1.0.0
@@ -13,17 +13,22 @@
 
 
 /**
- * Copyright 2014 Michael Cannon (email: mc@aihr.us)
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+Aihrus WordPress Starter
+Copyright (C) 2014  Michael Cannon
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 // Exit if accessed directly
@@ -31,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) )
 	exit;
 
 if ( ! defined( 'WPS_AIHR_VERSION' ) )
-	define( 'WPS_AIHR_VERSION', '1.1.0' );
+	define( 'WPS_AIHR_VERSION', '1.1.4' );
 
 if ( ! defined( 'WPS_BASE' ) )
 	define( 'WPS_BASE', plugin_basename( __FILE__ ) );
@@ -46,7 +51,7 @@ if ( ! defined( 'WPS_DIR_LIB' ) )
 	define( 'WPS_DIR_LIB', WPS_DIR_INC . 'libraries/' );
 
 if ( ! defined( 'WPS_NAME' ) )
-	define( 'WPS_NAME', 'WordPress Starter by Aihrus' );
+	define( 'WPS_NAME', 'Aihrus WordPress Starter' );
 
 if ( ! defined( 'WPS_PREMIUM_LINK' ) )
 	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Buy Premium</a>' );

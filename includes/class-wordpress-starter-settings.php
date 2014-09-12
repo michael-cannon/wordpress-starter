@@ -1,23 +1,25 @@
 <?php
-/*
-	Copyright 2014 Michael Cannon (email: mc@aihr.us)
+/**
+Aihrus WordPress Starter
+Copyright (C) 2014  Michael Cannon
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as
-	published by the Free Software Foundation.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 /**
- * WordPress Starter settings class
+ * Aihrus WordPress Starter settings class
  *
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
@@ -30,7 +32,7 @@ if ( class_exists( 'WordPress_Starter_Settings' ) )
 
 class WordPress_Starter_Settings extends Aihrus_Settings {
 	const ID   = 'wordpress-starter-settings';
-	const NAME = 'WordPress Starter Settings';
+	const NAME = 'Aihrus WordPress Starter Settings';
 
 	public static $admin_page;
 	public static $class              = __CLASS__;
@@ -69,7 +71,7 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 
 
 	public static function admin_menu() {
-		self::$admin_page = add_options_page( esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ), esc_html__( 'WordPress Starter', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'display_page' ) );
+		self::$admin_page = add_options_page( esc_html__( 'Aihrus WordPress Starter Settings', 'wordpress-starter' ), esc_html__( 'Aihrus WordPress Starter', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'display_page' ) );
 
 		add_action( 'admin_print_scripts-' . self::$admin_page, array( __CLASS__, 'scripts' ) );
 		add_action( 'admin_print_styles-' . self::$admin_page, array( __CLASS__, 'styles' ) );
@@ -77,7 +79,7 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 
 		add_screen_meta_link(
 			'wsp_importer_link',
-			esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ),
+			esc_html__( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ),
 			admin_url( 'tools.php?page=' . WordPress_Starter::ID ),
 			self::$admin_page,
 			array( 'style' => 'font-weight: bold;' )
@@ -245,10 +247,10 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 
 		$screen->set_help_sidebar(
 			'<p><strong>' . esc_html__( 'For more information:', 'wordpress-starter' ) . '</strong></p><p>' .
-			esc_html__( 'These WordPress Starter Settings establish the default option values for shortcodes, theme functions, and widget instances.', 'wordpress-starter' ) .
+			esc_html__( 'These Aihrus WordPress Starter Settings establish the default option values for shortcodes, theme functions, and widget instances.', 'wordpress-starter' ) .
 			'</p><p>' .
 			sprintf(
-				__( 'View the <a href="%s">WordPress Starter documentation</a>.', 'wordpress-starter' ),
+				__( 'View the <a href="%s">Aihrus WordPress Starter documentation</a>.', 'wordpress-starter' ),
 				esc_url( self::$plugin_url )
 			) .
 			'</p>'

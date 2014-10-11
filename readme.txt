@@ -1,4 +1,4 @@
-=== Aihrus WordPress Starter ===
+=== WordPress Starter ===
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
@@ -14,13 +14,13 @@ TBD
 
 == Description ==
 
-Aihrus WordPress Starter does TBD.
+WordPress Starter does TBD.
 
 [youtube https://www.youtube.com/watch?v=TBD]
 
 **[Video introduction](https://www.youtube.com/watch?v=TBD)**
 
-The WordPress KEYWORD plugin, Aihrus WordPress Starter, TBD.
+The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Primary Features =
 
@@ -29,15 +29,15 @@ The WordPress KEYWORD plugin, Aihrus WordPress Starter, TBD.
 * Settings export/import
 * Settings screen
 
-= Aihrus WordPress Starter Premium =
+= WordPress Starter Premium =
 
-[Buy Aihrus WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
+[Buy WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
 
 = Primary Premium Features =
 
 * TBD
 
-[Buy Aihrus WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
+[Buy WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
 
 = Shortcodes =
 
@@ -76,7 +76,7 @@ The WordPress KEYWORD plugin, Aihrus WordPress Starter, TBD.
 
 * Export Settings – These are your current settings in a serialized format. Copy the contents to make a backup of your settings.
 * Import Settings – Paste new serialized settings here to overwrite your current configuration.
-* Remove Plugin Data on Deletion? - Delete all Aihrus WordPress Starter data and options from database on plugin deletion
+* Remove Plugin Data on Deletion? - Delete all WordPress Starter data and options from database on plugin deletion
 * Reset to Defaults? – Check this box to reset options to their defaults
 
 
@@ -88,9 +88,9 @@ The WordPress KEYWORD plugin, Aihrus WordPress Starter, TBD.
 
 = Install Methods =
 
-* Through WordPress Admin > Plugins > Add New, Search for "Aihrus WordPress Starter"
-	* Find "Aihrus WordPress Starter"
-	* Click "Install Now" of "Aihrus WordPress Starter"
+* Through WordPress Admin > Plugins > Add New, Search for "WordPress Starter"
+	* Find "WordPress Starter"
+	* Click "Install Now" of "WordPress Starter"
 * Download [`wordpress-starter.zip`](http://downloads.wordpress.org/plugin/wordpress-starter.zip) locally
 	* Through WordPress Admin > Plugins > Add New
 	* Click Upload
@@ -101,12 +101,12 @@ The WordPress KEYWORD plugin, Aihrus WordPress Starter, TBD.
 
 = Activation Options =
 
-* Activate the "Aihrus WordPress Starter" plugin after uploading through WordPress Admin > Plugins
+* Activate the "WordPress Starter" plugin after uploading through WordPress Admin > Plugins
 
 = Usage =
 
-1. Edit options through WordPress Admin > Settings > Aihrus WordPress Starter 
-1. Process posts via WordPress Admin > Tools > Aihrus WordPress Starter
+1. Edit options through WordPress Admin > Settings > WordPress Starter 
+1. Process posts via WordPress Admin > Tools > WordPress Starter
 
 = Upgrading =
 
@@ -163,7 +163,7 @@ See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter/blob/master/
 
 == API ==
 
-* Read the [Aihrus WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
+* Read the [WordPress Starter API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
 
 
 == Localization ==

@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus WordPress Starter
+WordPress Starter
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -22,8 +22,9 @@ require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 require_once WPS_DIR_INC . 'class-wordpress-starter-settings.php';
 require_once WPS_DIR_INC . 'class-wordpress-starter-widget.php';
 
-if ( class_exists( 'WordPress_Starter' ) )
+if ( class_exists( 'WordPress_Starter' ) ) {
 	return;
+}
 
 
 class WordPress_Starter extends Aihrus_Common {
@@ -35,6 +36,7 @@ class WordPress_Starter extends Aihrus_Common {
 	private static $post_types;
 
 	public static $class = __CLASS__;
+	public static $library_assets;
 	public static $menu_id;
 	public static $notice_key;
 	public static $plugin_assets;
@@ -48,6 +50,9 @@ class WordPress_Starter extends Aihrus_Common {
 
 	public function __construct() {
 		parent::__construct();
+
+		self::$library_assets = plugins_url( '/includes/libraries/', dirname( __FILE__ ) );
+		self::$library_assets = self::strip_protocol( self::$library_assets );
 
 		self::$plugin_assets = plugins_url( '/assets/', dirname( __FILE__ ) );
 		self::$plugin_assets = self::strip_protocol( self::$plugin_assets );
@@ -71,14 +76,14 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function admin_menu() {
-		self::$menu_id = add_management_page( esc_html__( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ), esc_html__( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
+		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processor', 'wordpress-starter' ), 'manage_options', self::ID, array( __CLASS__, 'user_interface' ) );
 
 		add_action( 'admin_print_scripts-' . self::$menu_id, array( __CLASS__, 'scripts' ) );
 		add_action( 'admin_print_styles-' . self::$menu_id, array( __CLASS__, 'styles' ) );
 
 		add_screen_meta_link(
 			'wps_settings_link',
-			esc_html__( 'Aihrus WordPress Starter Settings', 'wordpress-starter' ),
+			esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ),
 			admin_url( 'options-general.php?page=' . WordPress_Starter_Settings::ID ),
 			self::$menu_id,
 			array( 'style' => 'font-weight: bold;' )
@@ -187,7 +192,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 <div class="wrap wpsposts">
 	<div class="icon32" id="icon-tools"></div>
-	<h2><?php _e( 'Aihrus WordPress Starter Processor', 'wordpress-starter' ); ?></h2>
+	<h2><?php _e( 'WordPress Starter Processor', 'wordpress-starter' ); ?></h2>
 
 <?php
 		if ( wps_get_option( 'debug_mode' ) ) {
@@ -293,7 +298,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 	<p><?php _e( 'To begin, just press the button below.', 'wordpress-starter' ); ?></p>
 
-	<p><input type="submit" class="button hide-if-no-js" name="<?php echo self::ID; ?>" id="<?php echo self::ID; ?>" value="<?php _e( 'Process Aihrus WordPress Starter', 'wordpress-starter' ) ?>" /></p>
+	<p><input type="submit" class="button hide-if-no-js" name="<?php echo self::ID; ?>" id="<?php echo self::ID; ?>" value="<?php _e( 'Process WordPress Starter', 'wordpress-starter' ) ?>" /></p>
 
 	<noscript><p><em><?php _e( 'You must enable Javascript in order to proceed!', 'wordpress-starter' ) ?></em></p></noscript>
 
@@ -488,7 +493,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function notice_0_0_1() {
-		$text = sprintf( __( 'If your Aihrus WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
+		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		aihr_notice_updated( $text );
 	}

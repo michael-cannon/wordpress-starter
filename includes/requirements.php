@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus WordPress Starter
+WordPress Starter
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify

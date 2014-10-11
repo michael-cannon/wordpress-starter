@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus WordPress Starter
+WordPress Starter
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -20,25 +20,24 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 require_once AIHR_DIR_INC . 'class-aihrus-widget.php';
 
-if ( class_exists( 'WordPress_Starter_Widget' ) )
+if ( class_exists( 'WordPress_Starter_Widget' ) ) {
 	return;
+}
 
 
 class WordPress_Starter_Widget extends Aihrus_Widget {
 	const ID = 'wordpress-starter-widget';
 
-	public function __construct( $classname = null, $description = null, $id_base = null, $title = null ) {
-		$classname   = 'WordPress_Starter_Widget';
-		$description = esc_html__( 'Display Aihrus WordPress Starter entries.' );
+	public static $title;
+
+
+	public function __construct() {
+		$classname   = __CLASS__;
+		$description = esc_html__( 'Display WordPress Starter entries.' );
 		$id_base     = self::ID;
-		$title       = esc_html__( 'Aihrus WordPress Starter' );
-
-		parent::__construct( $classname, $description, $id_base, $title );
-	}
-
-
-	public static function get_defaults() {
-		return WordPress_Starter::get_defaults();
+		self::$title = esc_html__( 'WordPress Starter' );
+ 
+		parent::__construct( $classname, $description, $id_base, self::$title );
 	}
 
 
@@ -47,50 +46,23 @@ class WordPress_Starter_Widget extends Aihrus_Widget {
 	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
-
-
 	public static function get_content( $instance, $widget_number ) {
 		return $widget_number;
 	}
 
 
-	public static function validate_settings( $instance ) {
-		return WordPress_Starter_Settings::validate_settings( $instance );
-	}
+	public static function form_parts( $instance = null, $number = null ) {
+		$form_parts = parent::form_parts( $instance, $number );
 
+		$form_parts['title']['std'] = self::$title;
 
-	public static function form_instance( $instance ) {
-		if ( empty( $instance ) ) {
-			// no instance
-			$instance = array();
-		} elseif ( ! empty( $instance['resetted'] ) ) {
-			// reset instance
-		}
-
-		return $instance;
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 */
-	public static function form_parts( $instance, $number ) {
-		$form_parts = WordPress_Starter_Settings::get_settings();
 		$form_parts = apply_filters( 'wps_widget_options', $form_parts );
 
+		foreach ( $form_parts as $id => $parts ) {
+			$form_parts[ $id ] = wp_parse_args( $parts, self::$default );
+		}
+
 		return $form_parts;
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 */
-	public static function get_suggest( $id, $suggest_id ) {
-		return $suggest_id;
 	}
 
 

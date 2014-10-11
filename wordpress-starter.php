@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Aihrus WordPress Starter
+ * Plugin Name: WordPress Starter
  * Plugin URI: http://wordpress.org/plugins/wordpress-starter/
  * Description: TBD
  * Version: 1.0.0
@@ -13,7 +13,7 @@
 
 
 /**
-Aihrus WordPress Starter
+WordPress Starter
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -51,7 +51,7 @@ if ( ! defined( 'WPS_DIR_LIB' ) )
 	define( 'WPS_DIR_LIB', WPS_DIR_INC . 'libraries/' );
 
 if ( ! defined( 'WPS_NAME' ) )
-	define( 'WPS_NAME', 'Aihrus WordPress Starter' );
+	define( 'WPS_NAME', 'WordPress Starter' );
 
 if ( ! defined( 'WPS_PREMIUM_LINK' ) )
 	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Buy Premium</a>' );

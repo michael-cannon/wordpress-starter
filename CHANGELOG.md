@@ -1,4 +1,4 @@
-# CHANGELOG Aihrus WordPress Starter
+# CHANGELOG WordPress Starter
 
 ## master
 
@@ -26,7 +26,7 @@
 * Add widget template
 * Add [[gallery]]
 * Adjust load priority to support other plugins tying in
-* Aihrus WordPress Starter branding
+* WordPress Starter branding
 * Allow blank NEW_* settings
 * Always include settings class
 * Always load CSS

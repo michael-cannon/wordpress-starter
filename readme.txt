@@ -175,4 +175,4 @@ You can translate this plugin into your own language if it's not done so already
 
 == Thank You ==
 
-TBD
+Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Aihrus](http://aihr.us/about-aihrus/).

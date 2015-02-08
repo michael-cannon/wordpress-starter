@@ -32,32 +32,41 @@ with this program; if not, write to the Free Software Foundation, Inc.,
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'WPS_AIHR_VERSION' ) )
+if ( ! defined( 'WPS_AIHR_VERSION' ) ) {
 	define( 'WPS_AIHR_VERSION', '1.1.4' );
+}
 
-if ( ! defined( 'WPS_BASE' ) )
+if ( ! defined( 'WPS_BASE' ) ) {
 	define( 'WPS_BASE', plugin_basename( __FILE__ ) );
+}
 
-if ( ! defined( 'WPS_DIR' ) )
+if ( ! defined( 'WPS_DIR' ) ) {
 	define( 'WPS_DIR', plugin_dir_path( __FILE__ ) );
+}
 
-if ( ! defined( 'WPS_DIR_INC' ) )
+if ( ! defined( 'WPS_DIR_INC' ) ) {
 	define( 'WPS_DIR_INC', WPS_DIR . 'includes/' );
+}
 
-if ( ! defined( 'WPS_DIR_LIB' ) )
+if ( ! defined( 'WPS_DIR_LIB' ) ) {
 	define( 'WPS_DIR_LIB', WPS_DIR_INC . 'libraries/' );
+}
 
-if ( ! defined( 'WPS_NAME' ) )
+if ( ! defined( 'WPS_NAME' ) ) {
 	define( 'WPS_NAME', 'WordPress Starter' );
+}
 
-if ( ! defined( 'WPS_PREMIUM_LINK' ) )
+if ( ! defined( 'WPS_PREMIUM_LINK' ) ) {
 	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Buy Premium</a>' );
+}
 
-if ( ! defined( 'WPS_VERSION' ) )
+if ( ! defined( 'WPS_VERSION' ) ) {
 	define( 'WPS_VERSION', '1.0.0' );
+}
 
 require_once WPS_DIR_INC . 'requirements.php';
 
@@ -84,20 +93,24 @@ add_action( 'plugins_loaded', 'wordpress_starter_init', 99 );
  */
 if ( ! function_exists( 'wordpress_starter_init' ) ) {
 	function wordpress_starter_init() {
-		if ( ! is_admin() )
+		if ( ! is_admin() ) {
 			return;
+		}
 
-		if ( ! function_exists( 'add_screen_meta_link' ) )
+		if ( ! function_exists( 'add_screen_meta_link' ) ) {
 			require_once WPS_DIR_LIB . 'screen-meta-links.php';
+		}
 
 		if ( WordPress_Starter::version_check() ) {
 			global $WordPress_Starter;
-			if ( is_null( $WordPress_Starter ) )
+			if ( is_null( $WordPress_Starter ) ) {
 				$WordPress_Starter = new WordPress_Starter();
+			}
 
 			global $WordPress_Starter_Settings;
-			if ( is_null( $WordPress_Starter_Settings ) )
+			if ( is_null( $WordPress_Starter_Settings ) ) {
 				$WordPress_Starter_Settings = new WordPress_Starter_Settings();
+			}
 			
 			do_action( 'wps_init' );
 		}

@@ -10,8 +10,6 @@
  * Text Domain: wordpress-starter
  * Domain Path: /languages
  */
-
-
 /**
 WordPress Starter
 Copyright (C) 2014  Michael Cannon

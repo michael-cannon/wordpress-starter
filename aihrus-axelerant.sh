@@ -31,6 +31,7 @@
 
 exit
 
+
 NEW_ABBR="CBQE_"
 NEW_BASE="custom-bulk-quick-edit"
 NEW_CLASS="Custom_Bulk_Quick_Edit"

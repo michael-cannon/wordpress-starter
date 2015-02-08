@@ -23,6 +23,10 @@
 # Update includes/*.php Author and Author URI
 # Update plugin.php 2014  Michael Cannon to 2015 Axelerant
 # Update includes/*.php 2014  Michael Cannon to 2015 Axelerant
+# Update version one minor release step
+# Validate code via `wpcompile`
+# Branch and check in version
+# Release new version on WordPress
 
 
 exit

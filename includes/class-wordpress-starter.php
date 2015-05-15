@@ -119,6 +119,8 @@ class WordPress_Starter extends Aihrus_Common {
 	public static function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+
+		wps_init_options();
 	}
 
 
@@ -514,11 +516,14 @@ class WordPress_Starter extends Aihrus_Common {
 	public static function update() {
 		$prior_version = wps_get_option( 'admin_notices' );
 		if ( $prior_version ) {
-			if ( $prior_version < '0.0.1' )
+			if ( $prior_version < '0.0.1' ) {
 				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
+			}
 
-			if ( $prior_version < self::VERSION )
+			if ( $prior_version < self::VERSION ) {
+				wps_init_options();
 				do_action( 'wps_update' );
+			}
 
 			wps_set_option( 'admin_notices' );
 		}

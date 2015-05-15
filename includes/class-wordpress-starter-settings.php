@@ -322,4 +322,11 @@ function wps_set_option( $option, $value = null ) {
 }
 
 
+function wps_init_options() {
+	$options = wps_get_options();
+	$options = wp_parse_args( $options, WordPress_Starter::get_defaults() );
+	$options = WordPress_Starter_Settings::validate_settings( $options );
+	update_option( WordPress_Starter_Settings::ID, $options );
+}
+
 ?>

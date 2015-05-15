@@ -26,11 +26,11 @@
 * Add widget template
 * Add [[gallery]]
 * Adjust load priority to support other plugins tying in
-* WordPress Starter branding
 * Allow blank NEW_* settings
 * Always include settings class
 * Always load CSS
 * apt-get update
+* Auto save options on activation and upgrades
 * Baseline API
 * Baseline readme.txt tags
 * Centralize styles/scripts handling
@@ -96,3 +96,4 @@
 * Use strip_protocol to help prevent non-SSL path issues
 * Use str_getcsv
 * Use WPS_PREMIUM_LINK constant
+* WordPress Starter branding

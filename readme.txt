@@ -1,10 +1,10 @@
 === WordPress Starter ===
 
-Contributors: comprock
-Donate link: http://aihr.us/about-aihrus/donate/
+Contributors: comprock,saurabhd,subharanjan
+Donate link: https://axelerant.com/about-axelerant/donate/
 Tags: t, b, d
-Requires at least: 3.6
-Tested up to: 3.9.0
+Requires at least: 3.9.2
+Tested up to: 4.3.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,13 +31,13 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = WordPress Starter Premium =
 
-[Buy WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
+[Buy WordPress Starter Premium](https://store.axelerant.com/downloads/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
 
 = Primary Premium Features =
 
 * TBD
 
-[Buy WordPress Starter Premium](http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
+[Buy WordPress Starter Premium](https://store.axelerant.com/downloads/wordpress-starter-premium-wordpress-plugin/) plugin for WordPress.
 
 = Shortcodes =
 
@@ -84,7 +84,9 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Requirements =
 
-* PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006)
+* PHP 5.3+ [Read notice](https://nodedesk.zendesk.com/hc/en-us/articles/202331041) – Since 2.16.0
+* WordPress 3.6+
+* [jQuery 1.10+](https://nodedesk.zendesk.com/hc/en-us/articles/202244022)
 
 = Install Methods =
 
@@ -123,17 +125,16 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 
 = Most Common Issues =
 
-* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006)
-* [Change styling or debug CSS](https://aihrus.zendesk.com/entries/24910733)
-* [Debug theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
+* Got `Parse error: syntax error, unexpected T_STATIC…`? See [Most Axelerant Plugins Require PHP 5.3+](https://nodedesk.zendesk.com/hc/en-us/articles/202331041)
+* [Change styling or debug CSS](https://nodedesk.zendesk.com/hc/en-us/articles/202243372)
+* [Debug theme and plugin conflicts](https://nodedesk.zendesk.com/hc/en-us/articles/202330781)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
-1. [Open Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
+1. [Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112) - review and submit bug reports and enhancement requests
 1. [Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - ask questions and review responses
 1. [Contribute Code](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md)
-1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - provide feedback and direction to plugin development
+1. [Beta Testers Needed](http://store.axelerant.com/become-beta-tester/) - provide feedback and direction to plugin development
 1. [Old Plugin Versions](http://wordpress.org/plugins/wordpress-starter/developers/)
 
 
@@ -168,11 +169,11 @@ See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter/blob/master/
 
 == Localization ==
 
-You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
+You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](https://axelerant.com/contact-axelerant/) for plugin inclusion.
 
-**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+**[How do I localize?](https://nodedesk.zendesk.com/hc/en-us/articles/202294892)**
 
 
 == Thank You ==
 
-Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Aihrus](http://aihr.us/about-aihrus/).
+Current development by [Axelerant](https://axelerant.com/about-axelerant/).

@@ -507,7 +507,7 @@ if ( ! empty( $_POST[ self::ID ] ) || ! empty( $_REQUEST['posts'] ) ) {
 
 
 	public static function notice_0_0_1() {
-		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
+		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://nodedesk.zendesk.com/entries/23722573' );
 
 		aihr_notice_updated( $text );
 	}

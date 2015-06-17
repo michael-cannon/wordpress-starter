@@ -16,7 +16,7 @@ Here's a [guide on how to install WordPress Starter in your WordPress site](http
 * You can clone the GitHub repository: https://github.com/michael-cannon/wordpress-starter.git
 * Download it directly as a ZIP file: https://github.com/michael-cannon/wordpress-starter/archive/master.zip
 
-This will download the latest development version of WordPress Starter by Michael Cannon. While this version is usually stable, it is not recommended for use in a production environment.
+This will download the latest development version of WordPress Starter. While this version is usually stable, it is not recommended for use in a production environment.
 
 ## Bugs
 
@@ -24,7 +24,7 @@ If you find an issue, [let us know here](https://github.com/michael-cannon/wordp
 
 ## Support
 
-This is a developer's portal for WordPress Starter by Michael Cannon and should not be used for support. Please visit the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) for frequently asked questions, offering ideas, or getting support.
+This is a developer's portal for WordPress Starter and should not be used for support. Please visit the [WordPress Starter Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112) for frequently asked questions, offering ideas, or getting support.
 
 ## Contributions
 
@@ -34,7 +34,7 @@ There are various ways you can contribute:
 
 * [Raise an issue](https://github.com/michael-cannon/wordpress-starter/issues) on GitHub.
 * Fork WordPress Starter and send a Pull Request with your bug fixes and/or new features.
-* [Translate WordPress Starter by Michael Cannon into different languages](https://aihrus.zendesk.com/entries/23691557-How-do-I-change-Testimonials-Widget-text-labels-).
+* [Translate WordPress Starter into different languages](https://nodedesk.zendesk.com/hc/en-us/articles/202294892).
 * Provide feedback and [suggestions on enhancements](https://github.com/michael-cannon/wordpress-starter/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open).
 
 ## Thank You

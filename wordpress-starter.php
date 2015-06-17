@@ -4,8 +4,8 @@
  * Plugin URI: http://wordpress.org/plugins/wordpress-starter/
  * Description: TBD
  * Version: 1.0.0
- * Author: Michael Cannon
- * Author URI: http://aihr.us/resume/
+ * Author: Axelerant
+ * Author URI: https://axelerant.com/
  * License: GPLv2 or later
  * Text Domain: wordpress-starter
  * Domain Path: /languages
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WPS_AIHR_VERSION' ) ) {
-	define( 'WPS_AIHR_VERSION', '1.1.4' );
+	define( 'WPS_AIHR_VERSION', '1.2.2RC1' );
 }
 
 if ( ! defined( 'WPS_BASE' ) ) {
@@ -59,7 +59,7 @@ if ( ! defined( 'WPS_NAME' ) ) {
 }
 
 if ( ! defined( 'WPS_PREMIUM_LINK' ) ) {
-	define( 'WPS_PREMIUM_LINK', '<a href="https://aihr.us/products/wordpress-starter-premium/">Buy Premium</a>' );
+	define( 'WPS_PREMIUM_LINK', '<a href="https://store.axelerant.com/downloads/wordpress-starter-premium/">Buy Premium</a>' );
 }
 
 if ( ! defined( 'WPS_VERSION' ) ) {

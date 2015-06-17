@@ -56,4 +56,4 @@ The [WordPress Starter plugin](http://wordpress.org/plugins/wordpress-starter/) 
 
 ## Need More?
 
-Further examples and more can be found by reading and searching the [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) and [source code](https://github.com/michael-cannon/wordpress-starter).
+Further examples and more can be found by reading and searching the [WordPress Starter Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112) and [source code](https://github.com/michael-cannon/wordpress-starter).

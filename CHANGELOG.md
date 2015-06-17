@@ -81,6 +81,7 @@
 * Travis ignore WordPress.WhiteSpace.ControlStructureSpacing - false positives
 * Tweaks titles
 * Update about image path
+* Update Axelerant store branding
 * Update copyright
 * Update donate text
 * Update KB links

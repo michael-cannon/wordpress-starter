@@ -112,13 +112,13 @@ $.widget( "ui.progressbar", {
 		this.valueDiv
 			.toggle( this.indeterminate || value > this.min )
 			.toggleClass( "ui-corner-right", value === this.options.max )
-			.width( percentage.toFixed(0) + "%" );
+			.width( percentage.toFixed( 0 ) + "%" );
 
 		this.element.toggleClass( "ui-progressbar-indeterminate", this.indeterminate );
 
 		if ( this.indeterminate ) {
 			this.element.removeAttr( "aria-valuenow" );
-			if ( !this.overlayDiv ) {
+			if ( ! this.overlayDiv ) {
 				this.overlayDiv = $( "<div class='ui-progressbar-overlay'></div>" ).appendTo( this.valueDiv );
 			}
 		} else {

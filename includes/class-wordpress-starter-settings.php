@@ -1,7 +1,7 @@
 <?php
 /**
 WordPress Starter
-Copyright (C) 2014  Michael Cannon
+Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -60,11 +60,13 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 		self::$version = WordPress_Starter::VERSION;
 		self::$version = apply_filters( 'wps_version', self::$version );
 
-		if ( $version != self::$version )
+		if ( $version != self::$version ) {
 			self::initialize_settings();
+		}
 
-		if ( ! WordPress_Starter::do_load() )
+		if ( ! WordPress_Starter::do_load() ) {
 			return;
+		}
 
 		self::load_options();
 		self::register_settings();
@@ -179,8 +181,9 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 
 		self::$settings = apply_filters( 'wps_settings', self::$settings );
 
-		foreach ( self::$settings as $id => $parts )
+		foreach ( self::$settings as $id => $parts ) {
 			self::$settings[ $id ] = wp_parse_args( $parts, self::$default );
+		}
 	}
 
 
@@ -228,8 +231,9 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 		$input['donate_version'] = WordPress_Starter::VERSION;
 
 		$input = apply_filters( 'wps_validate_settings', $input, $errors );
-		if ( empty( $do_errors ) )
+		if ( empty( $do_errors ) ) {
 			$validated = $input;
+		}
 		else {
 			$validated = array(
 				'input' => $input,
@@ -243,8 +247,9 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 
 	public static function settings_add_help_tabs() {
 		$screen = get_current_screen();
-		if ( self::$admin_page != $screen->id )
+		if ( self::$admin_page != $screen->id ) {
 			return;
+		}
 
 		$screen->set_help_sidebar(
 			'<p><strong>' . esc_html__( 'For more information:', 'wordpress-starter' ) . '</strong></p><p>' .
@@ -276,11 +281,13 @@ class WordPress_Starter_Settings extends Aihrus_Settings {
 	 */
 	public static function display_setting( $args = array(), $do_echo = true, $input = null ) {
 		$content = apply_filters( 'wps_display_setting', '', $args, $input );
-		if ( empty( $content ) )
+		if ( empty( $content ) ) {
 			$content = parent::display_setting( $args, false, $input );
+		}
 
-		if ( ! $do_echo )
+		if ( ! $do_echo ) {
 			return $content;
+		}
 
 		echo $content;
 	}
@@ -304,20 +311,23 @@ function wps_get_options() {
 function wps_get_option( $option, $default = null ) {
 	$options = get_option( WordPress_Starter_Settings::ID, null );
 
-	if ( isset( $options[$option] ) )
-		return $options[$option];
-	else
+	if ( isset( $options[ $option ] ) ) {
+		return $options[ $option ];
+	}
+	else {
 		return $default;
+	}
 }
 
 
 function wps_set_option( $option, $value = null ) {
 	$options = get_option( WordPress_Starter_Settings::ID );
 
-	if ( ! is_array( $options ) )
+	if ( ! is_array( $options ) ) {
 		$options = array();
+	}
 
-	$options[$option] = $value;
+	$options[ $option ] = $value;
 	update_option( WordPress_Starter_Settings::ID, $options );
 }
 

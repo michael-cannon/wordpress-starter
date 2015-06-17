@@ -1,7 +1,7 @@
 <?php
 /**
 WordPress Starter
-Copyright (C) 2014  Michael Cannon
+Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ class WordPress_Starter_Widget extends Aihrus_Widget {
 		$description = esc_html__( 'Display WordPress Starter entries.' );
 		$id_base     = self::ID;
 		self::$title = esc_html__( 'WordPress Starter' );
- 
+
 		parent::__construct( $classname, $description, $id_base, self::$title );
 	}
 

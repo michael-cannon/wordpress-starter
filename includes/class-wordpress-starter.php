@@ -1,7 +1,7 @@
 <?php
 /**
 WordPress Starter
-Copyright (C) 2014  Michael Cannon
+Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -117,25 +117,28 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function activation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 
 		wps_init_options();
 	}
 
 
 	public static function deactivation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 	}
 
 
 	public static function uninstall() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 
 		global $wpdb;
-		
+
 		require_once WPS_DIR_INC . 'class-wordpress-starter-settings.php';
 
 		$delete_data = wps_get_option( 'delete_data', false );
@@ -147,20 +150,23 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function plugin_row_meta( $input, $file ) {
-		if ( self::BASE != $file )
+		if ( self::BASE != $file ) {
 			return $input;
+		}
 
 		$disable_donate = wps_get_option( 'disable_donate' );
-		if ( $disable_donate )
+		if ( $disable_donate ) {
 			return $input;
+		}
 
 		$links = array(
 			self::$donate_link,
 		);
 
 		global $WordPress_Starter_Premium;
-		if ( ! isset( $WordPress_Starter_Premium ) )
+		if ( ! isset( $WordPress_Starter_Premium ) ) {
 			$links[] = WPS_PREMIUM_LINK;
+		}
 
 		$input = array_merge( $input, $links );
 
@@ -171,8 +177,9 @@ class WordPress_Starter extends Aihrus_Common {
 	public static function set_post_types() {
 		$post_types       = get_post_types( array( 'public' => true ), 'names' );
 		self::$post_types = array();
-		foreach ( $post_types as $post_type )
+		foreach ( $post_types as $post_type ) {
 			self::$post_types[] = $post_type;
+		}
 	}
 
 
@@ -185,8 +192,9 @@ class WordPress_Starter extends Aihrus_Common {
 	 */
 	public static function user_interface() {
 		// Capability check
-		if ( ! current_user_can( 'manage_options' ) )
+		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( self::$post_id, esc_html__( "Your user account doesn't have permission to access this.", 'wordpress-starter' ) );
+		}
 
 ?>
 
@@ -197,42 +205,42 @@ class WordPress_Starter extends Aihrus_Common {
 	<h2><?php _e( 'WordPress Starter Processor', 'wordpress-starter' ); ?></h2>
 
 <?php
-		if ( wps_get_option( 'debug_mode' ) ) {
-			$posts_to_import = wps_get_option( 'posts_to_import' );
-			$posts_to_import = explode( ',', $posts_to_import );
-			foreach ( $posts_to_import as $post_id ) {
-				self::$post_id = $post_id;
-				self::ajax_process_post();
-			}
+if ( wps_get_option( 'debug_mode' ) ) {
+	$posts_to_import = wps_get_option( 'posts_to_import' );
+	$posts_to_import = explode( ',', $posts_to_import );
+	foreach ( $posts_to_import as $post_id ) {
+		self::$post_id = $post_id;
+		self::ajax_process_post();
+	}
 
-			exit( __LINE__ . ':' . basename( __FILE__ ) . " DONE<br />\n" );
-		}
+	exit( __LINE__ . ':' . basename( __FILE__ ) . " DONE<br />\n" );
+}
 
-		// If the button was clicked
-		if ( ! empty( $_POST[ self::ID ] ) || ! empty( $_REQUEST['posts'] ) ) {
-			// Form nonce check
-			check_admin_referer( self::ID );
+// If the button was clicked
+if ( ! empty( $_POST[ self::ID ] ) || ! empty( $_REQUEST['posts'] ) ) {
+	// Form nonce check
+	check_admin_referer( self::ID );
 
-			// Create the list of image IDs
-			if ( ! empty( $_REQUEST['posts'] ) ) {
-				$posts = explode( ',', trim( $_REQUEST['posts'], ',' ) );
-				$posts = array_map( 'intval', $posts );
-			} else {
-				$posts = self::get_posts_to_process();
-			}
+	// Create the list of image IDs
+	if ( ! empty( $_REQUEST['posts'] ) ) {
+		$posts = explode( ',', trim( $_REQUEST['posts'], ',' ) );
+		$posts = array_map( 'intval', $posts );
+	} else {
+		$posts = self::get_posts_to_process();
+	}
 
-			$count = count( $posts );
-			if ( ! $count ) {
-				echo '	<p>' . _e( 'All done. No posts needing processing found.', 'wordpress-starter' ) . '</p></div>';
-				return;
-			}
+	$count = count( $posts );
+	if ( ! $count ) {
+		echo '	<p>' . _e( 'All done. No posts needing processing found.', 'wordpress-starter' ) . '</p></div>';
+		return;
+	}
 
-			$posts = implode( ',', $posts );
-			self::show_status( $count, $posts );
-		} else {
-			// No button click? Display the form.
-			self::show_greeting();
-		}
+	$posts = implode( ',', $posts );
+	self::show_status( $count, $posts );
+} else {
+	// No button click? Display the form.
+	self::show_greeting();
+}
 ?>
 	</div>
 <?php
@@ -252,7 +260,7 @@ class WordPress_Starter extends Aihrus_Common {
 
 		$include_ids = wps_get_option( 'posts_to_import' );
 		if ( $include_ids ) {
-			$query[ 'post__in' ] = str_getcsv( $include_ids );
+			$query['post__in'] = str_getcsv( $include_ids );
 		} else {
 			$query['posts_per_page'] = 1;
 			$query['meta_query']     = array(
@@ -266,17 +274,20 @@ class WordPress_Starter extends Aihrus_Common {
 		}
 
 		$skip_ids = wps_get_option( 'skip_importing_post_ids' );
-		if ( $skip_ids )
-			$query[ 'post__not_in' ] = str_getcsv( $skip_ids );
+		if ( $skip_ids ) {
+			$query['post__not_in'] = str_getcsv( $skip_ids );
+		}
 
 		$results  = new WP_Query( $query );
 		$query_wp = $results->request;
 
 		$limit = wps_get_option( 'limit' );
-		if ( $limit )
+		if ( $limit ) {
 			$query_wp = preg_replace( '#\bLIMIT 0,.*#', 'LIMIT 0,' . $limit, $query_wp );
-		else
+		}
+		else {
 			$query_wp = preg_replace( '#\bLIMIT 0,.*#', '', $query_wp );
+		}
 
 		$posts = $wpdb->get_col( $query_wp );
 
@@ -348,8 +359,8 @@ class WordPress_Starter extends Aihrus_Common {
 		<li style="display:none"></li>
 	</ol>
 
-	<script type="text/javascript">
-	// <![CDATA[
+		<script type="text/javascript">
+		// <![CDATA[
 		jQuery(document).ready(function($){
 			var i;
 			var rt_posts = [<?php echo esc_attr( $posts ); ?>];
@@ -418,43 +429,43 @@ class WordPress_Starter extends Aihrus_Common {
 			function WPSPosts( id ) {
 				$.ajax({
 					type: 'POST',
-					url: ajaxurl,
-					data: {
-						action: "ajax_process_post",
-						id: id
-					},
-					success: function( response ) {
-						if ( response.success ) {
-							WPSPostsUpdateStatus( id, true, response );
-						}
-						else {
-							WPSPostsUpdateStatus( id, false, response );
-						}
+						url: ajaxurl,
+						data: {
+							action: "ajax_process_post",
+								id: id
+						},
+						success: function( response ) {
+							if ( response.success ) {
+								WPSPostsUpdateStatus( id, true, response );
+							}
+							else {
+								WPSPostsUpdateStatus( id, false, response );
+							}
 
-						if ( rt_posts.length && rt_continue ) {
-							WPSPosts( rt_posts.shift() );
-						}
-						else {
-							WPSPostsFinishUp();
-						}
-					},
-					error: function( response ) {
-						WPSPostsUpdateStatus( id, false, response );
+							if ( rt_posts.length && rt_continue ) {
+								WPSPosts( rt_posts.shift() );
+							}
+							else {
+								WPSPostsFinishUp();
+							}
+						},
+							error: function( response ) {
+								WPSPostsUpdateStatus( id, false, response );
 
-						if ( rt_posts.length && rt_continue ) {
-							WPSPosts( rt_posts.shift() );
-						}
-						else {
-							WPSPostsFinishUp();
-						}
-					}
+								if ( rt_posts.length && rt_continue ) {
+									WPSPosts( rt_posts.shift() );
+								}
+								else {
+									WPSPostsFinishUp();
+								}
+							}
 				});
 			}
 
 			WPSPosts( rt_posts.shift() );
 		});
-	// ]]>
-	</script>
+		// ]]>
+		</script>
 <?php
 	}
 	// @codingStandardsIgnoreEnd
@@ -474,8 +485,9 @@ class WordPress_Starter extends Aihrus_Common {
 		}
 
 		$post = get_post( self::$post_id );
-		if ( ! $post || ! in_array( $post->post_type, self::$post_types )  )
+		if ( ! $post || ! in_array( $post->post_type, self::$post_types )  ) {
 			die( json_encode( array( 'error' => sprintf( esc_html__( 'Failed Processing: %s is incorrect post type.', 'wordpress-starter' ), esc_html( self::$post_id ) ) ) ) );
+		}
 
 		self::do_something( self::$post_id, $post );
 
@@ -619,10 +631,12 @@ class WordPress_Starter extends Aihrus_Common {
 
 
 	public static function get_defaults( $single_view = false ) {
-		if ( empty( $single_view ) )
+		if ( empty( $single_view ) ) {
 			return apply_filters( 'wps_defaults', wps_get_options() );
-		else
+		}
+		else {
 			return apply_filters( 'wps_defaults_single', wps_get_options() );
+		}
 	}
 
 

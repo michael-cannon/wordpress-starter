@@ -12,7 +12,7 @@
  */
 /**
 WordPress Starter
-Copyright (C) 2014  Michael Cannon
+Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -109,7 +109,7 @@ if ( ! function_exists( 'wordpress_starter_init' ) ) {
 			if ( is_null( $WordPress_Starter_Settings ) ) {
 				$WordPress_Starter_Settings = new WordPress_Starter_Settings();
 			}
-			
+
 			do_action( 'wps_init' );
 		}
 	}

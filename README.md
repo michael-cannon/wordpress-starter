@@ -1,7 +1,6 @@
 # WordPress Starter plugin for WordPress
 
 [![Codeship status](https://www.codeship.io/projects/TBD/status)](https://www.codeship.io/projects/TBD)
-[![ProjectStatus](http://stillmaintained.com/michael-cannon/wordpress-starter.png)](http://stillmaintained.com/michael-cannon/wordpress-starter)
 
 ## Welcome to the WordPress Starter Github repository
 

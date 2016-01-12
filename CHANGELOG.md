@@ -61,6 +61,7 @@
 * Put YouTube to https
 * Register scripts to footer
 * Remove unused `widget_options`
+* Removed ProjectStatus icon
 * Rename `wordpress_starter` to `wps` for action and filter names
 * Require Aihrus 1.1.4
 * Revise FAQ section

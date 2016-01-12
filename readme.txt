@@ -85,7 +85,7 @@ The WordPress KEYWORD plugin, WordPress Starter, TBD.
 = Requirements =
 
 * PHP 5.3+ [Read notice](https://nodedesk.zendesk.com/hc/en-us/articles/202331041) – Since 2.16.0
-* WordPress 3.6+
+* WordPress 3.9.2+
 * [jQuery 1.10+](https://nodedesk.zendesk.com/hc/en-us/articles/202244022)
 
 = Install Methods =
